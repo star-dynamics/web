@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR in Communication — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .app-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .app-nav a{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;border:1px solid rgba(26,24,20,0.12);color:rgba(26,24,20,0.4);transition:all 0.2s;}
+  .app-nav a:hover{border-color:rgba(26,24,20,0.3);color:var(--cream);}
+  .app-nav a.current{border-color:var(--gold);color:var(--gold);}
+  .message-builder{margin:40px 0;}
+  .strand{padding:24px 28px;border-radius:6px;margin-bottom:8px;display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;background:#FFFFFF;border:1px solid rgba(26,24,20,0.07);}
+  .strand-label{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding-top:2px;}
+  .strand-content h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--cream);margin-bottom:6px;}
+  .strand-content p{font-size:13px;font-weight:300;line-height:1.7;color:rgba(26,24,20,0.55);}
+  .example-block{background:rgba(156,122,50,0.06);border:1px solid rgba(156,122,50,0.15);border-radius:6px;padding:32px;margin:32px 0;}
+  .example-block h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:16px;}
+  .example-item{padding:16px 0;border-bottom:1px solid rgba(26,24,20,0.08);}
+  .example-item:last-child{border-bottom:none;}
+  .example-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;}
+  .example-line{font-size:14px;font-weight:300;line-height:1.65;color:rgba(26,24,20,0.75);font-style:italic;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin:40px 0;}
+  @media(max-width:900px){.strand{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html" class="active">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Applications · Communication</div>
+    <h1 class="page-title">STAR in<br><em>Communication</em></h1>
+    <p class="page-intro">Value is not an objective property of a message. It is constructed in the act of interpretation, and that interpretation is shaped by mindset. STAR makes the filters visible — so every message can land with everyone.</p>
+  </div>
+</div>
+
+<main>
+  <div class="app-nav reveal">
+    <a href="app-leadership.html">Leadership</a>
+    <a href="app-communication.html" class="current">Communication</a>
+    <a href="app-marketing.html">Marketing</a>
+    <a href="app-education.html">Education</a>
+    <a href="app-coaching.html">Coaching</a>
+    <a href="app-teams.html">Team Design</a>
+  </div>
+
+  <div class="two-col">
+    <div class="reveal">
+      <div class="section-label">The problem with most communication</div>
+      <h2 class="section-title">Every message has<br><em>four audiences.</em></h2>
+      <p class="section-body">The reason well-crafted communication still falls flat is almost never the content. It is the interpretive filter of the person receiving it. A technology announcement that emphasises innovation energises Adventurers and Socialisers — and alarms Thinkers and Realists, who hear risk and disruption where others hear possibility.</p>
+      <p class="section-body" style="margin-top:16px;">STAR does not require four separate messages. It requires one message designed deliberately to contain four strands, each giving a different mindset its own reason to care. That is not pandering. That is precision.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"The same words can inspire one person and alienate another. STAR's contribution is to make those divergent interpretations predictable — so they can be designed for, not discovered after the fact."</div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">The layered message framework</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Four strands.<br><em>One message.</em></h2>
+    <p class="section-body">Every high-stakes communication should be audited against these four strands. Each one addresses the interpretive filter of a different mindset. Together, they create a message that is simultaneously inclusive and specific.</p>
+  </div>
+  <div class="message-builder reveal reveal-delay-1">
+    <div class="strand">
+      <div class="strand-label" style="color:var(--s-red);">Relational Strand · Socialiser</div>
+      <div class="strand-content">
+        <h4>Emphasise belonging and collective purpose</h4>
+        <p>Socialisers evaluate communication through the lens of belonging vs. rejection. They need to feel that the message includes them, that the change or announcement is something happening with them rather than to them. Reference the group, acknowledge the shared journey, name the relationships that will be protected. If the Socialiser cannot find themselves in the message, they will not engage with the content.</p>
+      </div>
+    </div>
+    <div class="strand">
+      <div class="strand-label" style="color:var(--t-blue);">Epistemic Strand · Thinker</div>
+      <div class="strand-content">
+        <h4>Provide transparent data and logical rationale</h4>
+        <p>Thinkers filter communication through logic, fairness, and coherence. They distrust assertions without evidence and grow sceptical of enthusiasm that is not grounded in data. They do not need to agree with the decision — but they need to be able to follow the reasoning. State the evidence, acknowledge the trade-offs, and leave space for intelligent scrutiny. Telling a Thinker to "just trust the process" is not reassurance; it is an insult.</p>
+      </div>
+    </div>
+    <div class="strand">
+      <div class="strand-label" style="color:var(--a-amber);">Aspirational Strand · Adventurer</div>
+      <div class="strand-content">
+        <h4>Highlight freedom, novelty, and opportunity</h4>
+        <p>Adventurers filter through freedom, novelty, and the presence of constraint. They respond to the possibility of what could be. Frame the communication around what it opens up, what becomes available, what previously closed doors now swing wide. Prevention-framed language — warnings, safeguards, procedures — sounds like restriction to the Adventurer and triggers disengagement. Lead with the horizon, then add the structure as a practical note, not a headline.</p>
+      </div>
+    </div>
+    <div class="strand">
+      <div class="strand-label" style="color:var(--r-green);">Protective Strand · Realist</div>
+      <div class="strand-content">
+        <h4>Reassure with continuity, reliability, and control</h4>
+        <p>Realists evaluate through stability, predictability, and the threat of disruption. They need to know what is not changing, not just what is. Name the things being preserved — the processes, the values, the people, the commitments. Provide concrete timelines, clear contingency plans, and a channel for questions. A Realist who cannot find the safety net in a message will spend their energy looking for what could go wrong rather than engaging with what could go right.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Applied example</div>
+    <h2 class="section-title" style="margin-bottom:8px;">A restructure announcement<br><em>designed for all four</em></h2>
+    <p class="section-body">A CEO announcing a major organisational restructure faces all four interpretive filters simultaneously. Here is how each strand sounds in practice.</p>
+  </div>
+  <div class="example-block reveal reveal-delay-1">
+    <h3>The same announcement, through four lenses</h3>
+    <div class="example-item">
+      <div class="example-type" style="color:var(--s-red);">Socialiser · Relational strand</div>
+      <div class="example-line">"We are doing this together, and I want to make sure every person in this room feels part of what we are building. The relationships we have built here are the foundation, not the casualty, of what comes next."</div>
+    </div>
+    <div class="example-item">
+      <div class="example-type" style="color:var(--t-blue);">Thinker · Epistemic strand</div>
+      <div class="example-line">"The data behind this decision is clear — and I will share it in full. Market analysis, operational modelling, and three independent reviews all point to the same conclusion. I want you to be able to scrutinise our reasoning, because a decision this significant deserves to be questioned."</div>
+    </div>
+    <div class="example-item">
+      <div class="example-type" style="color:var(--a-amber);">Adventurer · Aspirational strand</div>
+      <div class="example-line">"This restructure removes the constraints that have been slowing us down. It opens up new territory, gives individuals more agency over their work, and frees us to move faster on the opportunities we have been circling for two years."</div>
+    </div>
+    <div class="example-item">
+      <div class="example-type" style="color:var(--r-green);">Realist · Protective strand</div>
+      <div class="example-line">"Our core commitments — to quality, to service, to the people who depend on us — are not changing. We have a phased transition plan, clear role definitions, and a support structure in place from day one. Nothing essential will be disrupted without a safety net."</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:48px;">
+    <div class="section-label">The stewardship narrative</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Bridging promotion<br><em>and prevention</em></h2>
+    <p class="section-body">The most powerful communication tool in the STAR toolkit is the Stewardship Narrative: a framing that aligns the new with the known, repositioning change as a responsible act of preservation rather than a departure from it.</p>
+    <div class="callout">"We must innovate — to ensure our long-term stability and protect the things we have built. Moving forward is not a rejection of the past. It is the most faithful act of stewardship we can offer it."</div>
+    <p class="section-body" style="margin-top:20px;">This framing satisfies the Adventurer's need for forward motion and the Realist's need for continuity at the same time. It is the single most reliable way to bring a divided room into alignment without compromising the truth of either position.</p>
+  </div>
+
+  <div style="margin-top:72px;display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+    <a href="app-marketing.html" class="btn-primary">STAR in Marketing →</a>
+    <a href="app-leadership.html" class="btn-secondary">← Leadership</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+<script>
+  const bar=document.getElementById('progressBar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

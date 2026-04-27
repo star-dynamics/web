@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR in Education — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .app-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .app-nav a{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;border:1px solid rgba(26,24,20,0.12);color:rgba(26,24,20,0.4);transition:all 0.2s;}
+  .app-nav a:hover{border-color:rgba(26,24,20,0.3);color:var(--cream);}
+  .app-nav a.current{border-color:var(--gold);color:var(--gold);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin:40px 0;}
+  .learning-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0;}
+  .lg-card{padding:28px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-top:3px solid transparent;}
+  .lg-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .lg-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:10px;}
+  .lg-body{font-size:13px;font-weight:300;line-height:1.75;color:rgba(26,24,20,0.55);margin-bottom:16px;}
+  .lg-methods{display:flex;flex-direction:column;gap:6px;}
+  .lg-method{font-size:12px;font-weight:300;color:rgba(26,24,20,0.45);padding:6px 10px;background:#FFFFFF;border-radius:3px;border-left:2px solid rgba(26,24,20,0.1);}
+  .sdt-block{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+  .sdt-card{padding:24px;border-radius:6px;background:rgba(156,122,50,0.06);border:1px solid rgba(156,122,50,0.12);}
+  .sdt-card h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--gold);margin-bottom:8px;}
+  .sdt-card p{font-size:13px;font-weight:300;line-height:1.65;color:rgba(26,24,20,0.55);}
+  .distortion-list{display:flex;flex-direction:column;gap:0;margin:32px 0;border:1px solid rgba(26,24,20,0.08);border-radius:6px;overflow:hidden;}
+  .distortion-item{padding:20px 24px;border-bottom:1px solid rgba(26,24,20,0.06);display:grid;grid-template-columns:180px 1fr 1fr;gap:20px;align-items:start;}
+  .distortion-item:last-child{border-bottom:none;}
+  .di-label{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding-top:2px;}
+  .di-problem{font-size:13px;font-weight:300;line-height:1.6;color:rgba(26,24,20,0.5);}
+  .di-fix{font-size:13px;font-weight:300;line-height:1.6;color:rgba(26,24,20,0.7);}
+  @media(max-width:900px){.learning-grid,.two-col,.sdt-block{grid-template-columns:1fr;}.distortion-item{grid-template-columns:1fr;}.distortion-item .di-label{font-size:11px;}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html" class="active">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Applications · Education</div>
+    <h1 class="page-title">STAR in<br><em>Education</em></h1>
+    <p class="page-intro">Learning and development are systemic functions, not isolated events. STAR provides an empirically grounded framework to design them around psychological needs rather than assumptions — enabling truly inclusive pedagogy at every level.</p>
+  </div>
+</div>
+
+<main>
+  <div class="app-nav reveal">
+    <a href="app-leadership.html">Leadership</a>
+    <a href="app-communication.html">Communication</a>
+    <a href="app-marketing.html">Marketing</a>
+    <a href="app-education.html" class="current">Education</a>
+    <a href="app-coaching.html">Coaching</a>
+    <a href="app-teams.html">Team Design</a>
+  </div>
+
+  <div class="two-col">
+    <div class="reveal">
+      <div class="section-label">Why standard training underperforms</div>
+      <h2 class="section-title">The problem is not<br><em>the content. It is the delivery.</em></h2>
+      <p class="section-body">Training programmes that ignore mindset may secure compliance — learners attend, complete assessments, and return to work — but they do not secure commitment to growth. The difference is not in what is taught but in whether the learning environment supports the psychological needs of the person receiving it.</p>
+      <p class="section-body" style="margin-top:16px;">STAR adds precision by showing how the three core SDT needs — Autonomy, Competence, and Relatedness — are interpreted differently across mindsets, clarifying why some learners disengage from standardised training while others thrive on it.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"When training programmes are STAR-calibrated, they don't just educate. They engage. They make people feel seen — and that unlocks attention, retention, and application."</div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">The SDT learning foundation</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Three needs.<br><em>Every learner. Every context.</em></h2>
+    <p class="section-body">Self-Determination Theory identifies three universal psychological requirements for genuine engagement in learning. Programmes that ignore any one of them secure attendance without growth.</p>
+  </div>
+  <div class="sdt-block reveal reveal-delay-1">
+    <div class="sdt-card">
+      <h4>Autonomy</h4>
+      <p>Learners engage more deeply when they feel their participation is self-endorsed rather than externally imposed. Choice of approach, pace, and application method all support autonomy. This is essential for Adventurers but matters to every mindset when the stakes are high.</p>
+    </div>
+    <div class="sdt-card">
+      <h4>Competence</h4>
+      <p>Learners need to experience progress — to feel that they are becoming more capable through the process. Clear milestones, specific feedback, and appropriately challenging tasks sustain competence. This is the Thinker's primary learning fuel, but it anchors every learner's confidence.</p>
+    </div>
+    <div class="sdt-card">
+      <h4>Relatedness</h4>
+      <p>Learners engage more fully when they feel connected to the people and purpose of the learning. The Socialiser cannot separate learning from belonging; isolate them from the group and the content becomes irrelevant. Even independent learners benefit from a felt sense of shared purpose.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:48px;">
+    <div class="section-label">Learning styles by mindset</div>
+    <h2 class="section-title" style="margin-bottom:8px;">How each type<br><em>learns best</em></h2>
+  </div>
+  <div class="learning-grid">
+    <div class="lg-card reveal reveal-delay-1" style="border-top-color:var(--s-red);">
+      <div class="lg-type" style="color:var(--s-red);">Socialiser</div>
+      <div class="lg-title">Learns through connection</div>
+      <div class="lg-body">Socialisers grow through interaction, dialogue, and shared reflection. They learn by feeling connected to the group and to the purpose of the work, not simply by receiving information. Collaborative tasks, group discussion, storytelling, and peer feedback all accelerate Socialiser learning. Isolated self-directed modules and heavily individual assessments create friction, not growth.</div>
+      <div class="lg-methods">
+        <div class="lg-method">Group discussion and collaborative projects</div>
+        <div class="lg-method">Storytelling and case study narratives</div>
+        <div class="lg-method">Peer feedback and shared reflection</div>
+        <div class="lg-method">Role play and relationship-centred scenarios</div>
+      </div>
+    </div>
+    <div class="lg-card reveal reveal-delay-2" style="border-top-color:var(--t-blue);">
+      <div class="lg-type" style="color:var(--t-blue);">Thinker</div>
+      <div class="lg-title">Learns through structure and logic</div>
+      <div class="lg-body">Thinkers thrive in structured learning: models, frameworks, logical sequences with clear rationale. They want context first — why does this matter, where does it sit in the broader picture — before they engage with the detail. They also need time. A Thinker pushed to respond before they have absorbed the material will give a superficial answer and resent the process. Give them the evidence, the framework, and the space to think.</div>
+      <div class="lg-methods">
+        <div class="lg-method">Conceptual frameworks with clear logical flow</div>
+        <div class="lg-method">Pre-reading and advance preparation time</div>
+        <div class="lg-method">Data-rich case studies with analytical challenge</div>
+        <div class="lg-method">Specific, evidence-based feedback on output quality</div>
+      </div>
+    </div>
+    <div class="lg-card reveal reveal-delay-3" style="border-top-color:var(--a-amber);">
+      <div class="lg-type" style="color:var(--a-amber);">Adventurer</div>
+      <div class="lg-title">Learns through exploration and experiment</div>
+      <div class="lg-body">Adventurers need exploration, sandbox space, and optionality. Their learning accelerates when the path is not entirely linear — when they have room to try things, fail fast, and discover through doing rather than being told. Rigid instructional sequences frustrate them. Structured-but-open project briefs, prototype challenges, and inquiry-based tasks that reward creative deviation give the Adventurer the environment they need to grow rapidly.</div>
+      <div class="lg-methods">
+        <div class="lg-method">Inquiry-based and project-led assignments</div>
+        <div class="lg-method">Prototype and experimentation challenges</div>
+        <div class="lg-method">Choice of approach within defined outcomes</div>
+        <div class="lg-method">Rapid iteration cycles with structured debrief</div>
+      </div>
+    </div>
+    <div class="lg-card reveal reveal-delay-4" style="border-top-color:var(--r-green);">
+      <div class="lg-type" style="color:var(--r-green);">Realist</div>
+      <div class="lg-title">Learns through stability and practice</div>
+      <div class="lg-body">Realists need reassurance, stable pacing, and no surprises. For them, trust in the process is as important as the content itself. They absorb information deeply when it is delivered with consistency and when the application to their existing practice is made explicit. Sudden changes to programme structure, ambiguous assessments, or an environment that prioritises novelty over rigour all undermine Realist engagement at the root.</div>
+      <div class="lg-methods">
+        <div class="lg-method">Structured practice with clear progression steps</div>
+        <div class="lg-method">Consistent programme format with advance notice of changes</div>
+        <div class="lg-method">Practical application to existing role and context</div>
+        <div class="lg-method">Calm, repetitive reinforcement of key concepts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Systemic distortions</div>
+    <h2 class="section-title" style="margin-bottom:8px;">When institutions<br><em>privilege one orientation</em></h2>
+    <p class="section-body">Most learning and development systems unconsciously privilege one or two mindsets and disadvantage the rest. Identifying the distortion is the first step toward designing a system that supports all four.</p>
+  </div>
+  <div class="distortion-list reveal reveal-delay-1">
+    <div class="distortion-item">
+      <div class="di-label" style="color:var(--a-amber);">Assertiveness bias</div>
+      <div class="di-problem">Recruitment and promotion systems that reward assertiveness and risk appetite inadvertently privilege Adventurers and Socialisers — filtering out Thinkers and Realists who lead differently.</div>
+      <div class="di-fix">Balance assessment criteria to evaluate relational intelligence, analytical rigour, and stabilising reliability alongside creative confidence.</div>
+    </div>
+    <div class="distortion-item">
+      <div class="di-label" style="color:var(--r-green);">Compliance-KPI bias</div>
+      <div class="di-problem">Compliance-focused performance criteria empower Realists but actively discourage the exploratory behaviour Adventurers and Thinkers need to perform at their best.</div>
+      <div class="di-fix">Introduce multi-modal performance criteria that reward process mastery, innovative contribution, and relational effectiveness in parallel.</div>
+    </div>
+    <div class="distortion-item">
+      <div class="di-label" style="color:var(--s-red);">Collaborative-metrics bias</div>
+      <div class="di-problem">Institutions that measure success primarily through collaboration and peer feedback elevate Socialisers but can marginalise Thinkers, who often do their best work independently.</div>
+      <div class="di-fix">Ensure that individual analytical contributions are recognised explicitly and not subsumed into team-level metrics alone.</div>
+    </div>
+    <div class="distortion-item">
+      <div class="di-label" style="color:var(--t-blue);">Rigid-process bias</div>
+      <div class="di-problem">Heavily scripted, process-bound training environments serve Realists and Thinkers but produce restlessness and disengagement in Adventurers, who learn by deviation rather than compliance.</div>
+      <div class="di-fix">Build structured-but-open learning modules that define outcomes clearly while leaving the path to those outcomes genuinely flexible.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+    <a href="app-coaching.html" class="btn-primary">STAR in Coaching →</a>
+    <a href="app-marketing.html" class="btn-secondary">← Marketing</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+<script>
+  const bar=document.getElementById('progressBar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

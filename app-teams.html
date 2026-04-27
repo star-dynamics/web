@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR in Team Design — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .app-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .app-nav a{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;border:1px solid rgba(26,24,20,0.12);color:rgba(26,24,20,0.4);transition:all 0.2s;}
+  .app-nav a:hover{border-color:rgba(26,24,20,0.3);color:var(--cream);}
+  .app-nav a.current{border-color:var(--gold);color:var(--gold);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin:40px 0;}
+  .trap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0;}
+  .trap-card{padding:28px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-top:3px solid transparent;}
+  .trap-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;}
+  .trap-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:4px;}
+  .trap-subtitle{font-size:11px;font-weight:500;letter-spacing:0.08em;color:rgba(26,24,20,0.3);margin-bottom:14px;}
+  .trap-body{font-size:13px;font-weight:300;line-height:1.75;color:rgba(26,24,20,0.55);}
+  .gap-matrix{margin:40px 0;}
+  .gap-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;border-bottom:1px solid rgba(26,24,20,0.07);}
+  .gap-row:first-child{border-bottom:2px solid rgba(26,24,20,0.12);}
+  .gap-cell{padding:14px 16px;font-size:13px;font-weight:300;color:rgba(26,24,20,0.55);line-height:1.55;vertical-align:top;}
+  .gap-cell.header{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,24,20,0.3);}
+  .gap-cell.mode-label{font-weight:500;color:var(--cream);font-size:13px;}
+  .hiring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0;}
+  .hg-card{padding:24px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);}
+  .hg-card h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--cream);margin-bottom:8px;}
+  .hg-card p{font-size:13px;font-weight:300;line-height:1.7;color:rgba(26,24,20,0.5);}
+  @media(max-width:900px){.trap-grid,.two-col,.hiring-grid{grid-template-columns:1fr 1fr;}.gap-row{grid-template-columns:1fr;}.gap-row:first-child{display:none;}}
+  @media(max-width:600px){.trap-grid,.two-col,.hiring-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html" class="active">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Applications · Team Design</div>
+    <h1 class="page-title">STAR in<br><em>Team Design</em></h1>
+    <p class="page-intro">Great teams are not just diverse in background or skillset. They are diverse in cognition — in the way they see problems, interpret risk, and process ambiguity. STAR gives you the framework to build that diversity with intention rather than hope.</p>
+  </div>
+</div>
+
+<main>
+  <div class="app-nav reveal">
+    <a href="app-leadership.html">Leadership</a>
+    <a href="app-communication.html">Communication</a>
+    <a href="app-marketing.html">Marketing</a>
+    <a href="app-education.html">Education</a>
+    <a href="app-coaching.html">Coaching</a>
+    <a href="app-teams.html" class="current">Team Design</a>
+  </div>
+
+  <div class="two-col">
+    <div class="reveal">
+      <div class="section-label">The problem with cultural fit</div>
+      <h2 class="section-title">Cultural fit is often<br><em>cultural sameness.</em></h2>
+      <p class="section-body">Traditional hiring focuses on experience, hard skills, and the slippery concept of cultural fit. The problem is that cultural fit too often becomes an unconscious mechanism for reproducing the same cognitive style over and again. Homogeneity feels harmonious in the short term and becomes fragile in the medium term.</p>
+      <p class="section-body" style="margin-top:16px;">A team of Thinkers is methodical but struggles with momentum. A group of Adventurers generates breakthrough ideas but burns out without structure. A room full of Realists maintains standards but resists bold pivots. A team of Socialisers is relationally rich but diffuses under sustained pressure. None of these is a bad team — each is an incomplete one.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"STAR allows you to hire not just for ability, but for attunement — for complementary thinking styles that bring balance rather than conflict, and challenge each other without dissonance."</div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">The homogeneity traps</div>
+    <h2 class="section-title" style="margin-bottom:8px;">What happens when<br><em>one mindset dominates</em></h2>
+  </div>
+  <div class="trap-grid">
+    <div class="trap-card reveal reveal-delay-1" style="border-top-color:var(--s-red);">
+      <div class="trap-type" style="color:var(--s-red);">Socialiser-dominant team</div>
+      <div class="trap-name">The Groupthink Trap</div>
+      <div class="trap-subtitle">High harmony · Low rigour</div>
+      <div class="trap-body">Socialiser-heavy teams prioritise cohesion and collective feeling to such a degree that dissent becomes socially costly. Difficult truths are softened, uncomfortable data is minimised, and the desire to maintain the warmth of group agreement outweighs the need for honest challenge. The team feels great. The strategy is unchallenged. The results eventually expose the gap.</div>
+    </div>
+    <div class="trap-card reveal reveal-delay-2" style="border-top-color:var(--t-blue);">
+      <div class="trap-type" style="color:var(--t-blue);">Thinker-dominant team</div>
+      <div class="trap-name">The Paralysis Trap</div>
+      <div class="trap-subtitle">High rigour · Low momentum</div>
+      <div class="trap-body">Thinker-heavy teams are extraordinarily good at identifying problems, modelling risk, and finding the flaws in any proposal. The difficulty is that this rigour can become a form of institutional caution that prevents action. Every initiative is analysed, every analysis refined, every timeline extended. The work is exceptional when it finally arrives. The window it was designed for closed six months ago.</div>
+    </div>
+    <div class="trap-card reveal reveal-delay-3" style="border-top-color:var(--a-amber);">
+      <div class="trap-type" style="color:var(--a-amber);">Adventurer-dominant team</div>
+      <div class="trap-name">The Volatility Trap</div>
+      <div class="trap-subtitle">High momentum · Low continuity</div>
+      <div class="trap-body">Adventurer-heavy teams generate extraordinary energy and a constant stream of new ideas. The difficulty is that follow-through is structurally undervalued. Yesterday's breakthrough is today's background noise. Initiatives multiply, consolidation is neglected, and the team builds a graveyard of exciting half-finished things rather than a portfolio of sustained achievement.</div>
+    </div>
+    <div class="trap-card reveal reveal-delay-4" style="border-top-color:var(--r-green);">
+      <div class="trap-type" style="color:var(--r-green);">Realist-dominant team</div>
+      <div class="trap-name">The Inertia Trap</div>
+      <div class="trap-subtitle">High reliability · Low adaptability</div>
+      <div class="trap-body">Realist-heavy teams are exceptional operators: reliable, thorough, and consistent. The difficulty is that this same quality becomes a liability when the environment requires rapid adaptation. Existing processes are defended long past their usefulness. Change is experienced as threat rather than opportunity, and the team that was once the organisation's bedrock becomes its anchor.</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Operating mode gaps</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Diagnose the gap<br><em>before you feel the cost</em></h2>
+    <p class="section-body">The Operating Modes tell you which functional energies are present in a team — and which are missing. A team can be mindset-diverse but still be missing a critical mode. Diagnose at the mode level as well as the mindset level.</p>
+  </div>
+  <div class="gap-matrix reveal reveal-delay-1">
+    <div class="gap-row">
+      <div class="gap-cell header">Missing Mode</div>
+      <div class="gap-cell header">Symptom</div>
+      <div class="gap-cell header">What the team needs</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-cell mode-label" style="color:var(--driver);">No Driver</div>
+      <div class="gap-cell">Strategy discussed but never initiated. Meetings produce plans that no one acts on. Energy is low and tempo is flat despite the quality of thinking.</div>
+      <div class="gap-cell">An Expressive Energiser, Energetic Catalyst, or Inventive Pathfinder to break inertia and set the emotional tempo.</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-cell mode-label" style="color:var(--custodian);">No Custodian</div>
+      <div class="gap-cell">Standards quietly slip. Errors accumulate unchecked. The team moves fast but the quality of output gradually declines and no one names it until the damage is visible.</div>
+      <div class="gap-cell">A Precise Analyst, Careful Guardian, or Steady Harmoniser to hold standards and catch failures before they compound.</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-cell mode-label" style="color:var(--translator);">No Translator</div>
+      <div class="gap-cell">Meetings become battlegrounds between ambitious proposals and protective caution. Decisions oscillate. The team is stuck in the tension between Driver and Custodian without anyone to synthesise.</div>
+      <div class="gap-cell">A Strategic Explorer, Practical Builder, or Resilient Enabler to find the workable path between bold and safe.</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-cell mode-label" style="color:var(--aligner);">No Aligner</div>
+      <div class="gap-cell">The team appears functional until it doesn't. Friction accumulates silently. Trust erodes. Small tensions that should have been addressed early become entrenched fault lines.</div>
+      <div class="gap-cell">A Thoughtful Advisor, Grounded Connector, or Structured Collaborator to maintain the relational architecture while everyone else focuses on the task.</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Practical application</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Three tools for<br><em>STAR-aware team building</em></h2>
+  </div>
+  <div class="hiring-grid reveal reveal-delay-1">
+    <div class="hg-card">
+      <h4>Mindset Mapping</h4>
+      <p>Map each team member's STAR archetype onto a quadrant grid. Discuss overlaps (shared strengths and potential blind spots) and gaps (missing mindsets). Ask where bias is most likely to emerge given the current distribution, and design deliberate counterweights into decision-making processes.</p>
+    </div>
+    <div class="hg-card">
+      <h4>Motivation Audit</h4>
+      <p>Quarterly, check which SDT needs are currently supported or blocked in the team environment. Ask which members need more autonomy, more intellectual challenge, more relational recognition, or more structural security — and redesign the working environment accordingly rather than asking individuals to adapt to it.</p>
+    </div>
+    <div class="hg-card">
+      <h4>Bias Awareness Workshop</h4>
+      <p>Use the STAR bias fingerprints to map the team's collective thinking traps. Run scenario exercises where each bias pattern is likely to emerge — a project launch, a risk decision, a restructure — and rehearse the corrective mechanisms that rebalance the team before they are needed under real pressure.</p>
+    </div>
+    <div class="hg-card">
+      <h4>Cognitive Complementarity Hiring</h4>
+      <p>Before opening a role, audit the current team's mindset and mode distribution. Hire not just for skills but for the psychological perspective the team needs more of. Mindset-aware hiring is not profiling — it is precision, ensuring that diversity of cognition is as intentional as diversity of background.</p>
+    </div>
+    <div class="hg-card">
+      <h4>Balanced Performance Criteria</h4>
+      <p>Audit your existing performance criteria for orientation bias. If assertiveness and innovation are disproportionately rewarded, Realists and Thinkers are structurally disadvantaged. Build criteria that recognise relational, analytical, innovative, and stabilising contributions in parallel, making the full range of cognitive diversity visible and valued.</p>
+    </div>
+    <div class="hg-card">
+      <h4>STAR Profile Debrief</h4>
+      <p>Commission full STAR profiles for key team members and run a facilitated debrief session. The most transformative team conversations often begin with the simple recognition that colleagues interpret the same situation in genuinely different ways — not because one is right and the other is wrong, but because they are running different psychological operating systems.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+    <a href="mailto:david@stardynamics.io" class="btn-primary">Get in touch →</a>
+    <a href="app-coaching.html" class="btn-secondary">← Coaching</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+<script>
+  const bar=document.getElementById('progressBar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

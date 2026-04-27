@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR Types In Depth — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html" class="active">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">In Depth</div>
+    <h1 class="page-title">STAR Types.<br><em>In full.</em></h1>
+    <p class="page-intro">Full psychological profiles for each STAR type — covering SDT needs, OCEAN personality cluster, cognitive processing style, regulatory focus, appraisal filter, bias fingerprint, and practical guidance for motivation and development.</p>
+  </div>
+</div>
+
+<main>
+  <div class="section-label reveal" style="margin-bottom:8px;">Select a type</div>
+  <div class="reveal reveal-delay-1">
+    <div class="types-tabs">
+      <button class="type-tab active" style="background:var(--s-red);" onclick="showType('s', this)">Socialiser</button>
+      <button class="type-tab" style="background:var(--t-blue);" onclick="showType('t', this)">Thinker</button>
+      <button class="type-tab" style="background:var(--a-amber);" onclick="showType('a', this)">Adventurer</button>
+      <button class="type-tab" style="background:var(--r-green);" onclick="showType('r', this)">Realist</button>
+    </div>
+
+    <div id="type-s" class="type-panel active" style="background:rgba(224,90,122,0.12); border:1px solid rgba(224,90,122,0.2);">
+      <div class="type-panel-left">
+        <h3>The Socialiser</h3>
+        <div class="type-drive">Relatedness · Promotion Focus · System 1</div>
+        <p>The Socialiser processes the world through relationships. Their fundamental psychological need, drawn from Self-Determination Theory, is Relatedness: the desire to belong, to be recognised, and to feel genuinely connected to the people around them. A task is not simply a task; it is a confirmation of their place in the group.</p>
+        <p>They are energised by collaboration, motivated by collective achievement, and at their most effective when the people around them feel good. Under pressure, they look for consensus and social validation rather than retreating into analysis, which makes them powerful connectors but occasionally vulnerable to prioritising harmony over hard truths.</p>
+        <p>Their OCEAN profile clusters around high Extraversion and high Agreeableness, reflecting an outward social orientation combined with a deep concern for group wellbeing. Their default regulatory mode is Promotion: they are drawn toward possibility, social gain, and inclusion rather than the avoidance of loss.</p>
+      </div>
+      <div class="type-panel-right">
+        <div class="type-detail-row"><div class="type-detail-label">SDT Core Need</div><div class="type-detail-value">Relatedness — belonging, recognition, and mutual connection</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">OCEAN Cluster</div><div class="type-detail-value">High Extraversion · High Agreeableness</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Cognitive Processing</div><div class="type-detail-value">System 1 dominant — fast, emotional, relational, intuitive</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Regulatory Default</div><div class="type-detail-value">Promotion-focused — oriented toward gain, connection, and collective growth</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Appraisal Filter</div><div class="type-detail-value">Events evaluated through belonging vs. rejection</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Common Biases</div><div class="type-detail-value"><span class="type-bias-tag">Optimism Bias</span><span class="type-bias-tag">Halo Effect</span><span class="type-bias-tag">Bandwagon Effect</span><span class="type-bias-tag">In-Group Bias</span></div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Motivate by</div><div class="type-detail-value">Collaborative roles, public recognition, mentoring opportunities, visible belonging</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Watch for</div><div class="type-detail-value">Mistaking group consensus for correct answers; avoiding necessary conflict</div></div>
+      </div>
+    </div>
+
+    <div id="type-t" class="type-panel" style="background:rgba(42,172,184,0.12); border:1px solid rgba(42,172,184,0.25);">
+      <div class="type-panel-left">
+        <h3>The Thinker</h3>
+        <div class="type-drive">Competence · Prevention Focus · System 2</div>
+        <p>The Thinker processes the world through analysis. Their core psychological need is Competence: the drive to understand, to master, and to ensure that their work meets the highest possible standard of accuracy and rigour. A task is meaningful only when it presents a genuine intellectual challenge or an opportunity to demonstrate genuine skill.</p>
+        <p>They are energised by complexity, motivated by clarity, and at their sharpest when given the time and space to think something through properly. Under pressure, they decelerate rather than accelerate, seeking more information before committing. This makes them formidable problem-solvers but occasionally prone to paralysis when data is incomplete.</p>
+        <p>Their OCEAN profile combines high Conscientiousness and high Openness with lower Extraversion, reflecting the discipline, curiosity, and inward focus needed for sustained analytical work. Their regulatory default is Prevention: they are more concerned with avoiding error than with chasing opportunity, and they interpret vague reassurance as insufficient.</p>
+      </div>
+      <div class="type-panel-right">
+        <div class="type-detail-row"><div class="type-detail-label">SDT Core Need</div><div class="type-detail-value">Competence — mastery, clarity, intellectual growth</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">OCEAN Cluster</div><div class="type-detail-value">High Conscientiousness · High Openness · Low Extraversion</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Cognitive Processing</div><div class="type-detail-value">System 2 dominant — slow, deliberate, analytical, evidence-led</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Regulatory Default</div><div class="type-detail-value">Prevention-focused — oriented toward accuracy, correctness, and risk avoidance</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Appraisal Filter</div><div class="type-detail-value">Events evaluated through logic, fairness, and coherence</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Common Biases</div><div class="type-detail-value"><span class="type-bias-tag">Confirmation Bias</span><span class="type-bias-tag">Sunk Cost Fallacy</span><span class="type-bias-tag">Information Bias</span><span class="type-bias-tag">Paralysis by Analysis</span></div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Motivate by</div><div class="type-detail-value">Clear metrics, access to data, methodological autonomy, specific and accurate feedback</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Watch for</div><div class="type-detail-value">Over-rationalising; doubling down on flawed frameworks rather than adapting</div></div>
+      </div>
+    </div>
+
+    <div id="type-a" class="type-panel" style="background:rgba(232,168,76,0.12); border:1px solid rgba(232,168,76,0.25);">
+      <div class="type-panel-left">
+        <h3>The Adventurer</h3>
+        <div class="type-drive">Autonomy · Promotion Focus · System 1</div>
+        <p>The Adventurer processes the world through possibility. Their fundamental need is Autonomy: the freedom to act, to explore, and to do things their own way. Any constraint, however well-intentioned, registers not as guidance but as interference, which is why Adventurers so often appear to resist structure even when structure would help them.</p>
+        <p>They are energised by novelty, motivated by the prospect of doing something that hasn't been done before, and at their most effective when operating with significant personal agency. Under pressure, they accelerate rather than slow down, defaulting to rapid experimentation and trusting momentum over methodology.</p>
+        <p>Their OCEAN profile clusters around high Openness and high Extraversion, with lower Conscientiousness, reflecting an imaginative, assertive, and fluid approach to the world. Their regulatory mode is Promotion, and strongly so: they frame every challenge as an opportunity and interpret risk as the price of possibility rather than a reason for caution.</p>
+      </div>
+      <div class="type-panel-right">
+        <div class="type-detail-row"><div class="type-detail-label">SDT Core Need</div><div class="type-detail-value">Autonomy — freedom, agency, self-directed exploration</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">OCEAN Cluster</div><div class="type-detail-value">High Openness · High Extraversion · Lower Conscientiousness</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Cognitive Processing</div><div class="type-detail-value">System 1 dominant — fast, intuitive, novelty-seeking, experimental</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Regulatory Default</div><div class="type-detail-value">Promotion-focused — oriented toward growth, novelty, and the pursuit of ideals</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Appraisal Filter</div><div class="type-detail-value">Events evaluated through freedom, novelty, and the presence of constraint</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Common Biases</div><div class="type-detail-value"><span class="type-bias-tag">Overconfidence</span><span class="type-bias-tag">Novelty Bias</span><span class="type-bias-tag">Recency Bias</span><span class="type-bias-tag">Optimism Bias</span></div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Motivate by</div><div class="type-detail-value">Uncharted challenges, creative latitude, minimal bureaucracy, visible impact</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Watch for</div><div class="type-detail-value">Underestimating risk; abandoning viable ideas too quickly in pursuit of the next new thing</div></div>
+      </div>
+    </div>
+
+    <div id="type-r" class="type-panel" style="background:rgba(123,94,167,0.12); border:1px solid rgba(123,94,167,0.25);">
+      <div class="type-panel-left">
+        <h3>The Realist</h3>
+        <div class="type-drive">Stability · Prevention Focus · System 2</div>
+        <p>The Realist processes the world through practical evidence and established precedent. Their core need is Stability: the confidence that the ground beneath them is solid, that the systems around them are reliable, and that their responsibilities are being met. They are not resistant to change; they are resistant to change that hasn't been thought through.</p>
+        <p>They are energised by structure, motivated by duty and the satisfaction of a job done properly, and at their most effective when they understand what is expected of them and why. Under pressure, they engage in protective caution, slowing down to ensure that the foundations remain intact before any forward movement is sanctioned.</p>
+        <p>Their OCEAN profile anchors in high Conscientiousness and higher Agreeableness, paired with lower Openness, reflecting an orderly, loyal, and pragmatic character that values reliability over novelty. Their regulatory default is Prevention: they are more focused on what could be lost than what could be gained, which makes them exceptional guardians of quality and operational continuity.</p>
+      </div>
+      <div class="type-panel-right">
+        <div class="type-detail-row"><div class="type-detail-label">SDT Core Need</div><div class="type-detail-value">Stability — security, reliability, fulfilment of duty</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">OCEAN Cluster</div><div class="type-detail-value">High Conscientiousness · High Agreeableness · Low Openness</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Cognitive Processing</div><div class="type-detail-value">System 2 dominant — deliberate, evidence-led, risk-aware, procedural</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Regulatory Default</div><div class="type-detail-value">Prevention-focused — oriented toward safety, duty, and protection from disruption</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Appraisal Filter</div><div class="type-detail-value">Events evaluated through stability, predictability, and threat of disruption</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Common Biases</div><div class="type-detail-value"><span class="type-bias-tag">Loss Aversion</span><span class="type-bias-tag">Status Quo Bias</span><span class="type-bias-tag">Negativity Bias</span></div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Motivate by</div><div class="type-detail-value">Clear expectations, consistent processes, recognition of reliability, gradual and well-justified change</div></div>
+        <div class="type-detail-row"><div class="type-detail-label">Watch for</div><div class="type-detail-value">Clinging to the familiar past its usefulness; overestimating the downside of necessary change</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:64px; display:flex; gap:16px; flex-wrap:wrap;" class="reveal">
+    <a href="archetypes.html" class="btn-primary">See the 12 archetypes →</a>
+    <a href="theories.html" class="btn-secondary">The seven theories →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; });
+  function showType(id, btn) {
+    document.querySelectorAll('.type-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('type-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

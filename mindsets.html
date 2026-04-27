@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Four Mindsets — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .mindset-deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 64px; }
+  .mindset-deep-card { padding: 40px; border-radius: 6px; color: #fff; position: relative; overflow: hidden; }
+  .mindset-deep-card::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .mdc-letter { font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 600; line-height: 1; color: rgba(255,255,255,0.08); position: absolute; top: 0; right: 16px; }
+  .mdc-name { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; margin-bottom: 6px; }
+  .mdc-drive { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.5; margin-bottom: 20px; }
+  .mdc-body { font-size: 14px; font-weight: 300; line-height: 1.75; opacity: 0.8; margin-bottom: 24px; }
+  .mdc-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .mdc-detail-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.4; margin-bottom: 4px; }
+  .mdc-detail-value { font-size: 12px; font-weight: 400; opacity: 0.75; line-height: 1.5; }
+  .mdc-archetypes { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .mdc-arch-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.35; margin-bottom: 8px; }
+  .mdc-arch-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mdc-arch-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); opacity: 0.7; }
+  .intro-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 64px; }
+  @media (max-width: 900px) {
+    .mindset-deep-grid { grid-template-columns: 1fr; }
+    .intro-two-col { grid-template-columns: 1fr; }
+    .mdc-details { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html" class="active">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">The Foundation</div>
+    <h1 class="page-title">The Four<br><em>Mindsets</em></h1>
+    <p class="page-intro">Four stable orientations that determine how a person processes value, risk, and belonging. Not fixed types — fluid lenses that shift with context, but always return to a recognisable home position.</p>
+  </div>
+</div>
+
+<main>
+  <div class="intro-two-col reveal">
+    <div>
+      <p class="section-body" style="margin-bottom:20px;">The STAR mindsets are the translation layer between the complexity of behavioural science and the reality of working with people every day. Each mindset is anchored in Self-Determination Theory, shaped by the Big Five personality traits, and filtered through cognitive, regulatory, and emotional lenses.</p>
+      <p class="section-body">Most people carry a strong primary orientation and a meaningful secondary one. It is the combination of those two that creates one of the twelve STAR archetypes — the level at which individual identity truly reveals itself.</p>
+      <a href="types.html" class="btn-secondary" style="margin-top:8px;">Deep-dive into each type →</a>
+    </div>
+    <div class="callout">"The STAR mindsets are not boxes to put people in. They are lenses to see people through."</div>
+  </div>
+
+  <div class="mindset-deep-grid">
+    <div class="mindset-deep-card reveal reveal-delay-1" style="background:var(--s-red);">
+      <div class="mdc-letter">S</div>
+      <div class="mdc-name">Socialiser</div>
+      <div class="mdc-drive">Relatedness · Promotion · System 1</div>
+      <div class="mdc-body">The Socialiser processes the world through relationships. Energised by connection, motivated by collective achievement, and at their best when the people around them feel genuinely valued. Under pressure, they look for consensus and social validation rather than retreating into analysis.</div>
+      <div class="mdc-details">
+        <div><div class="mdc-detail-label">Core SDT Need</div><div class="mdc-detail-value">Relatedness — belonging and mutual recognition</div></div>
+        <div><div class="mdc-detail-label">OCEAN Cluster</div><div class="mdc-detail-value">High Extraversion · High Agreeableness</div></div>
+        <div><div class="mdc-detail-label">Regulatory Default</div><div class="mdc-detail-value">Promotion-focused — oriented toward gain and inclusion</div></div>
+        <div><div class="mdc-detail-label">Appraisal Filter</div><div class="mdc-detail-value">Belonging vs. rejection</div></div>
+      </div>
+      <div class="mdc-archetypes">
+        <div class="mdc-arch-label">Socialiser-led archetypes</div>
+        <div class="mdc-arch-tags">
+          <span class="mdc-arch-tag">Thoughtful Advisor S/T</span>
+          <span class="mdc-arch-tag">Expressive Energiser S/A</span>
+          <span class="mdc-arch-tag">Grounded Connector S/R</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mindset-deep-card reveal reveal-delay-2" style="background:var(--t-blue);">
+      <div class="mdc-letter">T</div>
+      <div class="mdc-name">Thinker</div>
+      <div class="mdc-drive">Competence · Prevention · System 2</div>
+      <div class="mdc-body">The Thinker processes the world through analysis. Energised by intellectual challenge, motivated by the pursuit of accuracy, and at their sharpest when given the time and space to work something through properly. Under pressure, they decelerate — seeking more information before committing.</div>
+      <div class="mdc-details">
+        <div><div class="mdc-detail-label">Core SDT Need</div><div class="mdc-detail-value">Competence — mastery, clarity, intellectual growth</div></div>
+        <div><div class="mdc-detail-label">OCEAN Cluster</div><div class="mdc-detail-value">High Conscientiousness · High Openness · Low Extraversion</div></div>
+        <div><div class="mdc-detail-label">Regulatory Default</div><div class="mdc-detail-value">Prevention-focused — oriented toward accuracy and correctness</div></div>
+        <div><div class="mdc-detail-label">Appraisal Filter</div><div class="mdc-detail-value">Logic, fairness, and coherence</div></div>
+      </div>
+      <div class="mdc-archetypes">
+        <div class="mdc-arch-label">Thinker-led archetypes</div>
+        <div class="mdc-arch-tags">
+          <span class="mdc-arch-tag">Structured Collaborator T/S</span>
+          <span class="mdc-arch-tag">Strategic Explorer T/A</span>
+          <span class="mdc-arch-tag">Precise Analyst T/R</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mindset-deep-card reveal reveal-delay-3" style="background:var(--a-amber);">
+      <div class="mdc-letter">A</div>
+      <div class="mdc-name">Adventurer</div>
+      <div class="mdc-drive">Autonomy · Promotion · System 1</div>
+      <div class="mdc-body">The Adventurer processes the world through possibility. Energised by novelty, motivated by the prospect of doing something that hasn't been done before. Any constraint — however well-intentioned — registers as interference. Under pressure, they accelerate, defaulting to rapid experimentation over methodology.</div>
+      <div class="mdc-details">
+        <div><div class="mdc-detail-label">Core SDT Need</div><div class="mdc-detail-value">Autonomy — freedom, agency, self-directed exploration</div></div>
+        <div><div class="mdc-detail-label">OCEAN Cluster</div><div class="mdc-detail-value">High Openness · High Extraversion · Lower Conscientiousness</div></div>
+        <div><div class="mdc-detail-label">Regulatory Default</div><div class="mdc-detail-value">Promotion-focused — oriented toward growth and novelty</div></div>
+        <div><div class="mdc-detail-label">Appraisal Filter</div><div class="mdc-detail-value">Freedom, novelty, and constraint</div></div>
+      </div>
+      <div class="mdc-archetypes">
+        <div class="mdc-arch-label">Adventurer-led archetypes</div>
+        <div class="mdc-arch-tags">
+          <span class="mdc-arch-tag">Energetic Catalyst A/S</span>
+          <span class="mdc-arch-tag">Inventive Pathfinder A/T</span>
+          <span class="mdc-arch-tag">Practical Builder A/R</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mindset-deep-card reveal reveal-delay-4" style="background:var(--r-green);">
+      <div class="mdc-letter">R</div>
+      <div class="mdc-name">Realist</div>
+      <div class="mdc-drive">Stability · Prevention · System 2</div>
+      <div class="mdc-body">The Realist processes the world through practical evidence and established precedent. Energised by structure, motivated by duty and the satisfaction of a job done properly. Not resistant to change — resistant to change that hasn't been thought through. Under pressure, they engage protective caution.</div>
+      <div class="mdc-details">
+        <div><div class="mdc-detail-label">Core SDT Need</div><div class="mdc-detail-value">Stability — security, reliability, fulfilment of duty</div></div>
+        <div><div class="mdc-detail-label">OCEAN Cluster</div><div class="mdc-detail-value">High Conscientiousness · High Agreeableness · Low Openness</div></div>
+        <div><div class="mdc-detail-label">Regulatory Default</div><div class="mdc-detail-value">Prevention-focused — oriented toward safety and duty</div></div>
+        <div><div class="mdc-detail-label">Appraisal Filter</div><div class="mdc-detail-value">Stability, predictability, and disruption</div></div>
+      </div>
+      <div class="mdc-archetypes">
+        <div class="mdc-arch-label">Realist-led archetypes</div>
+        <div class="mdc-arch-tags">
+          <span class="mdc-arch-tag">Steady Harmoniser R/S</span>
+          <span class="mdc-arch-tag">Careful Guardian R/T</span>
+          <span class="mdc-arch-tag">Resilient Enabler R/A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:80px; display:flex; gap:16px; flex-wrap:wrap;" class="reveal">
+    <a href="types.html" class="btn-primary">Full type profiles →</a>
+    <a href="archetypes.html" class="btn-secondary">The 12 archetypes →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

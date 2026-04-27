@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seven Theories — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .layer-stack { display: flex; flex-direction: column; gap: 4px; margin: 48px 0; }
+  .layer-bar { height: 48px; border-radius: 4px; display: flex; align-items: center; padding: 0 20px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(26,24,20,0.8); transition: transform 0.2s; cursor: default; }
+  .layer-bar:hover { transform: translateX(8px); }
+  .layer-num { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: rgba(26,24,20,0.25); margin-right: 16px; min-width: 20px; }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html" class="active">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">The Science</div>
+    <h1 class="page-title">Seven theories.<br><em>All validated.</em></h1>
+    <p class="page-intro">STAR does not invent new psychology. It translates the best of what already exists. Each of the seven pillars is a peer-reviewed, empirically grounded theory; assembled into a single, coherent operating system.</p>
+  </div>
+</div>
+
+<main>
+  <div class="layer-stack reveal">
+    <div class="layer-bar" style="background:#FFFFFF; width:100%;"><span class="layer-num">1</span>Motivation Engine — Self-Determination Theory</div>
+    <div class="layer-bar" style="background:rgba(26,24,20,0.05); width:92%;"><span class="layer-num">2</span>Personality Chassis — OCEAN / Big Five</div>
+    <div class="layer-bar" style="background:rgba(26,24,20,0.06); width:84%;"><span class="layer-num">3</span>Cognitive Processor — Dual Process Theory</div>
+    <div class="layer-bar" style="background:rgba(26,24,20,0.07); width:76%;"><span class="layer-num">4</span>Directional Compass — Regulatory Focus Theory</div>
+    <div class="layer-bar" style="background:rgba(26,24,20,0.08); width:68%;"><span class="layer-num">5</span>Relational Filter — Social Identity Theory</div>
+    <div class="layer-bar" style="background:rgba(26,24,20,0.09); width:60%;"><span class="layer-num">6</span>Distortion Layer — Cognitive Bias Theory</div>
+    <div class="layer-bar" style="background:rgba(156,122,50,0.14); width:52%; border:1px solid rgba(156,122,50,0.25);"><span class="layer-num" style="color:var(--gold);">7</span>Emotional Filter — Appraisal Theory of Emotion</div>
+  </div>
+
+  <div class="theories-accordion reveal reveal-delay-2">
+
+    <div class="theory-item open">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">SDT</span><span class="theory-title">Self-Determination Theory</span></div>
+        <span class="theory-role">The Motivation Engine</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Developed by Deci and Ryan, SDT identifies three universal psychological needs that underpin all human motivation: Autonomy (the need to feel that one's actions are self-endorsed rather than imposed), Competence (the need to feel effective and capable), and Relatedness (the need to feel genuinely connected to others). These are not cultural preferences or personality quirks; they are universal requirements for psychological flourishing. When all three are supported, motivation becomes autonomous, persistent, and high-quality. When any one is thwarted, motivation becomes fragile, controlled, or absent altogether. In STAR, SDT explains which need is dominant for each mindset: Socialisers run primarily on Relatedness, Thinkers on Competence, Adventurers on Autonomy, and Realists on Stability.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Socialisers: Relatedness as primary fuel</div>
+            <div class="theory-star-link">Thinkers: Competence as primary fuel</div>
+            <div class="theory-star-link">Adventurers: Autonomy as primary fuel</div>
+            <div class="theory-star-link">Realists: Stability as primary fuel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">OCEAN</span><span class="theory-title">Big Five Personality Model</span></div>
+        <span class="theory-role">The Personality Chassis</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">The Big Five, or OCEAN model, is the most empirically validated framework in personality psychology, describing five stable, cross-cultural traits: Openness to Experience (curiosity and imagination), Conscientiousness (discipline and reliability), Extraversion (outward social energy), Agreeableness (cooperation and empathy), and Neuroticism (emotional sensitivity and reactivity). These traits are measurable, heritable tendencies that predict real-world outcomes across careers, relationships, and health. In STAR, OCEAN provides the structural chassis that explains why each mindset has its characteristic strengths and vulnerabilities. Socialisers cluster around high Extraversion and Agreeableness. Thinkers combine high Conscientiousness and Openness with lower Extraversion. Adventurers are high in Openness and Extraversion with lower Conscientiousness. Realists anchor in high Conscientiousness and Agreeableness with lower Openness.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Openness: links to Adventurers and Thinkers</div>
+            <div class="theory-star-link">Conscientiousness: links to Thinkers and Realists</div>
+            <div class="theory-star-link">Extraversion: links to Socialisers and Adventurers</div>
+            <div class="theory-star-link">Agreeableness: links to Socialisers and Realists</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">DPT</span><span class="theory-title">Dual Process Theory</span></div>
+        <span class="theory-role">The Cognitive Processor</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Popularised by Daniel Kahneman, Dual Process Theory distinguishes between two modes of thinking. System 1 is fast, intuitive, emotional, and largely automatic — responsible for snap judgements, gut feelings, and instinctive reactions. System 2 is slow, deliberate, logical, and effortful — it engages when we need to reason carefully, weigh evidence, or override a first impression. Neither is superior; both are essential. Different mindsets have different default tempos. Socialisers and Adventurers lean toward System 1, making fast, emotionally-informed decisions. Thinkers and Realists rely more heavily on System 2, preferring to analyse and gather evidence before committing. Mismatched processing styles are one of the most common and least recognised sources of team friction.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">System 1 defaults: Socialisers, Adventurers</div>
+            <div class="theory-star-link">System 2 defaults: Thinkers, Realists</div>
+            <div class="theory-star-link">Neither is better — both are required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">RFT</span><span class="theory-title">Regulatory Focus Theory</span></div>
+        <span class="theory-role">The Directional Compass</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Developed by E. Tory Higgins, Regulatory Focus Theory explains the direction in which motivational energy is channelled. Promotion-focused individuals orient toward growth, advancement, and the pursuit of ideals — they are sensitive to the presence or absence of gains and adopt eager, fast-moving strategies. Prevention-focused individuals orient toward safety, responsibility, and the avoidance of loss — they are sensitive to what could be forfeited and adopt vigilant, careful strategies. Everyone is capable of both modes, but most carry a stable default. In STAR, Socialisers and Adventurers lean toward Promotion, energised by possibility and momentum. Thinkers and Realists lean toward Prevention, motivated by correctness and the protection of what already works. SDT provides the fuel; RFT determines which direction it flows.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Promotion default: Socialisers, Adventurers</div>
+            <div class="theory-star-link">Prevention default: Thinkers, Realists</div>
+            <div class="theory-star-link">SDT fuel + RFT direction = full motivational map</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">SIT</span><span class="theory-title">Social Identity Theory</span></div>
+        <span class="theory-role">The Relational Filter</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Social Identity Theory, developed by Henri Tajfel and John Turner, demonstrates that identity is not purely individual. We define ourselves partly through the groups we belong to, the values those groups represent, and the boundaries we draw between ourselves and others. This group membership shapes behaviour profoundly, driving loyalty, trust, cooperation, and conflict. In STAR, each mindset has a characteristic tribal preference. Socialisers seek belonging within warm, cohesive in-groups. Thinkers align with intellectually or values-driven communities. Adventurers resist conformity but form intense subcultures built around shared unconventionality. Realists anchor their identity in stable, heritage-based groups such as families, institutions, and long-standing professional communities. Understanding these tribal dynamics explains why change programmes fail, why teams fragment, and why some messages unite while others divide.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Socialisers: warm, cohesive in-groups</div>
+            <div class="theory-star-link">Thinkers: values and intellect-based tribes</div>
+            <div class="theory-star-link">Adventurers: counterculture, unconventional circles</div>
+            <div class="theory-star-link">Realists: heritage, institutional, stable groups</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">CBT</span><span class="theory-title">Cognitive Bias Theory</span></div>
+        <span class="theory-role">The Distortion Filter</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Cognitive biases are the predictable mental shortcuts that distort our perception of reality under conditions of speed, ambiguity, or pressure. They are not signs of poor intelligence; they are structural features of human cognition that emerge from System 1 processing. STAR maps these biases onto each mindset as a predictable "bias fingerprint," allowing practitioners to anticipate decision-making errors before they occur. Crucially, STAR reframes biases not as flaws to be corrected but as distorted strengths: the Socialiser's Optimism Bias is the shadow side of their relational resilience; the Realist's Loss Aversion is the shadow side of their protective consistency. Understanding bias profiles enables leaders to build better teams, communicators to anticipate where messages will misfire, and coaches to help individuals recognise their own thinking traps.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Socialisers: Halo Effect, Bandwagon, In-group Bias</div>
+            <div class="theory-star-link">Thinkers: Confirmation Bias, Sunk Cost, Information Bias</div>
+            <div class="theory-star-link">Adventurers: Overconfidence, Novelty Bias, Recency Bias</div>
+            <div class="theory-star-link">Realists: Loss Aversion, Status Quo, Negativity Bias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-item">
+      <div class="theory-header" onclick="toggleTheory(this)">
+        <div class="theory-left"><span class="theory-abbr">AToE</span><span class="theory-title">Appraisal Theory of Emotion</span></div>
+        <span class="theory-role">The Emotional Filter</span>
+        <div class="theory-chevron"></div>
+      </div>
+      <div class="theory-body">
+        <div class="theory-body-inner">
+          <div class="theory-body-text">Appraisal Theory holds that emotions are not simply triggered by events; they arise from our evaluation of those events in relation to our own goals, values, and perceived capacity to cope. The same event — a restructure announcement, a new project, a critical piece of feedback — will generate radically different emotional responses depending on the mindset of the person receiving it. A Socialiser appraises events through belonging vs. rejection. A Thinker through logic, fairness, and coherence. An Adventurer through freedom, novelty, and the presence of constraint. A Realist through stability, predictability, and the threat of disruption. This theory explains why well-intentioned communications so often land badly: not because the message was wrong, but because the emotional filter of the recipient was never considered. STAR makes those filters visible and predictable.</div>
+          <div class="theory-star-links">
+            <div class="theory-star-link">Socialisers: belonging vs. rejection</div>
+            <div class="theory-star-link">Thinkers: logic, fairness, and coherence</div>
+            <div class="theory-star-link">Adventurers: freedom vs. constraint</div>
+            <div class="theory-star-link">Realists: stability vs. disruption</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:72px; display:flex; gap:16px; flex-wrap:wrap;" class="reveal">
+    <a href="types.html" class="btn-primary">See types in depth →</a>
+    <a href="modes.html" class="btn-secondary">Operating Modes →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; });
+  function toggleTheory(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.theory-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

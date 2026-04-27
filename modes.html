@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operating Modes — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .modes-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 16px; }
+  @media (max-width: 900px) { .modes-intro { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html" class="active">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">The Structural Overlay</div>
+    <h1 class="page-title">Four Operating<br><em>Modes</em></h1>
+    <p class="page-intro">Above and across the twelve archetypes sits a second layer of analysis. Operating Modes describe the functional energy a person brings to a team. They cut across mindset family boundaries entirely — a Socialiser and a Thinker can share the same mode. Every high-performing team needs all four present.</p>
+  </div>
+</div>
+
+<main>
+  <div class="modes-intro">
+    <div class="reveal">
+      <p class="section-body" style="margin-bottom:20px;">The four mindsets explain how people think and what they need. The Operating Modes explain what role they play in a system. These are not the same question, and that distinction matters enormously for team design and leadership.</p>
+      <p class="section-body">A team can be rich in Adventurers and still stall — if there are no Custodians to hold standards, no Translators to mediate between the bold ideas and operational reality, and no Aligners to hold the relational fabric together while the pace is high.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"Every high-performing team needs all four modes. Identify which are missing before you feel the consequences."</div>
+  </div>
+
+  <div class="modes-full-grid reveal reveal-delay-2">
+    <div class="mode-full-card" style="background:#FDF0EA;">
+      <div class="mode-full-stripe" style="background:var(--driver);"></div>
+      <div class="mode-full-name">Driver</div>
+      <div class="mode-full-energy">Forward Energy</div>
+      <div class="mode-full-desc">Drivers create momentum. They break inertia, pull others into motion, and set the emotional tempo of a team. Their energy is fast, outward, and oriented toward what could be gained. They are the reason things start, the force that transforms strategy from a document into a direction of travel. In any system, Drivers are the ignition.</div>
+      <div class="mode-full-consequence">Without them: strategy becomes analysis and planning becomes an end in itself.</div>
+      <div class="mode-full-archetypes">Archetypes in Driver Mode</div>
+      <div class="mode-full-arch-list">
+        <span class="mode-arch-tag">Expressive Energiser (S/A)</span>
+        <span class="mode-arch-tag">Energetic Catalyst (A/S)</span>
+        <span class="mode-arch-tag">Inventive Pathfinder (A/T)</span>
+      </div>
+    </div>
+
+    <div class="mode-full-card" style="background:#EDF0FA;">
+      <div class="mode-full-stripe" style="background:var(--custodian);"></div>
+      <div class="mode-full-name">Custodian</div>
+      <div class="mode-full-energy">Holding Energy</div>
+      <div class="mode-full-desc">Custodians ensure things hold. They protect standards, catch errors before they compound, and maintain the quality that gives a team its credibility. Their energy is steady, inward, and oriented toward what could be lost. They are not resistant to progress; they are resistant to careless progress — and that distinction matters enormously in any high-stakes environment.</div>
+      <div class="mode-full-consequence">Without them: corners get cut, standards erode, and the team accumulates risks it cannot see.</div>
+      <div class="mode-full-archetypes">Archetypes in Custodian Mode</div>
+      <div class="mode-full-arch-list">
+        <span class="mode-arch-tag">Precise Analyst (T/R)</span>
+        <span class="mode-arch-tag">Steady Harmoniser (R/S)</span>
+        <span class="mode-arch-tag">Careful Guardian (R/T)</span>
+      </div>
+    </div>
+
+    <div class="mode-full-card" style="background:#F5EDF9;">
+      <div class="mode-full-stripe" style="background:var(--translator);"></div>
+      <div class="mode-full-name">Translator</div>
+      <div class="mode-full-energy">Dual-State Energy</div>
+      <div class="mode-full-desc">Translators convert between competing energies. They hold forward momentum and structural integrity in simultaneous operation, finding the workable path when Drivers and Custodians collide. Their gift is the ability to understand both urgency and caution not as opposites but as complementary requirements, and to synthesise them into a decision that the whole team can commit to.</div>
+      <div class="mode-full-consequence">Without them: strategy sessions become battlegrounds and decisions oscillate between reckless leaps and paralysed caution.</div>
+      <div class="mode-full-archetypes">Archetypes in Translator Mode</div>
+      <div class="mode-full-arch-list">
+        <span class="mode-arch-tag">Strategic Explorer (T/A)</span>
+        <span class="mode-arch-tag">Practical Builder (A/R)</span>
+        <span class="mode-arch-tag">Resilient Enabler (R/A)</span>
+      </div>
+    </div>
+
+    <div class="mode-full-card" style="background:#EAF6F4;">
+      <div class="mode-full-stripe" style="background:var(--aligner);"></div>
+      <div class="mode-full-name">Aligner</div>
+      <div class="mode-full-energy">Connective Energy</div>
+      <div class="mode-full-desc">Aligners ensure the team functions as a collective rather than a collection of individuals. They maintain trust, sense friction before it surfaces, and create the conditions under which robust disagreement can coexist with genuine collaboration. They are often the least visible people in a room and among the most important: the ones who hold the relational architecture together while everyone else focuses on the task.</div>
+      <div class="mode-full-consequence">Without them: the team fragments silently from the inside.</div>
+      <div class="mode-full-archetypes">Archetypes in Aligner Mode</div>
+      <div class="mode-full-arch-list">
+        <span class="mode-arch-tag">Thoughtful Advisor (S/T)</span>
+        <span class="mode-arch-tag">Grounded Connector (S/R)</span>
+        <span class="mode-arch-tag">Structured Collaborator (T/S)</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:72px; display:flex; gap:16px; flex-wrap:wrap;" class="reveal">
+    <a href="applications.html" class="btn-primary">Applications →</a>
+    <a href="archetypes.html" class="btn-secondary">The 12 Archetypes →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

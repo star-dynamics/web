@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR Dynamics — The Human Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  body { background: var(--ink); }
+
+  /* FULL-SCREEN HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 60%, rgba(156,122,50,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 25%, rgba(224,90,122,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 85% 75%, rgba(42,172,184,0.07) 0%, transparent 60%);
+  }
+  .hero-rule { width: 64px; height: 1px; background: var(--gold); margin: 0 auto 32px; opacity: 0; animation: fadeUp 1s 0.3s forwards; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 8vw, 112px); font-weight: 300; line-height: 0.95; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 12px; opacity: 0; animation: fadeUp 1s 0.7s forwards; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.2vw, 24px); font-weight: 300; color: rgba(26,24,20,0.45); margin-top: 20px; opacity: 0; animation: fadeUp 1s 0.9s forwards; }
+  .hero-letters { display: flex; gap: 48px; justify-content: center; margin-top: 64px; opacity: 0; animation: fadeUp 1s 1.1s forwards; }
+  .hero-letter-item { text-align: center; }
+  .hero-letter { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 600; line-height: 1; display: block; }
+  .hero-letter-word { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,24,20,0.35); display: block; margin-top: 6px; }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; margin-top: 56px; opacity: 0; animation: fadeUp 1s 1.3s forwards; flex-wrap: wrap; }
+
+  /* HOME SECTIONS */
+  .home-section {
+    padding: 96px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .home-section-dark {
+    background: #EDE8DF;
+    max-width: 100%;
+    padding: 96px 0;
+  }
+  .home-section-dark-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* INTRO GRID */
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 48px; }
+  .intro-text p { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(26,24,20,0.6); margin-bottom: 20px; }
+
+  /* PILLARS */
+  .pillars-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 40px; }
+  .pillar-card { background: rgba(26,24,20,0.05); border: 1px solid rgba(26,24,20,0.1); border-radius: 4px; padding: 16px 12px; text-align: center; transition: background 0.3s, border-color 0.3s; cursor: default; }
+  .pillar-card:hover { background: rgba(156,122,50,0.1); border-color: rgba(156,122,50,0.3); }
+  .pillar-abbr { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); display: block; margin-bottom: 8px; }
+  .pillar-name { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(26,24,20,0.35); line-height: 1.4; }
+
+  /* EXPLORE CARDS */
+  .explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .explore-card { background: #FFFFFF; border: 1px solid rgba(26,24,20,0.1); border-radius: 6px; padding: 32px 28px; text-decoration: none; transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; display: block; box-shadow: 0 1px 3px rgba(26,24,20,0.06); }
+  .explore-card:hover { background: #FFFFFF; transform: translateY(-4px); border-color: rgba(156,122,50,0.4); box-shadow: 0 12px 32px rgba(26,24,20,0.1); }
+  .explore-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .explore-card-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 12px; line-height: 1.2; }
+  .explore-card-desc { font-size: 13px; font-weight: 300; line-height: 1.65; color: rgba(26,24,20,0.45); margin-bottom: 20px; }
+  .explore-card-arrow { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(156,122,50,0.6); }
+
+  /* AWARD STRIP */
+  .award-strip { border-top: 1px solid rgba(26,24,20,0.08); padding: 32px 48px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+  .award-text { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,24,20,0.25); }
+  .award-highlight { color: var(--gold); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    #hero { padding: 80px 24px 60px; }
+    .hero-letters { gap: 24px; }
+    .home-section, .home-section-dark-inner { padding-left: 24px; padding-right: 24px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+    .explore-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .explore-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rule"></div>
+  <div class="hero-eyebrow">The Human Operating System</div>
+  <h1 class="hero-title">Decode the<br><em>Human Mind</em></h1>
+  <p class="hero-subtitle">Behavioural science that translates into something you can actually use</p>
+  <div class="hero-letters">
+    <div class="hero-letter-item"><span class="hero-letter" style="color:#E05A7A;">S</span><span class="hero-letter-word">Socialiser</span></div>
+    <div class="hero-letter-item"><span class="hero-letter" style="color:#2AACB8;">T</span><span class="hero-letter-word">Thinker</span></div>
+    <div class="hero-letter-item"><span class="hero-letter" style="color:#E8A84C;">A</span><span class="hero-letter-word">Adventurer</span></div>
+    <div class="hero-letter-item"><span class="hero-letter" style="color:#7B5EA7;">R</span><span class="hero-letter-word">Realist</span></div>
+  </div>
+  <div class="hero-ctas">
+    <a href="mindsets.html" class="btn-primary">Explore the Framework</a>
+    <a href="mailto:david@stardynamics.io" class="btn-secondary">Get in Touch</a>
+  </div>
+</section>
+
+<!-- WHAT IS STAR -->
+<div class="home-section">
+  <div class="reveal">
+    <div class="section-label">What is STAR?</div>
+    <h2 class="section-title">Not another personality tool.<br><em>A human operating system.</em></h2>
+  </div>
+  <div class="intro-grid">
+    <div class="intro-text reveal reveal-delay-1">
+      <p>The STAR Framework challenges conventional approaches to understanding people. Rather than sorting individuals into fixed types or colour-coded boxes, it provides a dynamic, context-sensitive system for decoding why people behave the way they do, particularly under conditions of pressure and uncertainty.</p>
+      <p>Built on seven validated psychological theories, STAR synthesises decades of academic research into a single, coherent architecture. It moves beyond labelling to the stewardship of human potential, giving leaders, communicators, educators, and designers the tools to understand not just what people do, but why they do it.</p>
+      <p>The tools that dominated the last three decades — DISC, MBTI, Insights Discovery — were built for a different era. Their time is passing. STAR was built for the world as it is today, and the one that is fast arriving.</p>
+      <a href="mindsets.html" class="btn-secondary" style="margin-top:8px;">Explore the Mindsets →</a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="stat-grid" style="grid-template-columns:1fr; gap:28px;">
+        <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">validated psychological theories synthesised into one coherent system</div></div>
+        <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">primary mindsets — Socialiser, Thinker, Adventurer, Realist</div></div>
+        <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">professional archetypes mapping primary and secondary mindset combinations</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEVEN PILLARS -->
+<div class="home-section-dark">
+  <div class="home-section-dark-inner">
+    <div class="reveal">
+      <div class="section-label">The foundations</div>
+      <h2 class="section-title">Seven pillars.<br><em>One system.</em></h2>
+      <p class="section-body">Each pillar is a peer-reviewed, empirically grounded theory. STAR's contribution is assembling them into a layered architecture that explains motivation, personality, cognition, direction, identity, bias, and emotion simultaneously.</p>
+    </div>
+    <div class="pillars-grid reveal reveal-delay-2">
+      <div class="pillar-card"><span class="pillar-abbr">SDT</span><span class="pillar-name">Self-Determination Theory</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">OCEAN</span><span class="pillar-name">Big Five Personality</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">DPT</span><span class="pillar-name">Dual Process Thinking</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">RFT</span><span class="pillar-name">Regulatory Focus Theory</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">SIT</span><span class="pillar-name">Social Identity Theory</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">CBT</span><span class="pillar-name">Cognitive Bias Theory</span></div>
+      <div class="pillar-card"><span class="pillar-abbr">AToE</span><span class="pillar-name">Appraisal Theory of Emotion</span></div>
+    </div>
+    <div style="margin-top:32px;" class="reveal reveal-delay-3">
+      <a href="theories.html" class="btn-secondary">Explore the Seven Theories →</a>
+    </div>
+  </div>
+</div>
+
+<!-- EXPLORE -->
+<div class="home-section">
+  <div class="reveal">
+    <div class="section-label">Explore the framework</div>
+    <h2 class="section-title">Everything you need<br>to <em>understand people.</em></h2>
+  </div>
+  <div class="explore-grid">
+    <a href="mindsets.html" class="explore-card reveal reveal-delay-1">
+      <div class="explore-card-label">Foundation</div>
+      <div class="explore-card-title">The Four Mindsets</div>
+      <div class="explore-card-desc">Socialiser, Thinker, Adventurer, Realist. Four stable orientations that determine how a person processes value, risk, and belonging.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+    <a href="types.html" class="explore-card reveal reveal-delay-2">
+      <div class="explore-card-label">In Depth</div>
+      <div class="explore-card-title">STAR Types</div>
+      <div class="explore-card-desc">Full psychological profiles for each type, including OCEAN cluster, SDT need, regulatory focus, cognitive processing style, and bias fingerprint.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+    <a href="archetypes.html" class="explore-card reveal reveal-delay-3">
+      <div class="explore-card-label">The Detail</div>
+      <div class="explore-card-title">12 Archetypes</div>
+      <div class="explore-card-desc">Every individual combines a primary and secondary mindset into one of twelve recognisable professional identities, each with its own operating signature.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+    <a href="theories.html" class="explore-card reveal reveal-delay-1">
+      <div class="explore-card-label">The Science</div>
+      <div class="explore-card-title">Seven Theories</div>
+      <div class="explore-card-desc">The peer-reviewed psychological foundations that give STAR its academic rigour and predictive power — and how they fit together.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+    <a href="modes.html" class="explore-card reveal reveal-delay-2">
+      <div class="explore-card-label">Team Structure</div>
+      <div class="explore-card-title">Operating Modes</div>
+      <div class="explore-card-desc">Driver, Custodian, Translator, Aligner. The four functional energies that every high-performing team needs, cutting across mindset boundaries.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+    <a href="app-leadership.html" class="explore-card reveal reveal-delay-3">
+      <div class="explore-card-label">In Practice</div>
+      <div class="explore-card-title">Applications</div>
+      <div class="explore-card-desc">How STAR applies across leadership, communication, marketing, education, coaching, and team design — with a direct comparison to legacy frameworks.</div>
+      <div class="explore-card-arrow">Explore →</div>
+    </a>
+  </div>
+</div>
+
+<!-- AWARD STRIP -->
+<div class="award-strip reveal">
+  <span class="award-text">NYC Big Book Award 2025 &nbsp;<span class="award-highlight">·</span>&nbsp; Marketing & Public Relations</span>
+  <span class="award-text"><span class="award-highlight">STAR Framework®</span> &nbsp;·&nbsp; STAR Operating System® &nbsp;·&nbsp; STAR Marketing® &nbsp;·&nbsp; UK Registered Trademarks</span>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

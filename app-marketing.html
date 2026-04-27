@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR in Marketing — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .app-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .app-nav a{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;border:1px solid rgba(26,24,20,0.12);color:rgba(26,24,20,0.4);transition:all 0.2s;}
+  .app-nav a:hover{border-color:rgba(26,24,20,0.3);color:var(--cream);}
+  .app-nav a.current{border-color:var(--gold);color:var(--gold);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin:40px 0;}
+  .mindset-mktg{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0;}
+  .mm-card{padding:28px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-top:3px solid transparent;}
+  .mm-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .mm-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:8px;}
+  .mm-driver{font-size:11px;font-weight:500;letter-spacing:0.1em;color:rgba(26,24,20,0.35);margin-bottom:14px;}
+  .mm-body{font-size:13px;font-weight:300;line-height:1.7;color:rgba(26,24,20,0.55);margin-bottom:14px;}
+  .mm-row{display:flex;gap:8px;margin-bottom:6px;font-size:12px;font-weight:300;color:rgba(26,24,20,0.5);}
+  .mm-row-label{font-weight:500;color:rgba(26,24,20,0.7);min-width:80px;}
+  .case-study{background:#FFFFFF;border:1px solid rgba(26,24,20,0.1);border-radius:6px;padding:36px;margin:40px 0;}
+  .cs-label{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .cs-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--cream);margin-bottom:16px;}
+  .cs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px;}
+  .cs-item{padding:16px;background:#FFFFFF;border-radius:4px;}
+  .cs-item-type{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;}
+  .cs-item-text{font-size:12px;font-weight:300;line-height:1.65;color:rgba(26,24,20,0.55);}
+  @media(max-width:900px){.mindset-mktg,.two-col,.cs-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html" class="active">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Applications · Marketing</div>
+    <h1 class="page-title">STAR in<br><em>Marketing</em></h1>
+    <p class="page-intro">Two people with identical demographics can respond to the same message in entirely opposite ways. STAR replaces static segmentation with mindset-based understanding — moving from who your audience is to how they think.</p>
+  </div>
+</div>
+
+<main>
+  <div class="app-nav reveal">
+    <a href="app-leadership.html">Leadership</a>
+    <a href="app-communication.html">Communication</a>
+    <a href="app-marketing.html" class="current">Marketing</a>
+    <a href="app-education.html">Education</a>
+    <a href="app-coaching.html">Coaching</a>
+    <a href="app-teams.html">Team Design</a>
+  </div>
+
+  <div class="two-col">
+    <div class="reveal">
+      <div class="section-label">The data delusion</div>
+      <h2 class="section-title">Brands are drowning in data<br><em>and starving for understanding.</em></h2>
+      <p class="section-body">The digital revolution promised hyper-targeted, relevant marketing. Instead, it created an obsession with surface-level metrics: clicks, open rates, session durations. These track activity but tell you nothing about the motivational state of the person behind the cursor.</p>
+      <p class="section-body" style="margin-top:16px;">STAR treats behaviour not as identity but as signal. A 32-year-old in London and a 32-year-old in the same city with the same income can be psychologically opposite. One is a cautious, analytical Thinker. The other is an impulsive, novelty-seeking Adventurer. Demographics cannot tell you that. Mindset can.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"The problem is not more targeting. It is better interpretation. STAR does not ask where customers are in the funnel. It asks what mindset they are bringing to this moment."</div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Marketing to each mindset</div>
+    <h2 class="section-title" style="margin-bottom:8px;">What moves each<br><em>type to act</em></h2>
+  </div>
+  <div class="mindset-mktg">
+    <div class="mm-card reveal reveal-delay-1" style="border-top-color:var(--s-red);">
+      <div class="mm-type" style="color:var(--s-red);">Socialiser</div>
+      <div class="mm-title">Sell belonging, not just product</div>
+      <div class="mm-driver">Core driver: Community · Social proof · Shared experience</div>
+      <div class="mm-body">Socialisers make decisions relationally. They trust peer recommendations over expert opinions, respond to community features over individual benefit, and share content when it makes them feel like a valued part of a tribe. The question they are unconsciously asking is: do people like me use this, and will it bring me closer to the people I care about?</div>
+      <div class="mm-row"><span class="mm-row-label">Message:</span> "Join thousands of people who…" / "Share the experience with…"</div>
+      <div class="mm-row"><span class="mm-row-label">Trust signal:</span> Reviews, community content, social proof, user stories</div>
+      <div class="mm-row"><span class="mm-row-label">Advocacy:</span> Shares when it feels relational, not when offered reward points</div>
+    </div>
+    <div class="mm-card reveal reveal-delay-2" style="border-top-color:var(--t-blue);">
+      <div class="mm-type" style="color:var(--t-blue);">Thinker</div>
+      <div class="mm-title">Sell evidence, not promise</div>
+      <div class="mm-driver">Core driver: Data · Transparency · Expert validation</div>
+      <div class="mm-body">Thinkers are sceptical by default and require it. They resist claims without evidence, distrust enthusiasm not anchored in data, and will perform their own research regardless of how compelling your marketing is. The brands that earn Thinker loyalty are those that give them the information to reach their own conclusions — then stand up to scrutiny.</div>
+      <div class="mm-row"><span class="mm-row-label">Message:</span> "Here is the evidence behind…" / "Transparently rated by…"</div>
+      <div class="mm-row"><span class="mm-row-label">Trust signal:</span> Technical specs, independent reviews, detailed comparisons, white papers</div>
+      <div class="mm-row"><span class="mm-row-label">Advocacy:</span> Recommends when the product withstands intellectual scrutiny</div>
+    </div>
+    <div class="mm-card reveal reveal-delay-3" style="border-top-color:var(--a-amber);">
+      <div class="mm-type" style="color:var(--a-amber);">Adventurer</div>
+      <div class="mm-title">Sell freedom and the new</div>
+      <div class="mm-driver">Core driver: Novelty · Identity · Discovery</div>
+      <div class="mm-body">Adventurers buy into identity as much as product. They are drawn to brands that feel bold, unconventional, or ahead of the curve — and repelled by anything that signals safety, mainstream appeal, or sameness. They amplify when a purchase reflects who they are: someone who was early, who takes risks, who does not wait for permission.</div>
+      <div class="mm-row"><span class="mm-row-label">Message:</span> "Be first to…" / "Designed for those who refuse to…"</div>
+      <div class="mm-row"><span class="mm-row-label">Trust signal:</span> Innovation narrative, early access, founder story, category disruption</div>
+      <div class="mm-row"><span class="mm-row-label">Advocacy:</span> Amplifies when it makes them feel bold or culturally ahead</div>
+    </div>
+    <div class="mm-card reveal reveal-delay-4" style="border-top-color:var(--r-green);">
+      <div class="mm-type" style="color:var(--r-green);">Realist</div>
+      <div class="mm-title">Sell reliability, not excitement</div>
+      <div class="mm-driver">Core driver: Proof · Stability · Risk reduction</div>
+      <div class="mm-body">Realists are not won by enthusiasm. They are won by consistency, longevity, and a track record that speaks for itself. Loss aversion is their dominant cognitive pattern: they weigh what could go wrong more heavily than what could go right. Remove the risk, demonstrate the evidence of reliability, and make it easy for them to justify the decision to themselves.</div>
+      <div class="mm-row"><span class="mm-row-label">Message:</span> "Trusted by thousands since…" / "24/7 support if anything…"</div>
+      <div class="mm-row"><span class="mm-row-label">Trust signal:</span> Guarantees, case studies, longevity, consistent service record</div>
+      <div class="mm-row"><span class="mm-row-label">Advocacy:</span> Recommends when the experience is consistent, calm, and repeatable</div>
+    </div>
+  </div>
+
+  <div class="case-study reveal" style="margin-top:48px;">
+    <div class="cs-label">Applied example</div>
+    <div class="cs-title">The same holiday — four messages</div>
+    <p style="font-size:14px;font-weight:300;line-height:1.75;color:rgba(26,24,20,0.6);margin-bottom:4px;">A travel company is selling identical packages to a culturally mixed audience. The destination, price, and dates are the same. Only the mindset frame changes.</p>
+    <div class="cs-grid">
+      <div class="cs-item"><div class="cs-item-type" style="color:var(--s-red);">Socialiser frame</div><div class="cs-item-text">"Share unforgettable experiences with the people who matter most. Connect with local communities, travel with friends, and make memories together."</div></div>
+      <div class="cs-item"><div class="cs-item-type" style="color:var(--t-blue);">Thinker frame</div><div class="cs-item-text">"Carefully designed itineraries. Expert guides. Every logistical detail planned and published in advance, so you can focus on the experience rather than the logistics."</div></div>
+      <div class="cs-item"><div class="cs-item-type" style="color:var(--a-amber);">Adventurer frame</div><div class="cs-item-text">"Discover untouched landscapes. Break free from the predictable. Create stories worth telling — in places most people will never reach."</div></div>
+      <div class="cs-item"><div class="cs-item-type" style="color:var(--r-green);">Realist frame</div><div class="cs-item-text">"Safe, reliable, trusted by thousands of families. 24/7 support if anything changes — and a track record of delivering exactly what we promise."</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+    <a href="app-education.html" class="btn-primary">STAR in Education →</a>
+    <a href="app-communication.html" class="btn-secondary">← Communication</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+<script>
+  const bar=document.getElementById('progressBar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

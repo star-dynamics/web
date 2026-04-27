@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR in Coaching — STAR Dynamics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .app-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+  .app-nav a{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;border:1px solid rgba(26,24,20,0.12);color:rgba(26,24,20,0.4);transition:all 0.2s;}
+  .app-nav a:hover{border-color:rgba(26,24,20,0.3);color:var(--cream);}
+  .app-nav a.current{border-color:var(--gold);color:var(--gold);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin:40px 0;}
+  .coaching-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0;}
+  .cg-card{padding:28px;border-radius:6px;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);border-top:3px solid transparent;}
+  .cg-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .cg-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:10px;}
+  .cg-body{font-size:13px;font-weight:300;line-height:1.75;color:rgba(26,24,20,0.55);margin-bottom:16px;}
+  .cg-prompts{display:flex;flex-direction:column;gap:8px;}
+  .cg-prompt{font-size:12px;font-weight:300;color:rgba(26,24,20,0.5);padding:8px 12px;background:#FFFFFF;border-radius:3px;border-left:2px solid rgba(26,24,20,0.12);font-style:italic;line-height:1.5;}
+  .flow-states{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:32px 0;}
+  .fs-card{padding:20px;border-radius:6px;text-align:center;background:#FFFFFF;border:1px solid rgba(26,24,20,0.08);}
+  .fs-type{font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .fs-state{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:8px;}
+  .fs-desc{font-size:12px;font-weight:300;color:rgba(26,24,20,0.45);line-height:1.55;}
+  .recovery-table{width:100%;border-collapse:collapse;margin:32px 0;}
+  .recovery-table th{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,24,20,0.3);text-align:left;padding:10px 16px;border-bottom:1px solid rgba(26,24,20,0.1);}
+  .recovery-table td{padding:16px;font-size:13px;font-weight:300;border-bottom:1px solid rgba(26,24,20,0.06);color:rgba(26,24,20,0.55);vertical-align:top;line-height:1.6;}
+  .recovery-table td:first-child{font-weight:500;color:var(--cream);}
+  @media(max-width:900px){.coaching-grid,.two-col,.flow-states{grid-template-columns:1fr 1fr;}.flow-states{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.coaching-grid,.two-col,.flow-states{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html" class="active">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Applications · Coaching</div>
+    <h1 class="page-title">STAR in<br><em>Coaching</em></h1>
+    <p class="page-intro">The STAR profile is not a judgement. It is a mirror — providing a person with extraordinary clarity about how they process value, risk, and belonging, and a language precise enough to act on that understanding.</p>
+  </div>
+</div>
+
+<main>
+  <div class="app-nav reveal">
+    <a href="app-leadership.html">Leadership</a>
+    <a href="app-communication.html">Communication</a>
+    <a href="app-marketing.html">Marketing</a>
+    <a href="app-education.html">Education</a>
+    <a href="app-coaching.html" class="current">Coaching</a>
+    <a href="app-teams.html">Team Design</a>
+  </div>
+
+  <div class="two-col">
+    <div class="reveal">
+      <div class="section-label">What coaching is for</div>
+      <h2 class="section-title">Development is not<br><em>about fixing people.</em></h2>
+      <p class="section-body">Unlike training, which disseminates knowledge, coaching focuses on guided reflection and tailored support. The most effective coaching conversations are not generic encouragement — they are precisely calibrated to the motivational drivers and dispositional tendencies of the individual in front of you.</p>
+      <p class="section-body" style="margin-top:16px;">STAR provides the empirical framework for that calibration. It identifies the questions, challenges, and reframing strategies that resonate with different orientations, moving coaching from well-meaning encouragement to evidence-based practice.</p>
+    </div>
+    <div class="callout reveal reveal-delay-1">"Development is not about fixing individuals. It is about designing environments where diverse cognitive and motivational styles can contribute meaningfully — and safely."</div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Coaching each mindset</div>
+    <h2 class="section-title" style="margin-bottom:8px;">Tailored interventions<br><em>for each orientation</em></h2>
+  </div>
+  <div class="coaching-grid">
+    <div class="cg-card reveal reveal-delay-1" style="border-top-color:var(--s-red);">
+      <div class="cg-type" style="color:var(--s-red);">Socialiser</div>
+      <div class="cg-title">Validate belonging before introducing critique</div>
+      <div class="cg-body">Socialisers process feedback through the relational lens first. Before they can hear a challenge or a development point, they need to feel that the relationship with the coach is secure and that the feedback is motivated by genuine care rather than evaluation. Deliver critique inside a container of warmth and explicit recognition. If they feel judged, they will defend — not develop. Their growth accelerates in the presence of psychological safety and relational trust.</div>
+      <div class="cg-prompts">
+        <div class="cg-prompt">"Where do you feel most connected in your work right now?"</div>
+        <div class="cg-prompt">"Where do you feel unseen, or like your contribution isn't landing?"</div>
+        <div class="cg-prompt">"What would help the team feel more cohesive from your perspective?"</div>
+      </div>
+    </div>
+    <div class="cg-card reveal reveal-delay-2" style="border-top-color:var(--t-blue);">
+      <div class="cg-type" style="color:var(--t-blue);">Thinker</div>
+      <div class="cg-title">Pair analysis with time-bound action</div>
+      <div class="cg-body">Thinkers can become paralysed by their own rigour — caught in the loop of needing more information before they feel confident enough to act. The coaching challenge is to honour their analytical instinct while introducing a bias toward action. Challenge them to define what "enough information" actually looks like, and to distinguish genuine analytical need from anxiety-driven delay. Their natural recovery mechanism after setback is problem-solving, so channel it productively.</div>
+      <div class="cg-prompts">
+        <div class="cg-prompt">"What clarity or structure do you need to feel confident moving forward?"</div>
+        <div class="cg-prompt">"What does 'enough evidence' look like here — and are you already there?"</div>
+        <div class="cg-prompt">"If the data were 90% complete rather than 100%, what would you do?"</div>
+      </div>
+    </div>
+    <div class="cg-card reveal reveal-delay-3" style="border-top-color:var(--a-amber);">
+      <div class="cg-type" style="color:var(--a-amber);">Adventurer</div>
+      <div class="cg-title">Structure innovation with debrief</div>
+      <div class="cg-body">Adventurers often generate ideas and momentum at a rate that outpaces consolidation. The coaching challenge is not to restrain them but to help them harvest what they have created before moving to the next horizon. Structured debrief after completion of a project — what worked, what was learned, what should be retained — prevents the Adventurer from accumulating a trail of interesting half-finished things rather than a portfolio of genuine achievements.</div>
+      <div class="cg-prompts">
+        <div class="cg-prompt">"Where do you need more freedom to explore or take risks right now?"</div>
+        <div class="cg-prompt">"What have you started recently that deserves more of your attention to complete?"</div>
+        <div class="cg-prompt">"If you had to distil your last three months into three things you actually learned, what would they be?"</div>
+      </div>
+    </div>
+    <div class="cg-card reveal reveal-delay-4" style="border-top-color:var(--r-green);">
+      <div class="cg-type" style="color:var(--r-green);">Realist</div>
+      <div class="cg-title">Frame change as stewardship</div>
+      <div class="cg-body">Realists experience change as disruption until they can understand it as an act of preserving what matters. The coaching challenge is to reframe adaptation not as abandonment of the familiar but as the most responsible way of protecting core values in a changing environment. Give them time to process, present change incrementally, and ensure that each step has a clear rationale grounded in continuity rather than novelty.</div>
+      <div class="cg-prompts">
+        <div class="cg-prompt">"What would make this environment feel more stable and reliable for you?"</div>
+        <div class="cg-prompt">"What are you most worried about losing here — and is that actually at risk?"</div>
+        <div class="cg-prompt">"If adapting here is actually a form of protecting what you value most, what does that look like?"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Flow states by mindset</div>
+    <h2 class="section-title" style="margin-bottom:8px;">The conditions for<br><em>peak engagement</em></h2>
+    <p class="section-body">SDT is the science of optimal engagement. STAR predicts the sweet spot for each mindset — the conditions under which intrinsic motivation and performance converge.</p>
+  </div>
+  <div class="flow-states reveal reveal-delay-1">
+    <div class="fs-card" style="border-top:3px solid var(--s-red);">
+      <div class="fs-type" style="color:var(--s-red);">Socialiser</div>
+      <div class="fs-state">Synchrony</div>
+      <div class="fs-desc">The state of being in genuine, reciprocal connection with others while working toward a shared goal. When the group is aligned and the contribution is visible, the Socialiser enters flow.</div>
+    </div>
+    <div class="fs-card" style="border-top:3px solid var(--t-blue);">
+      <div class="fs-type" style="color:var(--t-blue);">Thinker</div>
+      <div class="fs-state">Problem-Solving</div>
+      <div class="fs-desc">The state of being fully absorbed in a complex intellectual challenge with sufficient time, data access, and autonomy of method. Clarity of problem plus freedom of approach produces flow.</div>
+    </div>
+    <div class="fs-card" style="border-top:3px solid var(--a-amber);">
+      <div class="fs-type" style="color:var(--a-amber);">Adventurer</div>
+      <div class="fs-state">Improvisation</div>
+      <div class="fs-desc">The state of creative momentum in novel territory — where experimentation is sanctioned, pace is fast, and the outcome is genuinely uncertain. Freedom plus forward motion produces flow.</div>
+    </div>
+    <div class="fs-card" style="border-top:3px solid var(--r-green);">
+      <div class="fs-type" style="color:var(--r-green);">Realist</div>
+      <div class="fs-state">Optimisation</div>
+      <div class="fs-desc">The state of perfecting a known system with complete clarity of expectation — where every variable is understood and the goal is doing the existing work to the highest possible standard.</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:64px;">
+    <div class="section-label">Stress recovery</div>
+    <h2 class="section-title" style="margin-bottom:8px;">How each mindset<br><em>recovers after setback</em></h2>
+    <p class="section-body">Traits determine not only how people act, but how they recover. Coaching that ignores recovery pathways addresses the symptom without addressing the mechanism.</p>
+  </div>
+  <table class="recovery-table reveal reveal-delay-1">
+    <thead>
+      <tr>
+        <th>Mindset</th>
+        <th>Recovery mechanism</th>
+        <th>What coaches should do</th>
+        <th>What to avoid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="color:var(--s-red);">Socialiser</td><td>Relational reset — explicit social validation and reconnection with the group</td><td>Re-establish the relational context first. Acknowledge the rupture. Confirm the relationship is intact before moving to the challenge.</td><td>Jumping straight to analysis or next steps. The Socialiser cannot hear task-level guidance until the relational wound is addressed.</td></tr>
+      <tr><td style="color:var(--t-blue);">Thinker</td><td>Mastery recovery — access to data and autonomy to rebuild a coherent framework</td><td>Provide space for structured analysis of what went wrong. Offer evidence, not reassurance. Let them reconstruct their understanding before proposing a way forward.</td><td>Offering emotional comfort without intellectual substance. The Thinker needs to understand, not be consoled.</td></tr>
+      <tr><td style="color:var(--a-amber);">Adventurer</td><td>Momentum recovery — a new challenge or immediate action step to bypass bore-out</td><td>Move quickly. Offer a forward-facing task or question that creates new momentum. The Adventurer recovers by moving, not by reflecting in stillness.</td><td>Extended structured reflection or retrospectives that dwell on the past. The Adventurer needs to look forward before they can usefully look back.</td></tr>
+      <tr><td style="color:var(--r-green);">Realist</td><td>Predictability recovery — a return to familiar routines and confirmation of stable expectations</td><td>Restore order and certainty as quickly as possible. Name what has not changed. Provide a clear, concrete plan for what happens next and by when.</td><td>Open-ended ambiguity while the situation is still unresolved. The Realist cannot begin recovery until the floor feels solid again.</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:72px;display:flex;gap:16px;flex-wrap:wrap;" class="reveal">
+    <a href="app-teams.html" class="btn-primary">STAR in Team Design →</a>
+    <a href="app-education.html" class="btn-secondary">← Education</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+<script>
+  const bar=document.getElementById('progressBar');
+  window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

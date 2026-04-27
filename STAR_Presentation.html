@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The STAR Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1814;
+    --warm-mid: #8C7B6B;
+    --s-red: #E05A7A;
+    --t-blue: #2AACB8;
+    --a-amber: #E8A84C;
+    --r-green: #7B5EA7;
+    --driver: #E05C2A;
+    --custodian: #1D3D8F;
+    --translator: #6B2480;
+    --aligner: #00786B;
+    --gold: #B89A5A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(140,123,107,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* SLIDES */
+  section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HERO */
+  #hero {
+    background: var(--ink);
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(184,154,90,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 20%, rgba(224,90,122,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 80% 80%, rgba(42,172,184,0.06) 0%, transparent 60%);
+  }
+  .hero-rule {
+    width: 64px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 300;
+    color: rgba(245,240,232,0.5);
+    margin-top: 20px;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+  .hero-stars {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    margin-top: 64px;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+  .hero-star-item {
+    text-align: center;
+  }
+  .hero-star-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+  }
+  .hero-star-word {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* SECTION TITLES */
+  .section-inner {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; }
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.7);
+    max-width: 640px;
+  }
+
+  /* PROBLEM SLIDE */
+  #problem { background: var(--cream); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-top: 48px;
+  }
+  .problem-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .stat-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--warm-mid);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* WHAT IS STAR */
+  #what { background: var(--ink); color: var(--cream); }
+  #what .section-body { color: rgba(245,240,232,0.6); }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 48px;
+  }
+  .pillar-card {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 4px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .pillar-card:hover {
+    background: rgba(184,154,90,0.1);
+    border-color: rgba(184,154,90,0.3);
+  }
+  .pillar-abbr {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .pillar-name {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.4;
+  }
+  .layers-visual {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .layer-bar {
+    height: 44px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.85);
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .layer-bar:hover { transform: translateX(8px); }
+  .layer-bar span.layer-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.3);
+    margin-right: 16px;
+    min-width: 20px;
+  }
+
+  /* MINDSETS */
+  #mindsets { background: var(--cream); }
+  .mindsets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .mindset-card {
+    border-radius: 6px;
+    padding: 36px 28px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .mindset-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+  }
+  .mindset-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .mindset-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255,255,255,0.15);
+    position: absolute;
+    top: 12px; right: 16px;
+  }
+  .mindset-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .mindset-drive {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+  .mindset-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.65;
+    opacity: 0.85;
+  }
+  .mindset-sdt {
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* ARCHETYPES */
+  #archetypes { background: #F0EBE1; }
+  .archetypes-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .archetypes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .archetype-family-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .archetype-family-header {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .archetype-item {
+    background: #fff;
+    border-radius: 3px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+  .archetype-item:hover {
+    transform: translateX(4px);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+  }
+  .archetype-item-name {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .archetype-item-code {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--warm-mid);
+  }
+
+  /* OPERATING MODES */
+  #modes { background: var(--ink); color: var(--cream); }
+  #modes .section-body { color: rgba(245,240,232,0.6); }
+  .modes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .mode-card {
+    border-radius: 6px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: default;
+  }
+  .mode-card:hover { transform: scale(1.02); }
+  .mode-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .mode-energy {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  .mode-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.75);
+  }
+  .mode-no-them {
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* APPLICATIONS */
+  #applications { background: var(--cream); }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .app-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 32px;
+    border-top: 3px solid var(--gold);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+  }
+  .app-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .app-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .app-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.65);
+  }
+
+  /* VS OTHERS */
+  #versus { background: #F0EBE1; }
+  .versus-table {
+    width: 100%;
+    margin-top: 48px;
+    border-collapse: collapse;
+  }
+  .versus-table th {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    text-align: left;
+    padding: 12px 20px;
+    border-bottom: 2px solid rgba(140,123,107,0.2);
+  }
+  .versus-table th.star-col {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .versus-table td {
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(140,123,107,0.12);
+    color: rgba(26,24,20,0.75);
+    vertical-align: top;
+  }
+  .versus-table td.star-col {
+    color: var(--ink);
+    font-weight: 500;
+    background: rgba(184,154,90,0.06);
+  }
+  .versus-table tr:hover td { background: rgba(140,123,107,0.05); }
+  .versus-table tr:hover td.star-col { background: rgba(184,154,90,0.1); }
+
+  /* PRODUCTS */
+  #products { background: var(--ink); color: var(--cream); }
+  #products .section-body { color: rgba(245,240,232,0.6); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .product-card {
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 6px;
+    padding: 28px 24px;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .product-card:hover {
+    border-color: var(--gold);
+    background: rgba(184,154,90,0.05);
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .product-tagline {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .product-price-label {
+    font-size: 11px;
+    color: rgba(245,240,232,0.35);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* CLOSE */
+  #close {
+    background: var(--cream);
+    flex-direction: column;
+    text-align: center;
+  }
+  .close-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 700px;
+    margin: 0 auto 32px;
+  }
+  .close-title em { font-style: italic; color: var(--gold); }
+  .close-body {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.65);
+    max-width: 520px;
+    margin: 0 auto 48px;
+  }
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 16px 36px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #2E2B25; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 16px 36px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1.5px solid rgba(26,24,20,0.3);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width 0.15s;
+    z-index: 200;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* DIVIDER */
+  .gold-rule {
+    width: 48px; height: 1px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+
+  /* QUOTE CALLOUT */
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    background: rgba(184,154,90,0.06);
+    border-radius: 0 4px 4px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-top: 32px;
+    max-width: 600px;
+  }
+  .callout-dark {
+    border-left-color: var(--gold);
+    background: rgba(184,154,90,0.08);
+    color: var(--cream);
+  }
+
+  /* TYPES DEEP DIVE */
+  #types { background: var(--ink); color: var(--cream); }
+  .types-tabs {
+    display: flex;
+    gap: 4px;
+    margin-top: 40px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .type-tab {
+    padding: 10px 22px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    color: #fff;
+    opacity: 0.5;
+  }
+  .type-tab.active { opacity: 1; }
+  .type-panel {
+    display: none;
+    padding: 40px;
+    border-radius: 0 6px 6px 6px;
+    animation: fadeIn 0.3s ease;
+  }
+  .type-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .type-panel-left h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .type-panel-left .type-drive {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
+  }
+  .type-panel-left p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 16px;
+  }
+  .type-panel-right { display: flex; flex-direction: column; gap: 16px; }
+  .type-detail-row {
+    border-left: 2px solid rgba(255,255,255,0.15);
+    padding-left: 16px;
+  }
+  .type-detail-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 4px;
+  }
+  .type-detail-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+  .type-bias-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.08);
+    margin: 2px 3px 2px 0;
+  }
+
+  /* ARCHETYPES FULL */
+  #archetypes-full { background: #0F0E0C; color: var(--cream); }
+  .arch-grid-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .arch-card-full {
+    border-radius: 6px;
+    padding: 24px 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s, transform 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch-card-full:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+  }
+  .arch-card-full::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .arch-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+  .arch-card-code {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 10px;
+  }
+  .arch-card-tagline {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+  .arch-card-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 12px;
+  }
+  .arch-card-mode {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  /* THEORIES */
+  #theories { background: var(--cream); }
+  .theories-accordion { margin-top: 40px; }
+  .theory-item {
+    border-bottom: 1px solid rgba(140,123,107,0.2);
+    overflow: hidden;
+  }
+  .theory-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    cursor: pointer;
+    gap: 20px;
+  }
+  .theory-header:hover .theory-title { color: var(--gold); }
+  .theory-left { display: flex; align-items: center; gap: 20px; }
+  .theory-abbr {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    min-width: 56px;
+  }
+  .theory-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .theory-role {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin-left: auto;
+    margin-right: 24px;
+    white-space: nowrap;
+  }
+  .theory-chevron {
+    width: 20px; height: 20px;
+    border-right: 1.5px solid var(--warm-mid);
+    border-bottom: 1.5px solid var(--warm-mid);
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+  .theory-item.open .theory-chevron { transform: rotate(-135deg); margin-top: 4px; }
+  .theory-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+  .theory-item.open .theory-body { max-height: 500px; }
+  .theory-body-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding: 0 0 28px 76px;
+  }
+  .theory-body-text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.7);
+  }
+  .theory-star-links { display: flex; flex-direction: column; gap: 8px; }
+  .theory-star-link {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--warm-mid);
+    padding: 8px 12px;
+    background: rgba(140,123,107,0.07);
+    border-radius: 3px;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* MODES FULL */
+  #modes-full { background: var(--ink); color: var(--cream); }
+  .modes-full-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .mode-full-card {
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.2s;
+    cursor: default;
+  }
+  .mode-full-card:hover { filter: brightness(1.08); }
+  .mode-full-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .mode-full-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: #fff;
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+  .mode-full-energy {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+  }
+  .mode-full-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+  }
+  .mode-full-consequence {
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    padding: 14px 18px;
+    border-left: 2px solid rgba(255,255,255,0.15);
+    margin-bottom: 20px;
+  }
+  .mode-full-archetypes {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 6px;
+  }
+  .mode-full-arch-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .mode-arch-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.55);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px 60px; }
+    .problem-grid, .archetypes-intro, .modes-grid, .apps-grid, .products-grid { grid-template-columns: 1fr; gap: 32px; }
+    .mindsets-grid, .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars-grid { grid-template-columns: repeat(4, 1fr); }
+    .hero-stars { gap: 24px; }
+    .versus-table { font-size: 12px; }
+    .type-panel.active { grid-template-columns: 1fr; }
+    .arch-grid-full { grid-template-columns: 1fr; }
+    .modes-full-grid { grid-template-columns: 1fr; }
+    .theory-body-inner { grid-template-columns: 1fr; padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+  <div class="nav-logo">STAR</div>
+  <ul class="nav-links">
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#what">The System</a></li>
+    <li><a href="#mindsets">Mindsets</a></li>
+    <li><a href="#types">Types</a></li>
+    <li><a href="#archetypes-full">Archetypes</a></li>
+    <li><a href="#theories">Theories</a></li>
+    <li><a href="#modes-full">Modes</a></li>
+    <li><a href="#applications">Applications</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rule"></div>
+  <div class="hero-eyebrow">The STAR Operating System</div>
+  <h1 class="hero-title">Decode the<br><em>Human Mind</em></h1>
+  <p class="hero-subtitle">A framework that translates behavioural science into something you can actually use</p>
+  <div class="hero-stars">
+    <div class="hero-star-item">
+      <span class="hero-star-letter" style="color:#E05A7A;">S</span>
+      <span class="hero-star-word">Socialiser</span>
+    </div>
+    <div class="hero-star-item">
+      <span class="hero-star-letter" style="color:#2AACB8;">T</span>
+      <span class="hero-star-word">Thinker</span>
+    </div>
+    <div class="hero-star-item">
+      <span class="hero-star-letter" style="color:#E8A84C;">A</span>
+      <span class="hero-star-word">Adventurer</span>
+    </div>
+    <div class="hero-star-item">
+      <span class="hero-star-letter" style="color:#7B5EA7;">R</span>
+      <span class="hero-star-word">Realist</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The challenge</div>
+      <h2 class="section-title">Most frameworks<br>don't <em>work</em></h2>
+      <p class="section-body">We live in an era of unprecedented access to psychological research, yet most of the tools practitioners reach for were built on weak foundations, oversimplified assumptions, or have failed to keep pace with what modern science actually tells us about human behaviour.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-stat-block reveal reveal-delay-2">
+        <div class="stat-item">
+          <div class="stat-number">7</div>
+          <div class="stat-label">validated psychological theories synthesised into a single, integrated system</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">distinct professional archetypes, combining primary and secondary mindsets</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4</div>
+          <div class="stat-label">operating modes that explain how people function within teams and systems</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <p style="font-size:15px; font-weight:300; line-height:1.8; color:rgba(26,24,20,0.7); margin-bottom:20px;">MBTI has no peer-reviewed predictive validity. DISC flattens human complexity into four colours. Insights Discovery is engaging, but proprietary and expensive. None of them tell you <em>why</em> someone behaves the way they do.</p>
+        <p style="font-size:15px; font-weight:300; line-height:1.8; color:rgba(26,24,20,0.7); margin-bottom:20px;">STAR is different. It is built on the science that already exists and assembles it into something genuinely usable, for leaders, communicators, educators, coaches, designers, and anyone who needs to understand the people in front of them.</p>
+        <div class="callout">
+          "Move beyond demographics and assumptions. Understand the underlying patterns of human motivation."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS STAR -->
+<section id="what">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--gold);">Architecture</div>
+      <h2 class="section-title" style="color:var(--cream);">Seven pillars.<br><em>One system.</em></h2>
+      <p class="section-body">STAR synthesises seven cornerstone theories of modern behavioural science into a layered architecture. Each layer adds explanatory power; together, they form a complete picture of how human beings think, decide, and act.</p>
+    </div>
+    <div class="pillars-grid reveal reveal-delay-2">
+      <div class="pillar-card">
+        <span class="pillar-abbr">SDT</span>
+        <span class="pillar-name">Self-Determination Theory</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">OCEAN</span>
+        <span class="pillar-name">Big Five Personality</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">DPT</span>
+        <span class="pillar-name">Dual Process Thinking</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">RFT</span>
+        <span class="pillar-name">Regulatory Focus Theory</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">SIT</span>
+        <span class="pillar-name">Social Identity Theory</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">CBT</span>
+        <span class="pillar-name">Cognitive Bias Theory</span>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-abbr">AToE</span>
+        <span class="pillar-name">Appraisal Theory of Emotion</span>
+      </div>
+    </div>
+    <div class="layers-visual reveal reveal-delay-3">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,240,232,0.3); margin-bottom:8px;">System architecture, from foundation to surface</div>
+      <div class="layer-bar" style="background:rgba(245,240,232,0.05); width:100%;"><span class="layer-num">1</span>Motivation Engine — Self-Determination Theory (Autonomy · Competence · Relatedness)</div>
+      <div class="layer-bar" style="background:rgba(245,240,232,0.07); width:92%;"><span class="layer-num">2</span>Personality Chassis — OCEAN / Big Five Traits</div>
+      <div class="layer-bar" style="background:rgba(245,240,232,0.09); width:84%;"><span class="layer-num">3</span>Processing & Direction — Dual Process + Regulatory Focus</div>
+      <div class="layer-bar" style="background:rgba(245,240,232,0.11); width:76%;"><span class="layer-num">4</span>Interpretive Filters — Bias · Social Identity · Appraisal of Emotion</div>
+      <div class="layer-bar" style="background:rgba(184,154,90,0.15); width:68%; border:1px solid rgba(184,154,90,0.25);"><span class="layer-num" style="color:var(--gold);">5</span>Translation Layer — The Four STAR Mindsets</div>
+      <div class="layer-bar" style="background:rgba(184,154,90,0.22); width:60%; border:1px solid rgba(184,154,90,0.35);"><span class="layer-num" style="color:var(--gold);">6</span>Application Layer — 12 Archetypes · 4 Operating Modes</div>
+    </div>
+  </div>
+</section>
+
+<!-- MINDSETS -->
+<section id="mindsets">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The foundation</div>
+      <h2 class="section-title">Four mindsets.<br><em>Not four boxes.</em></h2>
+      <p class="section-body">The STAR mindsets are stable orientations, not fixed types. They describe how a person tends to process value, risk, and belonging. Most people carry a strong primary orientation and a meaningful secondary one.</p>
+    </div>
+    <div class="mindsets-grid">
+      <div class="mindset-card reveal reveal-delay-1" style="background:var(--s-red);">
+        <span class="mindset-letter">S</span>
+        <div class="mindset-name">Socialiser</div>
+        <div class="mindset-drive">Relatedness-driven</div>
+        <div class="mindset-desc">Energised by connection, motivated by belonging, and at their best when they feel genuinely valued by the people around them. They process the world through relationships and collective harmony.</div>
+        <div class="mindset-sdt">SDT need: Relatedness</div>
+      </div>
+      <div class="mindset-card reveal reveal-delay-2" style="background:var(--t-blue);">
+        <span class="mindset-letter">T</span>
+        <div class="mindset-name">Thinker</div>
+        <div class="mindset-drive">Competence-driven</div>
+        <div class="mindset-desc">Energised by intellectual challenge, motivated by the pursuit of accuracy, and at their best when they can take the time to think something through properly. They process the world through analysis and logic.</div>
+        <div class="mindset-sdt">SDT need: Competence</div>
+      </div>
+      <div class="mindset-card reveal reveal-delay-3" style="background:var(--a-amber);">
+        <span class="mindset-letter">A</span>
+        <div class="mindset-name">Adventurer</div>
+        <div class="mindset-drive">Autonomy-driven</div>
+        <div class="mindset-desc">Energised by new experiences, motivated by the chance to push boundaries, and at their best when they have the space to do things their own way. They process the world through possibility.</div>
+        <div class="mindset-sdt">SDT need: Autonomy</div>
+      </div>
+      <div class="mindset-card reveal reveal-delay-4" style="background:var(--r-green);">
+        <span class="mindset-letter">R</span>
+        <div class="mindset-name">Realist</div>
+        <div class="mindset-drive">Stability-driven</div>
+        <div class="mindset-desc">Energised by structure, motivated by duty and responsibility, and at their best when they know the ground beneath them is solid. They process the world through practical evidence.</div>
+        <div class="mindset-sdt">SDT need: Stability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAR TYPES DEEP DIVE -->
+<section id="types">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--gold);">The four orientations</div>
+      <h2 class="section-title" style="color:var(--cream);">STAR Types.<br><em>In depth.</em></h2>
+      <p class="section-body">Each STAR type is not a label but a lens, a stable orientation through which a person processes value, risk, and belonging. Understanding yours is the first step to understanding everyone else's.</p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="types-tabs">
+        <button class="type-tab active" style="background:var(--s-red);" onclick="showType('s')">Socialiser</button>
+        <button class="type-tab" style="background:var(--t-blue);" onclick="showType('t')">Thinker</button>
+        <button class="type-tab" style="background:var(--a-amber);" onclick="showType('a')">Adventurer</button>
+        <button class="type-tab" style="background:var(--r-green);" onclick="showType('r')">Realist</button>
+      </div>
+
+      <!-- SOCIALISER -->
+      <div id="type-s" class="type-panel active" style="background:rgba(224,90,122,0.12); border:1px solid rgba(224,90,122,0.2);">
+        <div class="type-panel-left">
+          <h3>The Socialiser</h3>
+          <div class="type-drive">Relatedness · Promotion Focus · System 1</div>
+          <p>The Socialiser processes the world through relationships. Their fundamental psychological need, drawn from Self-Determination Theory, is Relatedness: the desire to belong, to be recognised, and to feel genuinely connected to the people around them. A task is not simply a task; it is a confirmation of their place in the group.</p>
+          <p>They are energised by collaboration, motivated by collective achievement, and at their most effective when the people around them feel good. Under pressure, they look for consensus and social validation rather than retreating into analysis, which makes them powerful connectors but occasionally vulnerable to prioritising harmony over hard truths.</p>
+          <p>Their OCEAN profile clusters around high Extraversion and high Agreeableness, reflecting an outward social orientation combined with a deep concern for group wellbeing. Their default regulatory mode is Promotion: they are drawn toward possibility, social gain, and inclusion rather than the avoidance of loss.</p>
+        </div>
+        <div class="type-panel-right">
+          <div class="type-detail-row">
+            <div class="type-detail-label">SDT Core Need</div>
+            <div class="type-detail-value">Relatedness — belonging, recognition, and mutual connection</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">OCEAN Cluster</div>
+            <div class="type-detail-value">High Extraversion · High Agreeableness</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Cognitive Processing</div>
+            <div class="type-detail-value">System 1 dominant — fast, emotional, relational, intuitive</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Regulatory Default</div>
+            <div class="type-detail-value">Promotion-focused — oriented toward gain, connection, and collective growth</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Appraisal Filter</div>
+            <div class="type-detail-value">Events evaluated through belonging vs. rejection</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Common Biases</div>
+            <div class="type-detail-value">
+              <span class="type-bias-tag">Optimism Bias</span>
+              <span class="type-bias-tag">Halo Effect</span>
+              <span class="type-bias-tag">Bandwagon Effect</span>
+              <span class="type-bias-tag">In-Group Bias</span>
+            </div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Motivate by</div>
+            <div class="type-detail-value">Collaborative roles, public recognition, mentoring opportunities, visible belonging</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Watch for</div>
+            <div class="type-detail-value">Mistaking group consensus for correct answers; avoiding necessary conflict</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THINKER -->
+      <div id="type-t" class="type-panel" style="background:rgba(42,172,184,0.12); border:1px solid rgba(42,172,184,0.25);">
+        <div class="type-panel-left">
+          <h3>The Thinker</h3>
+          <div class="type-drive">Competence · Prevention Focus · System 2</div>
+          <p>The Thinker processes the world through analysis. Their core psychological need is Competence: the drive to understand, to master, and to ensure that their work meets the highest possible standard of accuracy and rigour. A task is meaningful only when it presents a genuine intellectual challenge or an opportunity to demonstrate genuine skill.</p>
+          <p>They are energised by complexity, motivated by clarity, and at their sharpest when given the time and space to think something through properly. Under pressure, they decelerate rather than accelerate, seeking more information before committing. This makes them formidable problem-solvers but occasionally prone to paralysis when data is incomplete.</p>
+          <p>Their OCEAN profile combines high Conscientiousness and high Openness with lower Extraversion, reflecting the discipline, curiosity, and inward focus needed for sustained analytical work. Their regulatory default is Prevention: they are more concerned with avoiding error than with chasing opportunity, and they interpret vague reassurance as insufficient.</p>
+        </div>
+        <div class="type-panel-right">
+          <div class="type-detail-row">
+            <div class="type-detail-label">SDT Core Need</div>
+            <div class="type-detail-value">Competence — mastery, clarity, intellectual growth</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">OCEAN Cluster</div>
+            <div class="type-detail-value">High Conscientiousness · High Openness · Low Extraversion</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Cognitive Processing</div>
+            <div class="type-detail-value">System 2 dominant — slow, deliberate, analytical, evidence-led</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Regulatory Default</div>
+            <div class="type-detail-value">Prevention-focused — oriented toward accuracy, correctness, and risk avoidance</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Appraisal Filter</div>
+            <div class="type-detail-value">Events evaluated through logic, fairness, and coherence</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Common Biases</div>
+            <div class="type-detail-value">
+              <span class="type-bias-tag">Confirmation Bias</span>
+              <span class="type-bias-tag">Sunk Cost Fallacy</span>
+              <span class="type-bias-tag">Information Bias</span>
+              <span class="type-bias-tag">Paralysis by Analysis</span>
+            </div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Motivate by</div>
+            <div class="type-detail-value">Clear metrics, access to data, methodological autonomy, specific and accurate feedback</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Watch for</div>
+            <div class="type-detail-value">Over-rationalising; doubling down on flawed frameworks rather than adapting</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVENTURER -->
+      <div id="type-a" class="type-panel" style="background:rgba(232,168,76,0.12); border:1px solid rgba(232,168,76,0.25);">
+        <div class="type-panel-left">
+          <h3>The Adventurer</h3>
+          <div class="type-drive">Autonomy · Promotion Focus · System 1</div>
+          <p>The Adventurer processes the world through possibility. Their fundamental need is Autonomy: the freedom to act, to explore, and to do things their own way. Any constraint, however well-intentioned, registers not as guidance but as interference, which is why Adventurers so often appear to resist structure even when structure would help them.</p>
+          <p>They are energised by novelty, motivated by the prospect of doing something that hasn't been done before, and at their most effective when operating with significant personal agency. Under pressure, they accelerate rather than slow down, defaulting to rapid experimentation and trusting momentum over methodology.</p>
+          <p>Their OCEAN profile clusters around high Openness and high Extraversion, with lower Conscientiousness, reflecting an imaginative, assertive, and fluid approach to the world. Their regulatory mode is Promotion, and strongly so: they frame every challenge as an opportunity and interpret risk as the price of possibility rather than a reason for caution.</p>
+        </div>
+        <div class="type-panel-right">
+          <div class="type-detail-row">
+            <div class="type-detail-label">SDT Core Need</div>
+            <div class="type-detail-value">Autonomy — freedom, agency, self-directed exploration</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">OCEAN Cluster</div>
+            <div class="type-detail-value">High Openness · High Extraversion · Lower Conscientiousness</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Cognitive Processing</div>
+            <div class="type-detail-value">System 1 dominant — fast, intuitive, novelty-seeking, experimental</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Regulatory Default</div>
+            <div class="type-detail-value">Promotion-focused — oriented toward growth, novelty, and the pursuit of ideals</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Appraisal Filter</div>
+            <div class="type-detail-value">Events evaluated through freedom, novelty, and the presence of constraint</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Common Biases</div>
+            <div class="type-detail-value">
+              <span class="type-bias-tag">Overconfidence</span>
+              <span class="type-bias-tag">Novelty Bias</span>
+              <span class="type-bias-tag">Recency Bias</span>
+              <span class="type-bias-tag">Optimism Bias</span>
+            </div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Motivate by</div>
+            <div class="type-detail-value">Uncharted challenges, creative latitude, minimal bureaucracy, visible impact</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Watch for</div>
+            <div class="type-detail-value">Underestimating risk; abandoning viable ideas too quickly in pursuit of the next new thing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REALIST -->
+      <div id="type-r" class="type-panel" style="background:rgba(123,94,167,0.12); border:1px solid rgba(123,94,167,0.25);">
+        <div class="type-panel-left">
+          <h3>The Realist</h3>
+          <div class="type-drive">Stability · Prevention Focus · System 2</div>
+          <p>The Realist processes the world through practical evidence and established precedent. Their core need is Stability: the confidence that the ground beneath them is solid, that the systems around them are reliable, and that their responsibilities are being met. They are not resistant to change; they are resistant to change that hasn't been thought through.</p>
+          <p>They are energised by structure, motivated by duty and the satisfaction of a job done properly, and at their most effective when they understand what is expected of them and why. Under pressure, they engage in protective caution, slowing down to ensure that the foundations remain intact before any forward movement is sanctioned.</p>
+          <p>Their OCEAN profile anchors in high Conscientiousness and higher Agreeableness, paired with lower Openness, reflecting an orderly, loyal, and pragmatic character that values reliability over novelty. Their regulatory default is Prevention: they are more focused on what could be lost than what could be gained, which makes them exceptional guardians of quality and operational continuity.</p>
+        </div>
+        <div class="type-panel-right">
+          <div class="type-detail-row">
+            <div class="type-detail-label">SDT Core Need</div>
+            <div class="type-detail-value">Stability — security, reliability, fulfilment of duty</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">OCEAN Cluster</div>
+            <div class="type-detail-value">High Conscientiousness · High Agreeableness · Low Openness</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Cognitive Processing</div>
+            <div class="type-detail-value">System 2 dominant — deliberate, evidence-led, risk-aware, procedural</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Regulatory Default</div>
+            <div class="type-detail-value">Prevention-focused — oriented toward safety, duty, and protection from disruption</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Appraisal Filter</div>
+            <div class="type-detail-value">Events evaluated through stability, predictability, and threat of disruption</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Common Biases</div>
+            <div class="type-detail-value">
+              <span class="type-bias-tag">Loss Aversion</span>
+              <span class="type-bias-tag">Status Quo Bias</span>
+              <span class="type-bias-tag">Negativity Bias</span>
+            </div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Motivate by</div>
+            <div class="type-detail-value">Clear expectations, consistent processes, recognition of reliability, gradual and well-justified change</div>
+          </div>
+          <div class="type-detail-row">
+            <div class="type-detail-label">Watch for</div>
+            <div class="type-detail-value">Clinging to the familiar past its usefulness; overestimating the downside of necessary change</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHETYPES -->
+<section id="archetypes">
+  <div class="section-inner">
+    <div class="archetypes-intro">
+      <div class="reveal">
+        <div class="section-label">The detail</div>
+        <h2 class="section-title">Twelve archetypes.<br><em>Precision without reduction.</em></h2>
+        <p class="section-body">Every individual operates from a primary mindset, shaped and nuanced by a secondary one. The twelve STAR archetypes map these combinations into recognisable professional identities, each with its own motivational signature, cognitive style, and characteristic way of contributing.</p>
+        <div class="callout" style="margin-top:28px; font-size:17px;">
+          "The twelve archetypes turn theory into terrain. They do not simplify people; they map them."
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="archetypes-grid">
+          <div class="archetype-family-col">
+            <div class="archetype-family-header" style="background:var(--s-red);">Socialiser</div>
+            <div class="archetype-item" style="border-left-color:var(--s-red);">
+              <div class="archetype-item-name">Thoughtful Advisor</div>
+              <div class="archetype-item-code">S / T</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--s-red);">
+              <div class="archetype-item-name">Expressive Energiser</div>
+              <div class="archetype-item-code">S / A</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--s-red);">
+              <div class="archetype-item-name">Grounded Connector</div>
+              <div class="archetype-item-code">S / R</div>
+            </div>
+          </div>
+          <div class="archetype-family-col">
+            <div class="archetype-family-header" style="background:var(--t-blue);">Thinker</div>
+            <div class="archetype-item" style="border-left-color:var(--t-blue);">
+              <div class="archetype-item-name">Structured Collaborator</div>
+              <div class="archetype-item-code">T / S</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--t-blue);">
+              <div class="archetype-item-name">Strategic Explorer</div>
+              <div class="archetype-item-code">T / A</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--t-blue);">
+              <div class="archetype-item-name">Precise Analyst</div>
+              <div class="archetype-item-code">T / R</div>
+            </div>
+          </div>
+          <div class="archetype-family-col">
+            <div class="archetype-family-header" style="background:var(--a-amber);">Adventurer</div>
+            <div class="archetype-item" style="border-left-color:var(--a-amber);">
+              <div class="archetype-item-name">Energetic Catalyst</div>
+              <div class="archetype-item-code">A / S</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--a-amber);">
+              <div class="archetype-item-name">Inventive Pathfinder</div>
+              <div class="archetype-item-code">A / T</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--a-amber);">
+              <div class="archetype-item-name">Practical Builder</div>
+              <div class="archetype-item-code">A / R</div>
+            </div>
+          </div>
+          <div class="archetype-family-col">
+            <div class="archetype-family-header" style="background:var(--r-green);">Realist</div>
+            <div class="archetype-item" style="border-left-color:var(--r-green);">
+              <div class="archetype-item-name">Steady Harmoniser</div>
+              <div class="archetype-item-code">R / S</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--r-green);">
+              <div class="archetype-item-name">Careful Guardian</div>
+              <div class="archetype-item-code">R / T</div>
+            </div>
+            <div class="archetype-item" style="border-left-color:var(--r-green);">
+              <div class="archetype-item-name">Resilient Enabler</div>
+              <div class="archetype-item-code">R / A</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHETYPES FULL DESCRIPTIONS -->
+<section id="archetypes-full">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--gold);">All twelve</div>
+      <h2 class="section-title" style="color:var(--cream);">The archetypes,<br><em>in full.</em></h2>
+      <p class="section-body">Each archetype combines a primary and secondary mindset into a recognisable professional identity, complete with its own motivational signature, workplace style, operating mode, and characteristic blind spot.</p>
+    </div>
+    <div class="arch-grid-full reveal reveal-delay-2">
+
+      <!-- SOCIALISER-LED -->
+      <div class="arch-card-full reveal reveal-delay-1" style="border-top-color:var(--s-red);">
+        <div class="arch-card-full::before" style="background:var(--s-red);"></div>
+        <div class="arch-card-code">S / T &nbsp;·&nbsp; Socialiser-led</div>
+        <div class="arch-card-name">Thoughtful Advisor</div>
+        <div class="arch-card-tagline" style="color:var(--s-red);">Resonant Wisdom</div>
+        <div class="arch-card-desc">Combines genuine care for people with the analytical depth to give advice that is both compassionate and sound. Maintains group harmony while ensuring output meets rigorous standards. The person you go to when you need someone who will listen properly and think clearly.</div>
+        <span class="arch-card-mode" style="background:rgba(0,120,107,0.15); color:var(--aligner);">Aligner Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-2" style="border-top-color:var(--s-red);">
+        <div class="arch-card-code">S / A &nbsp;·&nbsp; Socialiser-led</div>
+        <div class="arch-card-name">Expressive Energiser</div>
+        <div class="arch-card-tagline" style="color:var(--s-red);">Infectious Momentum</div>
+        <div class="arch-card-desc">Creates forward momentum through social energy and enthusiasm for new shared experiences. Uses charismatic energy to lift team spirit, especially during periods of change. The person who lifts a flat room and makes people excited about what the team could achieve together.</div>
+        <span class="arch-card-mode" style="background:rgba(224,92,42,0.15); color:var(--driver);">Driver Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-3" style="border-top-color:var(--s-red);">
+        <div class="arch-card-code">S / R &nbsp;·&nbsp; Socialiser-led</div>
+        <div class="arch-card-name">Grounded Connector</div>
+        <div class="arch-card-tagline" style="color:var(--s-red);">Reliable Warmth</div>
+        <div class="arch-card-desc">Builds long-term, dependable relationships through consistency and loyalty. Anchors team trust through emotional consistency, remembering everyone's story and quietly holding the social fabric together. The person people turn to not for strategy, but for steadiness.</div>
+        <span class="arch-card-mode" style="background:rgba(0,120,107,0.15); color:var(--aligner);">Aligner Mode</span>
+      </div>
+
+      <!-- THINKER-LED -->
+      <div class="arch-card-full reveal reveal-delay-1" style="border-top-color:var(--t-blue);">
+        <div class="arch-card-code">T / S &nbsp;·&nbsp; Thinker-led</div>
+        <div class="arch-card-name">Structured Collaborator</div>
+        <div class="arch-card-tagline" style="color:var(--t-blue);">Principled Cohesion</div>
+        <div class="arch-card-desc">Uses analytical precision to build fair, transparent ways of working together. Applies methodical rigour to group dynamics, designing the meeting structures and decision-making processes that stop teams from falling apart. Believes the most effective teams are those managed with the same rigour as technical objectives.</div>
+        <span class="arch-card-mode" style="background:rgba(0,120,107,0.15); color:var(--aligner);">Aligner Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-2" style="border-top-color:var(--t-blue);">
+        <div class="arch-card-code">T / A &nbsp;·&nbsp; Thinker-led</div>
+        <div class="arch-card-name">Strategic Explorer</div>
+        <div class="arch-card-tagline" style="color:var(--t-blue);">Structured Discovery</div>
+        <div class="arch-card-desc">Attracted to bold ideas but tests every one with rigorous logic before committing. Innovates through the deconstruction of complex systems, combining visionary range with execution rigour. The person who can see the revolutionary possibility and simultaneously identify the three reasons it will fail, then propose a version that works.</div>
+        <span class="arch-card-mode" style="background:rgba(107,36,128,0.15); color:var(--translator);">Translator Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-3" style="border-top-color:var(--t-blue);">
+        <div class="arch-card-code">T / R &nbsp;·&nbsp; Thinker-led</div>
+        <div class="arch-card-name">Precise Analyst</div>
+        <div class="arch-card-tagline" style="color:var(--t-blue);">Unshakeable Clarity</div>
+        <div class="arch-card-desc">Focused entirely on accuracy and evidence. Will say "that doesn't meet the standard" when everyone else is ready to move on, not to be difficult, but because letting something substandard through is genuinely unacceptable. Safeguards process integrity through vigilant adherence to standards.</div>
+        <span class="arch-card-mode" style="background:rgba(29,61,143,0.2); color:#6B8FE8;">Custodian Mode</span>
+      </div>
+
+      <!-- ADVENTURER-LED -->
+      <div class="arch-card-full reveal reveal-delay-1" style="border-top-color:var(--a-amber);">
+        <div class="arch-card-code">A / S &nbsp;·&nbsp; Adventurer-led</div>
+        <div class="arch-card-name">Energetic Catalyst</div>
+        <div class="arch-card-tagline" style="color:var(--a-amber);">Magnetic Possibility</div>
+        <div class="arch-card-desc">Pushes boundaries and challenges conventions, using social charisma to bring people along for the ride. Arrives with an idea that makes everyone slightly uncomfortable, then makes that discomfort feel like excitement. Drives radical change by inspiring and mobilising the collective.</div>
+        <span class="arch-card-mode" style="background:rgba(224,92,42,0.15); color:var(--driver);">Driver Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-2" style="border-top-color:var(--a-amber);">
+        <div class="arch-card-code">A / T &nbsp;·&nbsp; Adventurer-led</div>
+        <div class="arch-card-name">Inventive Pathfinder</div>
+        <div class="arch-card-tagline" style="color:var(--a-amber);">Visionary Propulsion</div>
+        <div class="arch-card-desc">Finds new paths by systematically taking apart existing assumptions. Explores uncharted territory through technical mastery and rapid experimentation, using a rigorous analytical filter to determine what is worth keeping and what should be discarded. Doesn't just say "do it differently" but explains precisely why the current approach is flawed.</div>
+        <span class="arch-card-mode" style="background:rgba(224,92,42,0.15); color:var(--driver);">Driver Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-3" style="border-top-color:var(--a-amber);">
+        <div class="arch-card-code">A / R &nbsp;·&nbsp; Adventurer-led</div>
+        <div class="arch-card-name">Practical Builder</div>
+        <div class="arch-card-tagline" style="color:var(--a-amber);">Constructive Agility</div>
+        <div class="arch-card-desc">Turns ambitious ideas into tangible results through disciplined execution. Pairs the drive for the horizon with a requirement for methodical precision, turning ambitious dreams into undeniable reality. Identifies the goal with boldness, then delivers it with precision. The person who actually gets things built.</div>
+        <span class="arch-card-mode" style="background:rgba(107,36,128,0.15); color:var(--translator);">Translator Mode</span>
+      </div>
+
+      <!-- REALIST-LED -->
+      <div class="arch-card-full reveal reveal-delay-1" style="border-top-color:var(--r-green);">
+        <div class="arch-card-code">R / S &nbsp;·&nbsp; Realist-led</div>
+        <div class="arch-card-name">Steady Harmoniser</div>
+        <div class="arch-card-tagline" style="color:var(--r-green);">Peaceful Continuity</div>
+        <div class="arch-card-desc">Provides operational consistency through warmth and loyalty. Maintains long-term stability through group alignment, noticing when someone is struggling before anyone else does. Believes a stable system is one where everyone feels included and the social fabric is as strong as the operational process.</div>
+        <span class="arch-card-mode" style="background:rgba(29,61,143,0.2); color:#6B8FE8;">Custodian Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-2" style="border-top-color:var(--r-green);">
+        <div class="arch-card-code">R / T &nbsp;·&nbsp; Realist-led</div>
+        <div class="arch-card-name">Careful Guardian</div>
+        <div class="arch-card-tagline" style="color:var(--r-green);">Absolute Reliability</div>
+        <div class="arch-card-desc">Ensures every process is followed and every standard is met, and genuinely understands why each one matters. Protects system integrity through rigorous analysis and duty, identifying and mitigating risks before they become systemic failures. The person who remembers why the rule exists and won't let you cut corners.</div>
+        <span class="arch-card-mode" style="background:rgba(29,61,143,0.2); color:#6B8FE8;">Custodian Mode</span>
+      </div>
+
+      <div class="arch-card-full reveal reveal-delay-3" style="border-top-color:var(--r-green);">
+        <div class="arch-card-code">R / A &nbsp;·&nbsp; Realist-led</div>
+        <div class="arch-card-name">Resilient Enabler</div>
+        <div class="arch-card-tagline" style="color:var(--r-green);">Adaptive Endurance</div>
+        <div class="arch-card-desc">Creates stable platforms that allow others to take risks safely. Steady under normal conditions, fast to adapt when things go wrong. Builds the foundations upon which others can explore, ensuring that innovation never compromises structural integrity. The person you want in an emergency.</div>
+        <span class="arch-card-mode" style="background:rgba(107,36,128,0.15); color:var(--translator);">Translator Mode</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- THEORIES -->
+<section id="theories">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The foundations</div>
+      <h2 class="section-title">Seven theories.<br><em>All validated. All necessary.</em></h2>
+      <p class="section-body">STAR does not invent new psychology. It translates the best of what already exists. Each of the seven pillars is a peer-reviewed, empirically grounded theory; STAR's contribution is assembling them into a single, coherent operating system.</p>
+    </div>
+    <div class="theories-accordion reveal reveal-delay-2">
+
+      <div class="theory-item open">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">SDT</span>
+            <span class="theory-title">Self-Determination Theory</span>
+          </div>
+          <span class="theory-role">The Motivation Engine</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Developed by Deci and Ryan, SDT identifies three universal psychological needs that underpin all human motivation: Autonomy (the need to feel that one's actions are self-endorsed rather than imposed), Competence (the need to feel effective and capable), and Relatedness (the need to feel genuinely connected to others). These are not cultural preferences or personality quirks; they are universal requirements for psychological flourishing. When all three are supported, motivation becomes autonomous, persistent, and high-quality. When any one is thwarted, motivation becomes fragile, controlled, or absent altogether. In STAR, SDT explains which need is dominant for each mindset: Socialisers run primarily on Relatedness, Thinkers on Competence, Adventurers on Autonomy, and Realists on Stability.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Socialisers: Relatedness as primary fuel</div>
+              <div class="theory-star-link">Thinkers: Competence as primary fuel</div>
+              <div class="theory-star-link">Adventurers: Autonomy as primary fuel</div>
+              <div class="theory-star-link">Realists: Stability as primary fuel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">OCEAN</span>
+            <span class="theory-title">Big Five Personality Model</span>
+          </div>
+          <span class="theory-role">The Personality Chassis</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">The Big Five, or OCEAN model, is the most empirically validated framework in personality psychology. It describes five stable, cross-cultural traits: Openness to Experience (curiosity and imagination), Conscientiousness (discipline and reliability), Extraversion (outward social energy), Agreeableness (cooperation and empathy), and Neuroticism (emotional sensitivity and reactivity). These traits are not stereotypes; they are measurable, heritable tendencies that predict real-world outcomes across careers, relationships, and health. In STAR, OCEAN provides the structural chassis that explains why each mindset has its characteristic strengths and vulnerabilities. Socialisers cluster around high Extraversion and Agreeableness. Thinkers combine high Conscientiousness and Openness with lower Extraversion. Adventurers are high in Openness and Extraversion, lower in Conscientiousness. Realists anchor in high Conscientiousness and Agreeableness with lower Openness.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Openness: links to Adventurers and Thinkers</div>
+              <div class="theory-star-link">Conscientiousness: links to Thinkers and Realists</div>
+              <div class="theory-star-link">Extraversion: links to Socialisers and Adventurers</div>
+              <div class="theory-star-link">Agreeableness: links to Socialisers and Realists</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">DPT</span>
+            <span class="theory-title">Dual Process Theory</span>
+          </div>
+          <span class="theory-role">The Cognitive Processor</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Popularised by Daniel Kahneman, Dual Process Theory distinguishes between two modes of thinking. System 1 is fast, intuitive, emotional, and largely automatic; it operates below conscious awareness and is responsible for snap judgements, gut feelings, and instinctive reactions. System 2 is slow, deliberate, logical, and effortful; it engages when we need to reason carefully, weigh evidence, or override a first impression. Neither is superior; both are essential. The distinction matters because different mindsets have different default tempos. Socialisers and Adventurers lean toward System 1, making fast, emotionally-informed decisions shaped by relational context and momentum. Thinkers and Realists rely more heavily on System 2, preferring to analyse, plan, and gather evidence before committing. Mismatched processing styles are a common source of team friction.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">System 1 defaults: Socialisers, Adventurers</div>
+              <div class="theory-star-link">System 2 defaults: Thinkers, Realists</div>
+              <div class="theory-star-link">Neither is better — both are required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">RFT</span>
+            <span class="theory-title">Regulatory Focus Theory</span>
+          </div>
+          <span class="theory-role">The Directional Compass</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Developed by E. Tory Higgins, Regulatory Focus Theory explains the direction in which motivational energy is channelled. Promotion-focused individuals orient toward growth, advancement, and the pursuit of ideals; they are sensitive to the presence or absence of gains and adopt eager, fast-moving strategies. Prevention-focused individuals orient toward safety, responsibility, and the avoidance of loss; they are sensitive to what could be forfeited and adopt vigilant, careful strategies. Everyone is capable of both modes, but most carry a stable default. In STAR, Socialisers and Adventurers lean toward Promotion, energised by possibility and collective momentum. Thinkers and Realists lean toward Prevention, motivated by correctness and the protection of what already works. A message framed as opportunity will land differently from one framed as risk-avoidance, even if the underlying content is identical.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Promotion default: Socialisers, Adventurers</div>
+              <div class="theory-star-link">Prevention default: Thinkers, Realists</div>
+              <div class="theory-star-link">SDT fuel + RFT direction = complete motivational profile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">SIT</span>
+            <span class="theory-title">Social Identity Theory</span>
+          </div>
+          <span class="theory-role">The Relational Filter</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Social Identity Theory, developed by Henri Tajfel and John Turner, demonstrates that identity is not purely individual. We define ourselves partly through the groups we belong to, the values those groups represent, and the boundaries we draw between ourselves and others. This group membership shapes behaviour profoundly, driving loyalty, trust, cooperation, and conflict. In STAR, each mindset has a characteristic tribal preference. Socialisers seek belonging within warm, cohesive in-groups. Thinkers align with intellectually or values-driven communities. Adventurers resist conformity but form intense subcultures built around shared unconventionality. Realists anchor their identity in stable, heritage-based groups such as families, institutions, and long-standing professional communities. Understanding these tribal dynamics explains why change programmes fail, why teams fragment, and why some messages unite while others divide.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Socialisers: warm, cohesive in-groups</div>
+              <div class="theory-star-link">Thinkers: values and intellect-based tribes</div>
+              <div class="theory-star-link">Adventurers: counterculture, unconventional circles</div>
+              <div class="theory-star-link">Realists: heritage, institutional, stable groups</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">CBT</span>
+            <span class="theory-title">Cognitive Bias Theory</span>
+          </div>
+          <span class="theory-role">The Distortion Filter</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Cognitive biases are the predictable mental shortcuts that distort our perception of reality under conditions of speed, ambiguity, or pressure. They are not signs of poor intelligence; they are structural features of human cognition that emerge from System 1 processing. STAR maps these biases onto each mindset as a predictable "bias fingerprint," allowing practitioners to anticipate decision-making errors before they occur. Crucially, STAR reframes biases not as flaws to be corrected but as distorted strengths: the Socialiser's Optimism Bias is the shadow side of their relational resilience; the Realist's Loss Aversion is the shadow side of their protective consistency. Understanding bias profiles enables leaders to design better team structures, communicators to anticipate where messages will misfire, and coaches to help individuals recognise their own thinking traps.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Socialisers: Halo Effect, Bandwagon, In-group Bias</div>
+              <div class="theory-star-link">Thinkers: Confirmation Bias, Sunk Cost, Information Bias</div>
+              <div class="theory-star-link">Adventurers: Overconfidence, Novelty Bias, Recency Bias</div>
+              <div class="theory-star-link">Realists: Loss Aversion, Status Quo, Negativity Bias</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="theory-item">
+        <div class="theory-header" onclick="toggleTheory(this)">
+          <div class="theory-left">
+            <span class="theory-abbr">AToE</span>
+            <span class="theory-title">Appraisal Theory of Emotion</span>
+          </div>
+          <span class="theory-role">The Emotional Filter</span>
+          <div class="theory-chevron"></div>
+        </div>
+        <div class="theory-body">
+          <div class="theory-body-inner">
+            <div class="theory-body-text">Appraisal Theory holds that emotions are not simply triggered by events; they arise from our evaluation of those events in relation to our own goals, values, and perceived capacity to cope. The same event — a redundancy announcement, a new project, a critical piece of feedback — will generate radically different emotional responses depending on the mindset of the person receiving it. A Socialiser appraises events through the lens of belonging vs. rejection; a Thinker through logic, fairness, and coherence; an Adventurer through freedom, novelty, and the presence of constraint; a Realist through stability, predictability, and the threat of disruption. This theory explains why well-intentioned communications so often land badly: not because the message was wrong, but because the emotional filter of the recipient was never considered. STAR makes those filters visible and predictable.</div>
+            <div class="theory-star-links">
+              <div class="theory-star-link">Socialisers: belonging vs. rejection</div>
+              <div class="theory-star-link">Thinkers: logic, fairness, and coherence</div>
+              <div class="theory-star-link">Adventurers: freedom vs. constraint</div>
+              <div class="theory-star-link">Realists: stability vs. disruption</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING MODES FULL -->
+<section id="modes-full">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--gold);">The structural overlay</div>
+      <h2 class="section-title" style="color:var(--cream);">Four operating modes.<br><em>How people function in teams.</em></h2>
+      <p class="section-body">Above and across the twelve archetypes sits a second layer of analysis. Operating Modes describe the functional energy a person brings to a collective. They cut across mindset family boundaries entirely, meaning a Socialiser and a Thinker can share the same mode. Every high-performing team needs all four present.</p>
+    </div>
+    <div class="modes-full-grid reveal reveal-delay-2">
+
+      <div class="mode-full-card" style="background:#1A0E08;">
+        <div class="mode-full-stripe" style="background:var(--driver);"></div>
+        <div class="mode-full-name">Driver</div>
+        <div class="mode-full-energy">Forward Energy</div>
+        <div class="mode-full-desc">Drivers create momentum. They break inertia, pull others into motion, and set the emotional tempo of a team. Their energy is fast, outward, and oriented toward what could be gained. They are the reason things start, the force that transforms strategy from a document into a direction of travel. In any system, Drivers are the ignition.</div>
+        <div class="mode-full-consequence">Without them: strategy becomes analysis and planning becomes an end in itself.</div>
+        <div class="mode-full-archetypes">Archetypes in this mode</div>
+        <div class="mode-full-arch-list">
+          <span class="mode-arch-tag">Expressive Energiser (S/A)</span>
+          <span class="mode-arch-tag">Energetic Catalyst (A/S)</span>
+          <span class="mode-arch-tag">Inventive Pathfinder (A/T)</span>
+        </div>
+      </div>
+
+      <div class="mode-full-card" style="background:#060E1C;">
+        <div class="mode-full-stripe" style="background:var(--custodian);"></div>
+        <div class="mode-full-name">Custodian</div>
+        <div class="mode-full-energy">Holding Energy</div>
+        <div class="mode-full-desc">Custodians ensure things hold. They protect standards, catch errors before they compound, and maintain the quality that gives a team its credibility. Their energy is steady, inward, and oriented toward what could be lost. They are not resistant to progress; they are resistant to careless progress, and that distinction matters enormously in any high-stakes environment.</div>
+        <div class="mode-full-consequence">Without them: corners get cut, standards erode, and the team accumulates risks it cannot see.</div>
+        <div class="mode-full-archetypes">Archetypes in this mode</div>
+        <div class="mode-full-arch-list">
+          <span class="mode-arch-tag">Precise Analyst (T/R)</span>
+          <span class="mode-arch-tag">Steady Harmoniser (R/S)</span>
+          <span class="mode-arch-tag">Careful Guardian (R/T)</span>
+        </div>
+      </div>
+
+      <div class="mode-full-card" style="background:#100618;">
+        <div class="mode-full-stripe" style="background:var(--translator);"></div>
+        <div class="mode-full-name">Translator</div>
+        <div class="mode-full-energy">Dual-State Energy</div>
+        <div class="mode-full-desc">Translators convert between competing energies. They hold forward momentum and structural integrity in simultaneous operation, finding the workable path when Drivers and Custodians collide. Their gift is the ability to understand both urgency and caution not as opposites but as complementary requirements, and to synthesise them into a decision that the whole team can commit to.</div>
+        <div class="mode-full-consequence">Without them: strategy sessions become battlegrounds and decisions oscillate between reckless leaps and paralysed caution.</div>
+        <div class="mode-full-archetypes">Archetypes in this mode</div>
+        <div class="mode-full-arch-list">
+          <span class="mode-arch-tag">Strategic Explorer (T/A)</span>
+          <span class="mode-arch-tag">Practical Builder (A/R)</span>
+          <span class="mode-arch-tag">Resilient Enabler (R/A)</span>
+        </div>
+      </div>
+
+      <div class="mode-full-card" style="background:#021612;">
+        <div class="mode-full-stripe" style="background:var(--aligner);"></div>
+        <div class="mode-full-name">Aligner</div>
+        <div class="mode-full-energy">Connective Energy</div>
+        <div class="mode-full-desc">Aligners ensure the team functions as a collective rather than a collection of individuals. They maintain trust, sense friction before it surfaces, and create the conditions under which robust disagreement can coexist with genuine collaboration. They are often the least visible people in a room and among the most important: the ones who hold the relational architecture together while everyone else focuses on the task.</div>
+        <div class="mode-full-consequence">Without them: the team fragments silently from the inside.</div>
+        <div class="mode-full-archetypes">Archetypes in this mode</div>
+        <div class="mode-full-arch-list">
+          <span class="mode-arch-tag">Thoughtful Advisor (S/T)</span>
+          <span class="mode-arch-tag">Grounded Connector (S/R)</span>
+          <span class="mode-arch-tag">Structured Collaborator (T/S)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section id="applications">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Real-world utility</div>
+      <h2 class="section-title">Built for<br><em>application</em></h2>
+      <p class="section-body">STAR is not a theory that lives on a shelf. It is designed for immediate operational utility, giving practitioners the tools to understand, communicate with, motivate, and design for the full range of human diversity.</p>
+    </div>
+    <div class="apps-grid">
+      <div class="app-card reveal reveal-delay-1">
+        <div class="app-icon">🧭</div>
+        <div class="app-title">Leadership</div>
+        <div class="app-body">Move from command and control to the stewardship of engagement. Match your motivational approach to each person's psychological needs: autonomy for Adventurers, clarity for Thinkers, belonging for Socialisers, stability for Realists.</div>
+      </div>
+      <div class="app-card reveal reveal-delay-2">
+        <div class="app-icon">📢</div>
+        <div class="app-title">Communication</div>
+        <div class="app-body">Design messages that land with all four mindsets simultaneously. Weave belonging, logic, novelty, and reassurance into a single communication so that each audience finds its own reason to care.</div>
+      </div>
+      <div class="app-card reveal reveal-delay-3">
+        <div class="app-icon">🎨</div>
+        <div class="app-title">Marketing & Brand</div>
+        <div class="app-body">Shift from demographic segmentation to mindset-based understanding. Two people with identical demographics may respond to the same message in entirely opposite ways. STAR tells you why, and what to do about it.</div>
+      </div>
+      <div class="app-card reveal reveal-delay-1">
+        <div class="app-icon">🏫</div>
+        <div class="app-title">Education & Learning</div>
+        <div class="app-body">Enable inclusive pedagogy by framing assignments that feel meaningful to every learner. Inquiry-based projects for Thinkers and Adventurers; structured practice for Realists; collaborative discussion for Socialisers.</div>
+      </div>
+      <div class="app-card reveal reveal-delay-2">
+        <div class="app-icon">🤝</div>
+        <div class="app-title">Coaching & Development</div>
+        <div class="app-body">Give individuals a language for their own psychology. The STAR profile is not a judgement; it is a mirror, providing extraordinary clarity about how someone processes value, risk, and belonging.</div>
+      </div>
+      <div class="app-card reveal reveal-delay-3">
+        <div class="app-icon">⚙️</div>
+        <div class="app-title">Team Design</div>
+        <div class="app-body">Build balanced teams with intention. Diagnose operating mode gaps before they become performance problems. Understand why a team is stalling, accelerating recklessly, or quietly falling apart from the inside.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS OTHERS -->
+<section id="versus">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Honest comparison</div>
+      <h2 class="section-title">Why STAR,<br><em>not the rest?</em></h2>
+    </div>
+    <table class="versus-table reveal reveal-delay-2">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>MBTI</th>
+          <th>DISC</th>
+          <th>Insights</th>
+          <th class="star-col">STAR ®</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Scientific basis</strong></td>
+          <td>Weak; poor test-retest reliability and no predictive validity</td>
+          <td>Limited; no peer-reviewed foundation</td>
+          <td>Based on Jungian theory; moderate validity</td>
+          <td class="star-col">Seven validated academic theories, each with strong empirical support</td>
+        </tr>
+        <tr>
+          <td><strong>Dynamic vs. fixed</strong></td>
+          <td>Fixed types; binary sorting</td>
+          <td>Fixed quadrants</td>
+          <td>Fixed colour energy types</td>
+          <td class="star-col">Fluid orientations that shift with context, stress, and environment</td>
+        </tr>
+        <tr>
+          <td><strong>Explains motivation</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>Partially</td>
+          <td class="star-col">Yes, via Self-Determination Theory at the motivational core</td>
+        </tr>
+        <tr>
+          <td><strong>Explains cognition</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td class="star-col">Yes, via Dual Process Theory and Cognitive Bias mapping</td>
+        </tr>
+        <tr>
+          <td><strong>Plain-English labels</strong></td>
+          <td>No (INTJ, ENFP etc.)</td>
+          <td>Partial (Dominance, Influence…)</td>
+          <td>No (Colour codes)</td>
+          <td class="star-col">Yes, from first encounter: Socialiser, Thinker, Adventurer, Realist carry meaning immediately</td>
+        </tr>
+        <tr>
+          <td><strong>Team-level analysis</strong></td>
+          <td>Limited</td>
+          <td>Limited</td>
+          <td>Moderate</td>
+          <td class="star-col">Yes, through the four Operating Modes structural overlay</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section id="close">
+  <div class="reveal" style="max-width:800px; text-align:center; margin:0 auto;">
+    <div class="section-label" style="justify-content:center;">STAR Dynamics</div>
+    <h2 class="close-title">The human operating system for <em>everyone</em> who works with people</h2>
+    <p class="close-body">STAR is not another personality quiz. It is a translation layer between the complexity of human psychology and the practical reality of leadership, communication, education, and design. If you want to understand people, not just label them, this is where you begin.</p>
+    <div class="cta-group">
+      <a href="https://stardynamics.io" class="btn-primary">Explore STAR Dynamics</a>
+      <a href="mailto:david@stardynamics.io" class="btn-secondary">Get in touch</a>
+    </div>
+    <div style="margin-top:64px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--warm-mid);">
+      STAR Framework® &nbsp;·&nbsp; STAR Operating System® &nbsp;·&nbsp; STAR Marketing® &nbsp;·&nbsp; UK Registered Trademarks
+    </div>
+  </div>
+</section>
+
+<script>
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = pct + '%';
+  });
+
+  // Type tabs
+  function showType(id) {
+    document.querySelectorAll('.type-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('type-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  // Theory accordion
+  function toggleTheory(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.theory-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
