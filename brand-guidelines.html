@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR Dynamics — Brand Guidelines 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #1A1814;
+    --bg:        #F7F3EC;
+    --warm-mid:  #6B5B4E;
+    --gold:      #9C7A32;
+    --gold-lt:   #EDE4D0;
+    --s:         #E05A7A;
+    --t:         #2AACB8;
+    --a:         #E8A84C;
+    --r:         #7B5EA7;
+    --driver:    #E05C2A;
+    --custodian: #1D3D8F;
+    --translator:#6B2480;
+    --aligner:   #00786B;
+    --rule:      rgba(26,24,20,0.1);
+    --card-bg:   #FFFFFF;
+    --section-alt: #EDE8DF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--section-alt);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(156,122,50,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 0% 100%, rgba(224,90,122,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 80% 90%, rgba(42,172,184,0.06) 0%, transparent 50%);
+  }
+  .cover-rule { width: 64px; height: 1px; background: var(--gold); margin-bottom: 32px; }
+  .cover-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 300; line-height: 0.95;
+    color: var(--ink); margin-bottom: 32px;
+  }
+  .cover h1 em { font-style: italic; color: var(--gold); }
+  .cover-sub {
+    font-size: 16px; font-weight: 300;
+    color: rgba(26,24,20,0.6); max-width: 520px;
+    line-height: 1.7; margin-bottom: 48px;
+  }
+  .cover-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    border-top: 1px solid rgba(26,24,20,0.12);
+    padding-top: 32px;
+  }
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-label { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(26,24,20,0.4); }
+  .cover-meta-value { font-size: 13px; font-weight: 400; color: rgba(26,24,20,0.65); }
+  .cover-stars {
+    position: absolute; top: 80px; right: 80px;
+    display: flex; gap: 4px;
+  }
+  .cover-star {
+    width: 48px; height: 4px; border-radius: 2px;
+  }
+
+  /* ── NAV (print-hidden) ── */
+  .doc-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(26,24,20,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 80px;
+    display: flex; gap: 0; overflow-x: auto;
+  }
+  .doc-nav a {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(26,24,20,0.4);
+    text-decoration: none; padding: 16px 16px;
+    white-space: nowrap; border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .doc-nav a:hover { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* ── LAYOUT ── */
+  .chapter {
+    max-width: 900px; margin: 0 auto;
+    padding: 96px 80px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .chapter-alt { background: var(--section-alt); max-width: 100%; }
+  .chapter-alt .chapter-inner { max-width: 900px; margin: 0 auto; padding: 96px 80px; }
+  .chapter-dark { background: var(--section-alt); max-width: 100%; }
+  .chapter-dark .chapter-inner { max-width: 900px; margin: 0 auto; padding: 96px 80px; }
+
+  /* ── CHAPTER HEADER ── */
+  .ch-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .ch-num::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .ch-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--ink); margin-bottom: 32px;
+  }
+  .ch-title em { font-style: italic; color: var(--gold); }
+  .ch-title-light { color: var(--ink); }
+  .ch-intro {
+    font-size: 16px; font-weight: 300; line-height: 1.8;
+    color: rgba(26,24,20,0.65); max-width: 680px;
+    border-left: 3px solid var(--gold);
+    padding-left: 24px; margin-bottom: 56px;
+  }
+  .ch-intro-light { color: rgba(26,24,20,0.65); }
+
+  /* ── PROSE ── */
+  .prose { max-width: 680px; }
+  .prose p {
+    font-size: 15px; font-weight: 300; line-height: 1.85;
+    color: rgba(26,24,20,0.72); margin-bottom: 20px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 500; color: var(--ink); }
+
+  /* ── TWO COLUMN ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin: 40px 0; }
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 40px 0; }
+  .four-col { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin: 40px 0; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; margin-top: 56px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .section-label:first-child { margin-top: 0; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 300; color: var(--ink); line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-title-light { color: var(--ink); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    background: rgba(156,122,50,0.07);
+    border-radius: 0 4px 4px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 400; font-style: italic;
+    line-height: 1.6; color: var(--ink);
+    margin: 32px 0;
+  }
+  .callout-dark { background: rgba(156,122,50,0.08); color: var(--ink); }
+  .callout cite {
+    display: block; margin-top: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; font-style: normal;
+    color: rgba(26,24,20,0.4);
+  }
+  .callout-dark cite { color: rgba(26,24,20,0.4); }
+
+  /* ── COLOUR SWATCHES ── */
+  .swatch-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 32px 0; }
+  .swatch {
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,24,20,0.1);
+  }
+  .swatch-block { height: 80px; }
+  .swatch-info { padding: 12px 14px; background: #FFFFFF; border-top: 1px solid rgba(26,24,20,0.07); }
+  .swatch-name { font-size: 11px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .swatch-hex { font-size: 10px; font-weight: 400; color: var(--warm-mid); letter-spacing: 0.05em; font-family: 'DM Sans', sans-serif; }
+
+  .swatch-grid-modes { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin: 32px 0; }
+
+  /* ── TYPE SPECIMEN ── */
+  .type-specimen { margin: 32px 0; }
+  .type-row {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 32px; align-items: start;
+    padding: 24px 0; border-bottom: 1px solid var(--rule);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta { padding-top: 4px; }
+  .type-meta-name { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .type-meta-spec { font-size: 11px; font-weight: 300; color: var(--warm-mid); line-height: 1.6; }
+  .type-sample-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; color: var(--ink); line-height: 1.05;
+  }
+  .type-sample-body { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(26,24,20,0.7); }
+  .type-sample-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .type-sample-ui { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,24,20,0.5); }
+
+  /* ── MINDSET CARDS ── */
+  .mindset-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin: 32px 0; }
+  .mc {
+    border-radius: 6px; padding: 28px 22px;
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .mc::before {
+    content: ''; position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%; background: rgba(255,255,255,0.07);
+  }
+  .mc-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px; font-weight: 600; line-height: 1;
+    color: rgba(255,255,255,0.12); position: absolute;
+    top: 8px; right: 12px;
+  }
+  .mc-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 6px; }
+  .mc-drive { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin-bottom: 14px; }
+  .mc-hex { font-size: 11px; font-weight: 400; opacity: 0.6; font-family: 'DM Sans', sans-serif; margin-bottom: 12px; }
+  .mc-body { font-size: 12px; font-weight: 300; line-height: 1.65; opacity: 0.82; }
+
+  /* ── DO / DON'T TABLE ── */
+  .dd-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+  .dd-table th {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 10px 16px;
+    text-align: left; border-bottom: 2px solid var(--rule);
+  }
+  .dd-table th.do { color: var(--aligner); border-bottom-color: var(--aligner); }
+  .dd-table th.dont { color: #C0392B; border-bottom-color: #C0392B; }
+  .dd-table td {
+    padding: 13px 16px; font-size: 13px; font-weight: 300;
+    line-height: 1.55; border-bottom: 1px solid rgba(26,24,20,0.06);
+    vertical-align: top;
+  }
+  .dd-table td.do { color: rgba(26,24,20,0.75); }
+  .dd-table td.dont { color: rgba(26,24,20,0.5); text-decoration: line-through; text-decoration-color: rgba(192,57,43,0.4); }
+  .dd-table tr:last-child td { border-bottom: none; }
+
+  /* ── VOICE PILLARS ── */
+  .pillar-list { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .pillar-item {
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 24px; padding: 28px 0;
+    border-bottom: 1px solid var(--rule); align-items: start;
+  }
+  .pillar-item:last-child { border-bottom: none; }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; color: var(--gold);
+    line-height: 1; padding-top: 2px;
+  }
+  .pillar-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .pillar-content p { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(26,24,20,0.6); }
+
+  /* ── CHANNEL CARDS ── */
+  .channel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin: 32px 0; }
+  .channel-card {
+    background: var(--card-bg); border-radius: 6px;
+    padding: 28px; border: 1px solid rgba(26,24,20,0.08);
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 1px 3px rgba(26,24,20,0.06);
+  }
+  .channel-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 6px; }
+  .channel-tone { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .channel-body { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(26,24,20,0.6); margin-bottom: 14px; }
+  .channel-example {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 400; font-style: italic;
+    line-height: 1.6; color: rgba(26,24,20,0.75);
+    border-left: 2px solid rgba(156,122,50,0.3);
+    padding-left: 14px;
+  }
+
+  /* ── TRAITS TABLE ── */
+  .traits-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+  .traits-table th {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(26,24,20,0.35);
+    padding: 10px 16px; text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+  .traits-table td {
+    padding: 14px 16px; font-size: 13px; font-weight: 300;
+    line-height: 1.6; border-bottom: 1px solid rgba(26,24,20,0.05);
+    color: rgba(26,24,20,0.65); vertical-align: top;
+  }
+  .traits-table td:first-child { font-weight: 500; color: var(--ink); }
+  .traits-table tr:hover td { background: rgba(26,24,20,0.02); }
+
+  /* ── OUTREACH CARDS ── */
+  .outreach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 32px 0; }
+  .outreach-card {
+    background: var(--card-bg); border-radius: 6px;
+    padding: 28px; border: 1px solid rgba(26,24,20,0.08);
+    box-shadow: 0 1px 3px rgba(26,24,20,0.06);
+  }
+  .outreach-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .outreach-card p { font-size: 12px; font-weight: 300; line-height: 1.7; color: rgba(26,24,20,0.55); }
+  .outreach-card .tag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+
+  /* ── STAGE FLOW ── */
+  .stage-flow { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .stage-item {
+    display: grid; grid-template-columns: 40px 1fr;
+    gap: 20px; position: relative;
+  }
+  .stage-item:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 19px; top: 40px;
+    width: 2px; height: calc(100% + 8px);
+    background: rgba(156,122,50,0.2);
+  }
+  .stage-num-wrap { display: flex; flex-direction: column; align-items: center; padding-top: 2px; }
+  .stage-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--gold-lt); border: 1.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .stage-body { padding: 6px 0 40px; }
+  .stage-body h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 6px;
+  }
+  .stage-body p { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(26,24,20,0.6); }
+
+  /* ── QUICK REFERENCE ── */
+  .qr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+  .qr-card {
+    border-radius: 6px; padding: 28px;
+    border: 1px solid rgba(26,24,20,0.08);
+    background: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(26,24,20,0.06);
+  }
+  .qr-card.yes { border-top: 3px solid var(--aligner); }
+  .qr-card.no { border-top: 3px solid #C0392B; }
+  .qr-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 16px;
+  }
+  .qr-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .qr-list li { font-size: 13px; font-weight: 300; line-height: 1.55; color: rgba(26,24,20,0.65); padding-left: 16px; position: relative; }
+  .qr-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 1px; background: var(--gold); }
+
+  /* ── ARCHETYPE MINI GRID ── */
+  .arch-mini { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 32px 0; }
+  .arch-col-header {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 8px 12px;
+    border-radius: 3px; color: #fff; text-align: center;
+    margin-bottom: 8px;
+  }
+  .arch-mini-item {
+    background: var(--card-bg); border-radius: 4px;
+    padding: 10px 12px; margin-bottom: 6px;
+    border: 1px solid rgba(26,24,20,0.07);
+    font-size: 11px; font-weight: 400; color: rgba(26,24,20,0.7);
+    border-left: 2px solid transparent;
+  }
+
+  /* ── LOGO USAGE ── */
+  .logo-display {
+    background: #2A2520; border-radius: 6px;
+    padding: 48px; display: flex; flex-direction: column;
+    align-items: flex-start; gap: 8px; margin: 24px 0;
+  }
+  .logo-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #F7F3EC;
+  }
+  .logo-tagline {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: rgba(156,122,50,0.9);
+  }
+  .logo-dont-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 24px 0; }
+  .logo-dont-item {
+    background: rgba(26,24,20,0.04); border-radius: 6px;
+    padding: 24px; border: 1px solid rgba(26,24,20,0.08);
+    text-align: center;
+  }
+  .logo-dont-label { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: #C0392B; margin-top: 12px; }
+
+  /* ── SPACING ── */
+  .spacer-sm { height: 24px; }
+  .spacer { height: 48px; }
+  .rule { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--section-alt);
+    padding: 48px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .doc-footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(26,24,20,0.45);
+  }
+  .doc-footer-meta { font-size: 11px; color: rgba(26,24,20,0.35); letter-spacing: 0.1em; }
+
+  /* ── PRINT ── */
+  @media print {
+    .doc-nav { display: none; }
+    .cover { min-height: auto; padding: 60px; }
+    .chapter, .chapter-alt .chapter-inner, .chapter-dark .chapter-inner { padding: 48px 60px; }
+  }
+
+  @media (max-width: 900px) {
+    .cover { padding: 48px 32px; }
+    .chapter { padding: 64px 32px; }
+    .chapter-alt .chapter-inner, .chapter-dark .chapter-inner { padding: 64px 32px; }
+    .two-col, .three-col, .mindset-cards, .four-col, .arch-mini { grid-template-columns: 1fr 1fr; }
+    .swatch-grid { grid-template-columns: repeat(3,1fr); }
+    .swatch-grid-modes { grid-template-columns: repeat(2,1fr); }
+    .doc-nav { padding: 0 24px; }
+    .doc-footer { padding: 32px; flex-direction: column; gap: 12px; }
+  }
+  @media (max-width: 600px) {
+    .two-col, .three-col, .mindset-cards, .four-col, .arch-mini,
+    .channel-grid, .qr-grid, .outreach-grid { grid-template-columns: 1fr; }
+    .swatch-grid, .swatch-grid-modes { grid-template-columns: repeat(2,1fr); }
+    .type-row { grid-template-columns: 1fr; }
+    .cover-stars { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover" id="top">
+  <div class="cover-bg"></div>
+  <div class="cover-stars">
+    <div class="cover-star" style="background:var(--s);"></div>
+    <div class="cover-star" style="background:var(--t);"></div>
+    <div class="cover-star" style="background:var(--a);"></div>
+    <div class="cover-star" style="background:var(--r);"></div>
+  </div>
+  <div style="position:relative;">
+    <div class="cover-rule"></div>
+    <div class="cover-eyebrow">STAR Dynamics · Brand Guidelines</div>
+    <h1>The definitive guide<br>to <em>our identity</em></h1>
+    <p class="cover-sub">Visual identity, voice and tone, language standards, outreach guidance, and everything that makes STAR Dynamics unmistakably itself — on every page, in every meeting, and across every channel.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Version</span>
+        <span class="cover-meta-value">2.0 · 2025</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Classification</span>
+        <span class="cover-meta-value">Confidential</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Award</span>
+        <span class="cover-meta-value">NYC Big Book Award 2025</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">Tagline</span>
+        <span class="cover-meta-value">The Future. Now.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="doc-nav">
+  <a href="#identity">Identity</a>
+  <a href="#colours">Colours</a>
+  <a href="#typography">Typography</a>
+  <a href="#mindsets-brand">Mindsets</a>
+  <a href="#voice">Voice</a>
+  <a href="#language">Language</a>
+  <a href="#channels">Channels</a>
+  <a href="#outreach">Outreach</a>
+  <a href="#framework-talk">The Framework</a>
+  <a href="#anti-voice">Anti-Voice</a>
+  <a href="#quickref">Quick Ref</a>
+</nav>
+
+
+<!-- 01 · BRAND IDENTITY -->
+<section id="identity">
+<div class="chapter">
+  <div class="ch-num">01 · Brand Identity</div>
+  <h2 class="ch-title">Who we are.<br><em>Why it matters.</em></h2>
+  <div class="ch-intro">STAR Dynamics is a behavioural science consultancy with a singular focus: making the science of human behaviour genuinely useful to the people who need it most. We are not a modest iteration on what came before. We are the successor to it.</div>
+
+  <div class="two-col">
+    <div class="prose">
+      <p>The STAR Framework synthesises seven established psychological theories into four primary mindsets and twelve distinct archetypes. It sits at the intersection of academic rigour and everyday practicality, and was designed from the ground up for the AI era, not retrofitted to it.</p>
+      <p>Where DISC, Insights Discovery, and MBTI were built for a world that no longer quite exists, STAR was built for the world as it is today and the one that is fast arriving. The future of understanding human behaviour is dynamic, context-sensitive, and AI-ready. Our entire framework is built around those principles.</p>
+      <p>The Human Operating System is not merely a tagline. It is a precise description of what STAR does: it gives organisations and individuals a consistent, evidence-based architecture for understanding how people think, decide, and act.</p>
+    </div>
+    <div>
+      <div class="callout">"The tools that dominated the last three decades were genuinely valuable in their time. Their time is passing. STAR was built for what comes next."<cite>— Positioning Statement</cite></div>
+      <div class="spacer-sm"></div>
+      <div style="background:var(--section-alt); border-radius:6px; padding:28px; border:1px solid rgba(26,24,20,0.08);">
+        <div class="section-label" style="margin-top:0;">Our Positioning</div>
+        <p style="font-size:13px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.65);">STAR Dynamics is the next generation of behavioural science in practice. Built on solid academic foundations, designed for the AI age, and created for leaders, communicators, and organisations who refuse to be left behind by the future.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">What makes us different</div>
+  <table class="traits-table">
+    <thead>
+      <tr>
+        <th>Brand Trait</th>
+        <th>What this means in practice</th>
+        <th>Never</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Academically grounded</td><td>Seven rigorously validated psychological theories, synthesised into one coherent, practical model</td><td>A simplification or a shortcut</td></tr>
+      <tr><td>AI-ready</td><td>Built with the architecture of modern intelligence in mind; integrates naturally with AI platforms and workflows</td><td>Bolted on to a legacy system</td></tr>
+      <tr><td>Forward-looking</td><td>Designed for where business is going, not where it has been</td><td>Nostalgic or incremental</td></tr>
+      <tr><td>Human-centred</td><td>Deeply empathetic; rooted in how real people actually behave and make decisions under pressure</td><td>Cold, clinical, or algorithmic</td></tr>
+      <tr><td>Practically useful</td><td>Every insight translates into action that leaders and communicators can take today</td><td>Theoretical for the sake of it</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Logo & Wordmark</div>
+  <p class="prose" style="font-size:14px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.65); margin-bottom:20px;">The STAR Dynamics wordmark is set in Cormorant Garamond, weight 600, all caps, with 0.12em letter-spacing. It is always accompanied by the tagline <em>The Future. Now.</em> in formal contexts. The four STAR type colours appear as a horizontal rule motif — four equal bars in S/T/A/R colour order.</p>
+  <div class="logo-display">
+    <div class="logo-wordmark">STAR Dynamics</div>
+    <div class="logo-tagline">The Future. Now.</div>
+    <div style="display:flex; gap:4px; margin-top:20px;">
+      <div style="width:40px; height:3px; border-radius:2px; background:var(--s);"></div>
+      <div style="width:40px; height:3px; border-radius:2px; background:var(--t);"></div>
+      <div style="width:40px; height:3px; border-radius:2px; background:var(--a);"></div>
+      <div style="width:40px; height:3px; border-radius:2px; background:var(--r);"></div>
+    </div>
+  </div>
+
+  <div class="section-label">Logo Usage Rules</div>
+  <div class="logo-dont-grid">
+    <div class="logo-dont-item">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(26,24,20,0.2);">star dynamics</div>
+      <div class="logo-dont-label">Never lowercase</div>
+    </div>
+    <div class="logo-dont-item">
+      <div style="font-family:'DM Sans',sans-serif; font-size:22px; font-weight:700; letter-spacing:0.02em; text-transform:uppercase; color:var(--ink);">STAR DYNAMICS</div>
+      <div class="logo-dont-label">Never sans-serif wordmark</div>
+    </div>
+    <div class="logo-dont-item">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--s);">STAR DYNAMICS</div>
+      <div class="logo-dont-label">Never type colour for wordmark</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- 02 · COLOUR -->
+<div class="chapter-alt" id="colours">
+<div class="chapter-inner">
+  <div class="ch-num">02 · Colour System</div>
+  <h2 class="ch-title">Colour with<br><em>meaning.</em></h2>
+  <div class="ch-intro">Every colour in the STAR palette serves a specific semantic function. The four STAR type colours are never used interchangeably or decoratively. The gold anchors authority and editorial quality. The warm off-white and dark ink define the primary surface hierarchy.</div>
+
+  <div class="section-label">Foundation Palette</div>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-block" style="background:#F7F3EC;"></div>
+      <div class="swatch-info"><div class="swatch-name">Warm Off-White</div><div class="swatch-hex">#F7F3EC · Primary background</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#EDE8DF;"></div>
+      <div class="swatch-info"><div class="swatch-name">Warm Parchment</div><div class="swatch-hex">#EDE8DF · Alt sections, footer</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#1A1814;"></div>
+      <div class="swatch-info"><div class="swatch-name">Deep Ink</div><div class="swatch-hex">#1A1814 · Primary text, dark UI</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#9C7A32;"></div>
+      <div class="swatch-info"><div class="swatch-name">Authority Gold</div><div class="swatch-hex">#9C7A32 · Accents, CTAs, labels</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#6B5B4E;"></div>
+      <div class="swatch-info"><div class="swatch-name">Warm Mid</div><div class="swatch-hex">#6B5B4E · Secondary text, metadata</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">The Four STAR Type Colours</div>
+  <p style="font-size:14px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.65); margin-bottom:24px; max-width:640px;">Each type colour is exclusively associated with its mindset. They appear on mindset cards, archetype family headers, section accents, and active state indicators for that type only. They are never used as general decorative colour.</p>
+  <div class="mindset-cards">
+    <div class="mc" style="background:var(--s);">
+      <div class="mc-letter">S</div>
+      <div class="mc-name">Socialiser</div>
+      <div class="mc-drive">Relatedness · Promotion</div>
+      <div class="mc-hex">#E05A7A</div>
+      <div class="mc-body">Rose pink. Warm, connective, relational. Used for all Socialiser-associated elements.</div>
+    </div>
+    <div class="mc" style="background:var(--t);">
+      <div class="mc-letter">T</div>
+      <div class="mc-name">Thinker</div>
+      <div class="mc-drive">Competence · Prevention</div>
+      <div class="mc-hex">#2AACB8</div>
+      <div class="mc-body">Analytical teal. Clear, precise, deliberate. Used for all Thinker-associated elements.</div>
+    </div>
+    <div class="mc" style="background:var(--a);">
+      <div class="mc-letter">A</div>
+      <div class="mc-name">Adventurer</div>
+      <div class="mc-drive">Autonomy · Promotion</div>
+      <div class="mc-hex">#E8A84C</div>
+      <div class="mc-body">Warm amber. Energetic, exploratory, forward-moving. Used for all Adventurer elements.</div>
+    </div>
+    <div class="mc" style="background:var(--r);">
+      <div class="mc-letter">R</div>
+      <div class="mc-name">Realist</div>
+      <div class="mc-drive">Stability · Prevention</div>
+      <div class="mc-hex">#7B5EA7</div>
+      <div class="mc-body">Grounded purple. Dependable, structured, considered. Used for all Realist elements.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Operating Mode Colours</div>
+  <p style="font-size:14px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.65); margin-bottom:24px; max-width:640px;">The four operating mode colours are structurally distinct from the mindset type colours. They are used exclusively in the context of team analysis and operating mode components.</p>
+  <div class="swatch-grid-modes">
+    <div class="swatch">
+      <div class="swatch-block" style="background:#E05C2A;"></div>
+      <div class="swatch-info"><div class="swatch-name">Driver</div><div class="swatch-hex">#E05C2A · Forward energy</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#1D3D8F;"></div>
+      <div class="swatch-info"><div class="swatch-name">Custodian</div><div class="swatch-hex">#1D3D8F · Holding energy</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#6B2480;"></div>
+      <div class="swatch-info"><div class="swatch-name">Translator</div><div class="swatch-hex">#6B2480 · Dual-state energy</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#00786B;"></div>
+      <div class="swatch-info"><div class="swatch-name">Aligner</div><div class="swatch-hex">#00786B · Connective energy</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Colour Usage Rules</div>
+  <table class="traits-table">
+    <thead><tr><th>Context</th><th>Use</th><th>Never</th></tr></thead>
+    <tbody>
+      <tr><td>Primary surfaces</td><td>Warm Off-White (#F7F3EC) for backgrounds; Deep Ink (#1A1814) for text</td><td>Pure white (#FFFFFF) or pure black (#000000) — too cold for the brand</td></tr>
+      <tr><td>Authority accents</td><td>Gold (#9C7A32) for rule lines, labels, eyebrows, CTAs, active states</td><td>Gold as a background fill over large areas</td></tr>
+      <tr><td>Type colours</td><td>Each colour mapped exclusively to its STAR type — never used generically</td><td>Mixing type colours for decorative purposes or using them for non-type content</td></tr>
+      <tr><td>Dark surfaces</td><td>Deep Ink (#1A1814) for hero sections, dark panels, cover pages</td><td>Pure black or any grey-based dark</td></tr>
+      <tr><td>Card surfaces</td><td>White (#FFFFFF) with subtle 1px border and soft shadow on warm background</td><td>Brightly coloured card backgrounds except for mindset type cards</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<!-- 03 · TYPOGRAPHY -->
+<section id="typography">
+<div class="chapter">
+  <div class="ch-num">03 · Typography</div>
+  <h2 class="ch-title">Two typefaces.<br><em>One voice.</em></h2>
+  <div class="ch-intro">STAR Dynamics uses a deliberate two-typeface system: Cormorant Garamond for all display, editorial, and heading use; DM Sans for body copy, UI labels, metadata, and functional text. The contrast between serif authority and sans-serif clarity mirrors the STAR brand itself.</div>
+
+  <div class="type-specimen">
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Display Heading</div>
+        <div class="type-meta-spec">Cormorant Garamond<br>Weight 300<br>clamp(44px → 80px)<br>Line height 1.0<br>Italic em for accent</div>
+      </div>
+      <div>
+        <div class="type-sample-display" style="font-size:clamp(36px,5vw,64px);">The Human<br><em style="color:var(--gold);">Operating System</em></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Section Heading</div>
+        <div class="type-meta-spec">Cormorant Garamond<br>Weight 300<br>clamp(32px → 52px)<br>Line height 1.1</div>
+      </div>
+      <div>
+        <div class="type-sample-display" style="font-size:clamp(28px,3.5vw,44px);">Seven theories.<br><em style="color:var(--gold);">All validated. All necessary.</em></div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Callout / Pull Quote</div>
+        <div class="type-meta-spec">Cormorant Garamond<br>Weight 400, Italic<br>18–20px<br>Line height 1.6</div>
+      </div>
+      <div>
+        <div class="callout" style="margin:0;">"The most effective leaders are not those who found their style and stuck to it."</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Body Copy</div>
+        <div class="type-meta-spec">DM Sans<br>Weight 300<br>15px<br>Line height 1.8<br>rgba(26,24,20,0.72)</div>
+      </div>
+      <div>
+        <div class="type-sample-body">STAR Dynamics is a behavioural science consultancy with a singular focus: making the science of human behaviour genuinely useful to the people who need it most. Every insight translates directly into action that leaders and communicators can take today.</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Eyebrow Label</div>
+        <div class="type-meta-spec">DM Sans<br>Weight 500<br>10–11px<br>Letter spacing 0.25em<br>All caps · Gold</div>
+      </div>
+      <div style="padding-top:8px;">
+        <div class="type-sample-label">The Human Operating System</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Navigation / UI</div>
+        <div class="type-meta-spec">DM Sans<br>Weight 500<br>11px<br>Letter spacing 0.15em<br>All caps</div>
+      </div>
+      <div style="padding-top:8px;">
+        <div class="type-sample-ui">Home &nbsp;·&nbsp; Mindsets &nbsp;·&nbsp; Types &nbsp;·&nbsp; Archetypes &nbsp;·&nbsp; Theories &nbsp;·&nbsp; Modes &nbsp;·&nbsp; Applications</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-meta-name">Mindset Card Name</div>
+        <div class="type-meta-spec">Cormorant Garamond<br>Weight 400<br>26–30px</div>
+      </div>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; padding-top:4px;">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--s);">Socialiser</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--t);">Thinker</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--a);">Adventurer</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--r);">Realist</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Typography Rules</div>
+  <table class="traits-table">
+    <thead><tr><th>Rule</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>All four STAR mindset names are always capitalised</td><td>Socialiser, Thinker, Adventurer, Realist — always initial capital. They are proper nouns within the STAR system.</td></tr>
+      <tr><td>British English throughout</td><td>Behaviour, organisation, colour, recognise. Never Americanised. The framework was authored in British English and that should remain consistent globally.</td></tr>
+      <tr><td>No em-dashes</td><td>Em-dashes interrupt flow and feel aggressive. Use commas, semi-colons, or conjunctions to connect ideas.</td></tr>
+      <tr><td>Italic sparingly</td><td>Italic is reserved for genuine emphasis in display headings (as gold-coloured em elements) and for pull quotes. Never used for mere stylistic decoration.</td></tr>
+      <tr><td>Bold for emphasis, not decoration</td><td>Bold in body copy draws the eye to key claims and terms. Never applied to full sentences or entire paragraphs.</td></tr>
+      <tr><td>Active voice strongly preferred</td><td>"The framework reveals" rather than "insights are revealed by the framework." Active voice has energy; passive voice drains it.</td></tr>
+      <tr><td>No filler openers</td><td>Never begin with "In today's fast-paced world", "It goes without saying", or "At the end of the day." Get directly to the idea.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+
+<!-- 04 · MINDSETS IN BRAND CONTEXT -->
+<div class="chapter-alt" id="mindsets-brand">
+<div class="chapter-inner">
+  <div class="ch-num">04 · Mindsets in Brand Context</div>
+  <h2 class="ch-title">The four types.<br><em>Used correctly.</em></h2>
+  <div class="ch-intro">The four STAR mindsets and twelve archetypes are the product and the identity simultaneously. How they are named, described, and visualised is as much a brand decision as a scientific one. Consistency here is non-negotiable.</div>
+
+  <div class="section-label">Naming Conventions</div>
+  <table class="traits-table">
+    <thead><tr><th>Element</th><th>Correct Form</th><th>Incorrect</th></tr></thead>
+    <tbody>
+      <tr><td>Framework name (first mention)</td><td>the STAR Framework</td><td>The STAR framework, STAR framework, the star framework</td></tr>
+      <tr><td>Framework name (subsequent)</td><td>STAR (informal); the STAR Framework (formal)</td><td>The Framework (unanchored), S.T.A.R.</td></tr>
+      <tr><td>Four mindsets, always</td><td>Socialiser, Thinker, Adventurer, Realist</td><td>socialiser, thinker, adventurer, realist (lower case)</td></tr>
+      <tr><td>Archetype names</td><td>Inventive Pathfinder, Thoughtful Advisor, etc. (initial caps)</td><td>inventive pathfinder, the thoughtful advisor type</td></tr>
+      <tr><td>Operating modes</td><td>Driver, Custodian, Translator, Aligner (initial caps)</td><td>driver mode, custodian-type, driver/custodian</td></tr>
+      <tr><td>Academic foundation</td><td>"seven established theories of behavioural science" (brief); name all seven when precision is required</td><td>"our proprietary methodology", "our unique model"</td></tr>
+      <tr><td>Company name</td><td>STAR Dynamics (always both words, always caps)</td><td>Star Dynamics, STAR dynamics, Stardynamics</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">The Twelve Archetypes</div>
+  <div class="arch-mini">
+    <div>
+      <div class="arch-col-header" style="background:var(--s);">Socialiser</div>
+      <div class="arch-mini-item" style="border-left-color:var(--s);">Thoughtful Advisor <span style="color:var(--warm-mid); font-size:10px;">S/T</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--s);">Expressive Energiser <span style="color:var(--warm-mid); font-size:10px;">S/A</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--s);">Grounded Connector <span style="color:var(--warm-mid); font-size:10px;">S/R</span></div>
+    </div>
+    <div>
+      <div class="arch-col-header" style="background:var(--t);">Thinker</div>
+      <div class="arch-mini-item" style="border-left-color:var(--t);">Structured Collaborator <span style="color:var(--warm-mid); font-size:10px;">T/S</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--t);">Strategic Explorer <span style="color:var(--warm-mid); font-size:10px;">T/A</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--t);">Precise Analyst <span style="color:var(--warm-mid); font-size:10px;">T/R</span></div>
+    </div>
+    <div>
+      <div class="arch-col-header" style="background:var(--a);">Adventurer</div>
+      <div class="arch-mini-item" style="border-left-color:var(--a);">Energetic Catalyst <span style="color:var(--warm-mid); font-size:10px;">A/S</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--a);">Inventive Pathfinder <span style="color:var(--warm-mid); font-size:10px;">A/T</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--a);">Practical Builder <span style="color:var(--warm-mid); font-size:10px;">A/R</span></div>
+    </div>
+    <div>
+      <div class="arch-col-header" style="background:var(--r);">Realist</div>
+      <div class="arch-mini-item" style="border-left-color:var(--r);">Steady Harmoniser <span style="color:var(--warm-mid); font-size:10px;">R/S</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--r);">Careful Guardian <span style="color:var(--warm-mid); font-size:10px;">R/T</span></div>
+      <div class="arch-mini-item" style="border-left-color:var(--r);">Resilient Enabler <span style="color:var(--warm-mid); font-size:10px;">R/A</span></div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:40px;">"The archetypes do not simplify people. They map them — turning psychological insight into actionable intelligence."</div>
+</div>
+</div>
+
+
+<!-- 05 · VOICE & TONE -->
+<section id="voice">
+<div class="chapter">
+  <div class="ch-num">05 · Voice &amp; Tone</div>
+  <h2 class="ch-title">Consistent voice.<br><em>Adaptive tone.</em></h2>
+  <div class="ch-intro">Brand voice is consistent. Tone adapts. The underlying character of how STAR Dynamics communicates remains the same whether we are writing a Substack essay, presenting at a conference, or submitting a client proposal. Tone shifts naturally depending on context. The personality underneath never wavers.</div>
+
+  <div class="section-label">The Five Pillars of the STAR Voice</div>
+  <div class="pillar-list">
+    <div class="pillar-item">
+      <div class="pillar-num">1</div>
+      <div class="pillar-content">
+        <h4>Visionary but Grounded</h4>
+        <p>We speak about the future with confidence and genuine excitement, not as something vague and distant but as something that is already arriving. Our optimism is earned because it is anchored in evidence, in psychology, in data. We look ahead clearly because we understand what is already here. Confidence without evidence is bluster. Evidence without confidence is inertia. STAR communicates neither.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-num">2</div>
+      <div class="pillar-content">
+        <h4>Authoritative without Arrogance</h4>
+        <p>STAR Dynamics knows its subject deeply, and it shows. We write and speak with confidence because our foundations are solid. But authority in our voice never tips into condescension. We are the expert colleague who has spent years studying exactly this, not the professor who marks papers with a red pen. We share what we know generously, and we hold our position firmly, but we never talk down.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-num">3</div>
+      <div class="pillar-content">
+        <h4>Warm and Intellectually Generous</h4>
+        <p>Behavioural science, done well, is an act of empathy. STAR Dynamics communicates that warmth. We are genuinely curious about people, and that curiosity comes through in how we write and speak. We share ideas freely, building understanding rather than gatekeeping it. The radical generosity model — open knowledge-sharing as the primary authority-building strategy — is a fundamental brand principle, not a marketing tactic.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-num">4</div>
+      <div class="pillar-content">
+        <h4>Provocative in the Best Sense</h4>
+        <p>We are not afraid to challenge conventional wisdom, including the conventional wisdom of an industry we are actively disrupting. We say clearly that the old frameworks are showing their age, and that the future belongs to organisations willing to think differently. We do this with conviction and evidence, never contempt. The comparison to legacy tools is fair and encouraged — but always framed as evolution, not attack. "The next generation" not "the competition."</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-num">5</div>
+      <div class="pillar-content">
+        <h4>Clear and Energetic</h4>
+        <p>We do not hide behind jargon. We do not make simple ideas complicated to appear more intelligent. The STAR Framework is sophisticated in its construction and clear in its expression. Sentences have energy. Paragraphs build momentum. Good ideas deserve to be written in a way that makes them irresistible to read. If a paragraph can be cut without losing meaning, it should be cut.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- 06 · LANGUAGE & PHRASES -->
+<div class="chapter-alt" id="language">
+<div class="chapter-inner">
+  <div class="ch-num">06 · Language &amp; Phrases</div>
+  <h2 class="ch-title">Words we own.<br><em>Words we avoid.</em></h2>
+  <div class="ch-intro">The words STAR Dynamics chooses carry as much meaning as the ideas behind them. The following vocabulary standards are not style preferences — they are brand decisions that reflect our confidence in the future, our respect for the science, and our warmth towards the people we work with.</div>
+
+  <div class="section-label">Vocabulary We Own</div>
+  <table class="traits-table">
+    <thead><tr><th>Word / Phrase</th><th>Why we use it</th><th>Usage note</th></tr></thead>
+    <tbody>
+      <tr><td>The Future. Now.</td><td>Our defining rallying call. Captures both urgency and optimism simultaneously.</td><td>Use sparingly for maximum impact. Never diluted or paraphrased.</td></tr>
+      <tr><td>The Human Operating System</td><td>STAR's overarching descriptor. Positions the framework as fundamental infrastructure for organisations.</td><td>Always initial capitals. Not "our operating system" or "a human OS."</td></tr>
+      <tr><td>Behavioural science</td><td>Preferred over 'psychology' when discussing foundations; more contemporary and inclusive.</td><td>Lower case when used generically; "the STAR Framework" is the proper noun.</td></tr>
+      <tr><td>AI-ready</td><td>Positions STAR as a framework designed for the era we are entering, not the one we are leaving.</td><td>Hyphenated. Not "AI compatible", "AI enabled", or "AI integrated."</td></tr>
+      <tr><td>Successor</td><td>Confident, precise. We do not compete with legacy tools; we replace them.</td><td>Use with intention. When it lands, it lands hard. Don't dilute it.</td></tr>
+      <tr><td>Mindset</td><td>A key STAR concept. Always capitalised when referring to the four STAR types.</td><td>"The four Mindsets" or "the Socialiser Mindset." Lower case in generic use.</td></tr>
+      <tr><td>Shared language</td><td>Powerful for client communications; STAR creates common organisational ground.</td><td>Particularly effective in L&amp;D, HR, and leadership contexts.</td></tr>
+      <tr><td>Context-sensitive</td><td>Distinguishes STAR from static personality typing; our model moves with the person.</td><td>Contrast this against legacy tools' fixed-type limitations.</td></tr>
+      <tr><td>Evidence-based</td><td>Signals academic rigour without tipping into dry jargon.</td><td>Always preferred over "scientifically proven" or "research-backed."</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Do Say / Don't Say</div>
+  <table class="dd-table">
+    <thead>
+      <tr>
+        <th class="do">✓ Do Say</th>
+        <th class="dont">✗ Don't Say</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="do">"The STAR Framework was built for this moment."</td><td class="dont">"Our revolutionary new approach to personality…"</td></tr>
+      <tr><td class="do">"Legacy tools were designed for a different era."</td><td class="dont">"DISC is wrong / bad / inferior." (say: its time has passed)</td></tr>
+      <tr><td class="do">"Behavioural science gives us the evidence to act."</td><td class="dont">"Studies show that…" (be specific, or don't cite it)</td></tr>
+      <tr><td class="do">"The science tells us something important here."</td><td class="dont">"Synergise your human capital"</td></tr>
+      <tr><td class="do">"Understanding your customers starts with their Mindset."</td><td class="dont">"As per our proprietary methodology…"</td></tr>
+      <tr><td class="do">"People are more predictable than they think, and more interesting than any two-by-two grid suggests."</td><td class="dont">"Unlike other tools on the market…" (lead with what we are)</td></tr>
+      <tr><td class="do">"Seven established theories of behavioural science"</td><td class="dont">"Our unique framework", "Our powerful model"</td></tr>
+      <tr><td class="do">"The next generation of behavioural science"</td><td class="dont">"Game-changing", "disruptive", "revolutionary" (without irony)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">Words to Avoid</div>
+  <div class="three-col">
+    <div style="background:var(--card-bg); border-radius:6px; padding:24px; border:1px solid rgba(26,24,20,0.08); box-shadow:0 1px 3px rgba(26,24,20,0.06);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#C0392B; margin-bottom:12px;">Hollow Intensifiers</div>
+      <p style="font-size:13px; font-weight:300; line-height:1.7; color:rgba(26,24,20,0.6);">Revolutionary · Game-changing · Disruptive · Groundbreaking · Transformational · Cutting-edge · Next-level · Best-in-class</p>
+    </div>
+    <div style="background:var(--card-bg); border-radius:6px; padding:24px; border:1px solid rgba(26,24,20,0.08); box-shadow:0 1px 3px rgba(26,24,20,0.06);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#C0392B; margin-bottom:12px;">Corporate Bland</div>
+      <p style="font-size:13px; font-weight:300; line-height:1.7; color:rgba(26,24,20,0.6);">Synergise · Leverage · Holistic · Scalable · Robust · Human capital · Stakeholders · Deliverables · Touch base · Circle back</p>
+    </div>
+    <div style="background:var(--card-bg); border-radius:6px; padding:24px; border:1px solid rgba(26,24,20,0.08); box-shadow:0 1px 3px rgba(26,24,20,0.06);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#C0392B; margin-bottom:12px;">Weak Hedges</div>
+      <p style="font-size:13px; font-weight:300; line-height:1.7; color:rgba(26,24,20,0.6);">Sort of · Kind of · In a way · Arguably · To some extent · It could be said · In today's fast-paced world · It goes without saying</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- 07 · CHANNELS -->
+<section id="channels">
+<div class="chapter">
+  <div class="ch-num">07 · Channel Guidance</div>
+  <h2 class="ch-title">Same voice.<br><em>Different register.</em></h2>
+  <div class="ch-intro">Brand voice is consistent across every channel. Tone adapts to the platform, the audience, and the purpose. A Substack essay and a LinkedIn post are written by the same author — but not in the same register. Understanding the difference is the practical application of the STAR voice.</div>
+
+  <div class="channel-grid">
+    <div class="channel-card">
+      <div class="channel-name">Substack</div>
+      <div class="channel-tone">Reflective · Expansive · Generous</div>
+      <div class="channel-body">Long-form essays that reward sustained attention. Ideas explored at full length with confidence and intellectual generosity. The register is conversational but substantive — the best Substack pieces feel like a letter from a brilliant colleague who has spent the last week thinking about one important thing and is now ready to tell you what they found.</div>
+      <div class="channel-example">"The reason most personality frameworks fail in practice is not complexity — it is a fundamental misunderstanding of how humans actually make decisions."</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">LinkedIn</div>
+      <div class="channel-tone">Confident · Punchy · Thought-provoking</div>
+      <div class="channel-body">Direct observations that invite debate. Optimistic and forward-looking with a clear point of view on every post. The opening line must earn the click to see more. The register is authoritative but accessible — the best LinkedIn posts from STAR feel like the opening of a talk you immediately want to attend. Short paragraphs. No jargon. One big idea, well expressed.</div>
+      <div class="channel-example">"DISC had its moment. MBTI had its era. The next decade belongs to frameworks built for the AI age."</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">Keynotes & Talks</div>
+      <div class="channel-tone">High energy · Narrative-driven · Inclusive</div>
+      <div class="channel-body">The room should feel part of the journey. Moments of wit balanced with depth. Concrete examples over abstract claims. The best STAR keynote makes the audience feel that they have learned something genuinely useful and immediately actionable — and that they recognised themselves somewhere in it. Open with a hook that creates a question the rest of the talk answers.</div>
+      <div class="channel-example">"I want to tell you about four types of people. And I guarantee you will recognise every single one of them."</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">Client Proposals</div>
+      <div class="channel-tone">Precise · Confident · Professionally warm</div>
+      <div class="channel-body">The language of a trusted expert, not a vendor. Lead with the outcome the client actually wants, then demonstrate how the STAR Framework delivers it. The science serves the story, not the other way around. Proposals should feel like they were written specifically for this client — because they should be. Generic language is a failure of attention, and clients notice.</div>
+      <div class="channel-example">"The STAR Framework gives your organisation a shared language for human behaviour — one that is rigorous, practical, and built for the challenges you are actually facing."</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">Media & Press</div>
+      <div class="channel-tone">Bold thesis · Credible voice · Accessible depth</div>
+      <div class="channel-body">Give journalists and editors a hook they cannot ignore, then reward their attention with real substance. Be bold with the thesis. Name the disruption clearly. Journalists are looking for experts who can hold a perspective with confidence and make complex ideas genuinely accessible. STAR is that expert. Sound like it.</div>
+      <div class="channel-example">"Personality typing had its era. The STAR Framework is what replaces it — and it was designed from the ground up for a world that the old tools were never built to understand."</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">Email Outreach</div>
+      <div class="channel-tone">Direct · Personal · Evidence-led</div>
+      <div class="channel-body">Never cold. Always specific. The best STAR outreach emails demonstrate that the sender has actually engaged with the recipient's work, identifies a specific connection to the STAR Framework, and makes a single, clear ask. One email, one ask. The CPR profile is a demonstration tool, not an attachment to send without context. Use it live, as a conversation opener, not a cold drop.</div>
+      <div class="channel-example">"I read your piece on leadership and psychological safety last month — and it maps almost perfectly onto something the STAR Framework predicts about Aligner-mode leaders under pressure."</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- 08 · OUTREACH -->
+<div class="chapter-alt" id="outreach">
+<div class="chapter-inner">
+  <div class="ch-num">08 · Business Outreach</div>
+  <h2 class="ch-title">Reaching the right people.<br><em>In the right way.</em></h2>
+  <div class="ch-intro">STAR Dynamics operates a radical generosity model as its primary authority-building strategy. Open knowledge-sharing, not gated content, builds the trust that converts into commercial relationships. Outreach follows from reputation, not the other way around.</div>
+
+  <div class="section-label">Primary Audiences</div>
+  <div class="two-col" style="margin-bottom:40px;">
+    <div style="background:var(--card-bg); border-radius:6px; padding:28px; border:1px solid rgba(26,24,20,0.08); border-top:3px solid var(--gold); box-shadow:0 1px 3px rgba(26,24,20,0.06);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">B2B Clients</div>
+      <h4 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ink); margin-bottom:10px;">Senior Leaders & Organisations</h4>
+      <p style="font-size:13px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.6); margin-bottom:12px;">HR directors, L&amp;D professionals, CMOs, executive teams, marketing strategists. Almost certainly familiar with DISC or MBTI. Sceptical of another framework, time-pressured, and hungry for tools that work in the real world. They need evidence of rigour but also need to feel that STAR genuinely understands their challenges.</p>
+      <p style="font-size:12px; font-weight:500; color:var(--gold); letter-spacing:0.08em;">Lead with outcome. Make the science serve the story.</p>
+    </div>
+    <div style="background:var(--card-bg); border-radius:6px; padding:28px; border:1px solid rgba(26,24,20,0.08); border-top:3px solid var(--gold); box-shadow:0 1px 3px rgba(26,24,20,0.06);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Publishers & Media</div>
+      <h4 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ink); margin-bottom:10px;">Journalists, Editors & Platforms</h4>
+      <p style="font-size:13px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.6); margin-bottom:12px;">Journalists, podcast hosts, conference organisers, editors, industry commentators. Looking for experts who can make complex ideas accessible without dumbing them down, and who hold a perspective with confidence. A strong point of view and a story worth telling are the entry requirements.</p>
+      <p style="font-size:12px; font-weight:500; color:var(--gold); letter-spacing:0.08em;">Be bold with the thesis. Reward attention with substance.</p>
+    </div>
+  </div>
+
+  <div class="section-label">The Outreach Process</div>
+  <div class="stage-flow">
+    <div class="stage-item">
+      <div class="stage-num-wrap"><div class="stage-num">1</div></div>
+      <div class="stage-body">
+        <h4>Build Reputation First</h4>
+        <p>Consistent, generous, high-quality content on Substack and LinkedIn establishes the STAR voice as an authority before any direct outreach begins. The Substack/LinkedIn Tuesday, Thursday, Saturday cadence creates the platform from which commercial relationships emerge. Outreach cold is weak. Outreach from an established platform is entirely different.</p>
+      </div>
+    </div>
+    <div class="stage-item">
+      <div class="stage-num-wrap"><div class="stage-num">2</div></div>
+      <div class="stage-body">
+        <h4>Earn the Meeting with Specificity</h4>
+        <p>Every outreach message should demonstrate that you have actually read, watched, or engaged with the target's work. Reference something specific. Identify a genuine connection between their stated challenges and the STAR Framework. The email should feel like a natural next step in a conversation that is already happening, not an interruption to one that isn't.</p>
+      </div>
+    </div>
+    <div class="stage-item">
+      <div class="stage-num-wrap"><div class="stage-num">3</div></div>
+      <div class="stage-body">
+        <h4>Use the CPR as a Live Demonstration Tool</h4>
+        <p>The Core Profile Report (CPR) is not a cold email attachment. It is a live demonstration instrument. Hold it back until the conversation. When used in a call — where the framework can be explained, the profile interpreted, and the science unpacked in real time — it demonstrates the power of STAR in a way that a PDF never can. Show, don't just describe.</p>
+      </div>
+    </div>
+    <div class="stage-item">
+      <div class="stage-num-wrap"><div class="stage-num">4</div></div>
+      <div class="stage-body">
+        <h4>Make One Clear Ask</h4>
+        <p>Every outreach communication should make a single, specific ask. A 20-minute call. A review of a specific piece of work. An introduction to one named person. Vague asks produce vague responses. Specific asks produce specific responses — including specific rejections, which are still more useful than silence.</p>
+      </div>
+    </div>
+    <div class="stage-item">
+      <div class="stage-num-wrap"><div class="stage-num">5</div></div>
+      <div class="stage-body">
+        <h4>Follow Up Once, Clearly</h4>
+        <p>One follow-up after initial outreach, after a reasonable interval (five to seven working days). The follow-up should be brief, re-state the ask, and offer a specific alternative if the original timing doesn't work. Never three or more follow-ups. Persistence becomes pressure, and pressure destroys the warm authority STAR Dynamics has built.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Outreach Contexts</div>
+  <div class="outreach-grid">
+    <div class="outreach-card">
+      <div class="tag">Strategic Partnerships</div>
+      <h4>AI & Technology Platforms</h4>
+      <p>Position STAR as the missing psychological personalisation layer for AI platforms. The architecture of the STAR Framework — four mindsets, twelve archetypes, operating modes — is directly translatable into AI personalisation models. Lead with this structural argument, not with assessment products.</p>
+    </div>
+    <div class="outreach-card">
+      <div class="tag">Corporate Clients</div>
+      <h4>L&D & HR Functions</h4>
+      <p>Lead with the outcome: a shared language for human behaviour that reduces friction, improves communication, and gives leaders tools they can use from day one. Demonstrate credibility through specific references to the framework's academic foundation. Avoid the word "workshop" unless the client uses it first.</p>
+    </div>
+    <div class="outreach-card">
+      <div class="tag">Speaking</div>
+      <h4>Conferences & Keynotes</h4>
+      <p>The NYC Big Book Award citation (2025, Marketing &amp; Public Relations) provides credibility without fanfare. Propose a specific talk title with a clear audience problem it solves. Conference organisers select speakers who solve specific problems for specific audiences, not those with the most impressive general credentials.</p>
+    </div>
+    <div class="outreach-card">
+      <div class="tag">Publishing</div>
+      <h4>Media & Thought Leadership</h4>
+      <p>The two published books (The STAR Framework and The STAR Operating System) anchor all media outreach. Lead with a specific thesis, not a biography. Journalists commission pieces from experts with a clear point of view on a timely subject. Always connect the STAR perspective to a live cultural, organisational, or technological conversation.</p>
+    </div>
+    <div class="outreach-card">
+      <div class="tag">Assessment Products</div>
+      <h4>Individual & Team Clients</h4>
+      <p>The product ladder runs from CPR (£49) through Full Spectrum Report (£200) to Complete Journey (£550) and Full Journey (£750). Never lead with product pricing. Lead with the outcome the assessment delivers — self-knowledge, team cohesion, communication precision — and let the pricing emerge from the value conversation, not precede it.</p>
+    </div>
+    <div class="outreach-card">
+      <div class="tag">Sector Exclusions</div>
+      <h4>What Not to Reference</h4>
+      <p>Student accommodation and the Homes for Students / VervLife / Orla sector are excluded from all STAR Dynamics public-facing communications. The Tension Engine is excluded from all public-facing documents. Neither should appear in any outreach, proposal, or published material under the STAR Dynamics brand.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- 09 · TALKING ABOUT THE FRAMEWORK -->
+<section id="framework-talk">
+<div class="chapter">
+  <div class="ch-num">09 · Talking About the Framework</div>
+  <h2 class="ch-title">How to describe<br><em>what STAR is.</em></h2>
+  <div class="ch-intro">A few principles should govern any communication about the STAR Framework itself — whether in a client pitch, a Substack article, a media interview, or a casual professional conversation. Consistency in how we describe the framework is as important as consistency in how we present it visually.</div>
+
+  <div class="two-col">
+    <div>
+      <div class="section-label" style="margin-top:0;">One-Line Description</div>
+      <div class="callout" style="font-size:16px;">"A behavioural science framework that synthesises seven established psychological theories into four primary mindsets and twelve professional archetypes — designed for the AI age."</div>
+
+      <div class="section-label">Two-Sentence Description</div>
+      <div class="callout" style="font-size:15px;">"The STAR Framework is the Human Operating System for anyone who works with people. Built on seven validated psychological theories, it gives leaders, communicators, educators, and designers a shared, evidence-based language for understanding how people think, decide, and act."</div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-top:0;">The Academic Foundation</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">SDT</strong> · Self-Determination Theory — the motivation engine</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">OCEAN</strong> · Big Five Personality — the personality chassis</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">DPT</strong> · Dual Process Theory — the cognitive processor</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">RFT</strong> · Regulatory Focus Theory — the directional compass</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">SIT</strong> · Social Identity Theory — the relational filter</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">CBT</strong> · Cognitive Bias Theory — the distortion filter</div>
+        <div style="background:rgba(156,122,50,0.08); border-radius:4px; padding:10px 14px; border-left:2px solid var(--gold); font-size:12px; font-weight:400; color:rgba(26,24,20,0.7);"><strong style="color:var(--ink);">AToE</strong> · Appraisal Theory of Emotion — the emotional filter</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">The Competitive Frame</div>
+  <p class="prose" style="margin-bottom:24px;">The comparison to legacy tools is fair, encouraged, and commercially necessary. It must always be framed as evolution, not attack. The approved frame positions STAR as the natural successor — what comes next, not what is wrong with what came before.</p>
+  <table class="traits-table">
+    <thead><tr><th>Framework</th><th>Fair to say</th><th>Never say</th></tr></thead>
+    <tbody>
+      <tr><td>DISC</td><td>"DISC was a valuable framework for its era. Its time is passing." / "DISC lacks the motivational depth that modern organisations now need."</td><td>"DISC is wrong / useless / unscientific" — state the limitation, not the verdict</td></tr>
+      <tr><td>MBTI</td><td>"MBTI has no peer-reviewed predictive validity and poor test-retest reliability." (this is a verifiable fact) / "Designed for a different age."</td><td>"MBTI is a scam" — this is contemptuous, not confident</td></tr>
+      <tr><td>Insights Discovery</td><td>"Insights Discovery is engaging but colour-coded and proprietary, limiting both its scientific rigour and its accessibility."</td><td>Dismissing it wholesale — it has genuine fans and some real utility</td></tr>
+      <tr><td>All legacy tools</td><td>"Built for the world as it was. STAR was built for the world as it is."</td><td>Any language that reads as personal animus rather than evidenced critique</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label">The Award</div>
+  <div style="background:var(--section-alt); border-radius:6px; padding:28px 32px; border:1px solid rgba(26,24,20,0.08); display:flex; align-items:flex-start; gap:24px; margin-top:8px;">
+    <div style="min-width:48px; height:48px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <span style="color:#fff; font-size:18px;">★</span>
+    </div>
+    <div>
+      <div style="font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">NYC Big Book Award 2025</div>
+      <p style="font-size:14px; font-weight:400; color:var(--ink); margin-bottom:4px;">Marketing &amp; Public Relations Category</p>
+      <p style="font-size:13px; font-weight:300; color:rgba(26,24,20,0.6); line-height:1.6;">Cite with quiet confidence, not fanfare. Let it add weight to a conversation rather than leading with it. It belongs in author bios, proposal footers, and LinkedIn profiles — not as the first sentence of any pitch.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- 10 · THE ANTI-VOICE -->
+<div class="chapter-dark" id="anti-voice">
+<div class="chapter-inner">
+  <div class="ch-num" style="color:var(--gold);">10 · The Anti-Voice</div>
+  <h2 class="ch-title ch-title-light">What STAR Dynamics<br><em>never sounds like.</em></h2>
+  <div class="ch-intro ch-intro-light">Brand voice is as much about what you are not as what you are. The following is a guide to the things that should never appear under the STAR Dynamics name. If a piece of STAR writing could have been produced by any consultancy in any sector, it is not STAR writing.</div>
+
+  <div class="two-col" style="margin:40px 0;">
+    <div>
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(26,24,20,0.45); margin-bottom:20px;">Personality traits to avoid</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Stuffy · Academic to the point of inaccessibility</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Corporate-bland · Jargon-as-substance</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Breathlessly promotional · Self-congratulatory</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Self-righteous · Preachy · Lecturing</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Vague · Non-committal · Hedging</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Derivative · Generic · Interchangeable</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Apologetic · Timid · Over-qualified</div>
+        <div style="padding:14px 18px; border-radius:4px; background:rgba(192,57,43,0.04); border-left:2px solid rgba(192,57,43,0.35); font-size:14px; font-weight:300; color:rgba(26,24,20,0.7);">Contemptuous · Dismissive · Aggressive</div>
+      </div>
+    </div>
+    <div>
+      <div class="callout callout-dark">"When in doubt, ask the simplest test question: does this sound like the future? If the answer is no, it needs another pass."</div>
+      <div style="margin-top:32px; background:rgba(26,24,20,0.04); border-radius:6px; padding:28px; border:1px solid rgba(26,24,20,0.1);">
+        <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">The Test</div>
+        <p style="font-size:14px; font-weight:300; line-height:1.75; color:rgba(26,24,20,0.65);">Read any piece of STAR content back aloud. If it could have been written by McKinsey, by a generic L&D consultancy, or by an AI that was asked to "write something inspiring about people and business" — it is not STAR writing. Our voice is distinctive, purposeful, and unmistakably forward-facing. Generic is the one failure with no excuse.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(26,24,20,0.12); padding-top:40px;">
+    <div style="font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(26,24,20,0.45); margin-bottom:20px;">Anti-voice examples — before &amp; after</div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="padding:18px; background:rgba(192,57,43,0.06); border-radius:4px; border-left:2px solid rgba(192,57,43,0.4);">
+          <div style="font-size:9px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:8px;">✗ Anti-voice</div>
+          <p style="font-size:13px; font-weight:300; line-height:1.6; color:rgba(26,24,20,0.55); font-style:italic;">"In today's fast-paced business environment, leveraging our unique and powerful framework can help you unlock the potential of your human capital."</p>
+        </div>
+        <div style="padding:18px; background:rgba(0,120,107,0.08); border-radius:4px; border-left:2px solid rgba(0,120,107,0.4);">
+          <div style="font-size:9px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(0,120,107,0.9); margin-bottom:8px;">✓ STAR Voice</div>
+          <p style="font-size:13px; font-weight:300; line-height:1.6; color:rgba(26,24,20,0.7);">"The STAR Framework gives your organisation a shared language for human behaviour — one that is rigorous, practical, and built for the challenges you are actually facing."</p>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="padding:18px; background:rgba(192,57,43,0.06); border-radius:4px; border-left:2px solid rgba(192,57,43,0.4);">
+          <div style="font-size:9px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:8px;">✗ Anti-voice</div>
+          <p style="font-size:13px; font-weight:300; line-height:1.6; color:rgba(26,24,20,0.55); font-style:italic;">"Unlike other tools on the market, our proprietary methodology is scientifically proven to deliver results."</p>
+        </div>
+        <div style="padding:18px; background:rgba(0,120,107,0.08); border-radius:4px; border-left:2px solid rgba(0,120,107,0.4);">
+          <div style="font-size:9px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:rgba(0,120,107,0.9); margin-bottom:8px;">✓ STAR Voice</div>
+          <p style="font-size:13px; font-weight:300; line-height:1.6; color:rgba(26,24,20,0.7);">"Legacy tools were designed for a different era. The STAR Framework was built for the world as it is today — and the one that is fast arriving."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- 11 · QUICK REFERENCE -->
+<section id="quickref">
+<div class="chapter">
+  <div class="ch-num">11 · Quick Reference</div>
+  <h2 class="ch-title">Everything you need.<br><em>At a glance.</em></h2>
+  <div class="ch-intro">This page is designed to be printed, pinned, or bookmarked. It contains the most frequently referenced standards from every section of this document — the things that should be second nature for anyone communicating under the STAR Dynamics name.</div>
+
+  <div class="qr-grid">
+    <div class="qr-card yes">
+      <h4>We Are</h4>
+      <ul class="qr-list">
+        <li>Visionary but grounded in evidence</li>
+        <li>Authoritative without arrogance</li>
+        <li>Warm and intellectually generous</li>
+        <li>Provocative in the best sense</li>
+        <li>Clear, energetic, and forward-facing</li>
+        <li>British English, always</li>
+        <li>The successor to legacy frameworks</li>
+        <li>The Human Operating System</li>
+        <li>The Future. Now.</li>
+      </ul>
+    </div>
+    <div class="qr-card no">
+      <h4>We Are Not</h4>
+      <ul class="qr-list">
+        <li>Stuffy or overly academic</li>
+        <li>Corporate jargon-heavy</li>
+        <li>Timid, hedging, or over-qualified</li>
+        <li>Breathlessly promotional</li>
+        <li>Dismissive or contemptuous</li>
+        <li>Preachy or self-righteous</li>
+        <li>Generic or interchangeable</li>
+        <li>Just another personality tool</li>
+        <li>Nostalgic or incremental</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">At a Glance: Colours</div>
+  <div style="display:grid; grid-template-columns:repeat(9,1fr); gap:8px; margin:16px 0 32px;">
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#F7F3EC; border:1px solid rgba(26,24,20,0.1);"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">BG</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#1A1814;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">INK</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#9C7A32;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">GOLD</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#E05A7A;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">S</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#2AACB8;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">T</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#E8A84C;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">A</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#7B5EA7;"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">R</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#EDE8DF; border:1px solid rgba(26,24,20,0.1);"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">ALT</div></div>
+    <div style="text-align:center;"><div style="height:32px; border-radius:4px; background:#FFFFFF; border:1px solid rgba(26,24,20,0.1);"></div><div style="font-size:9px; color:var(--warm-mid); margin-top:4px; font-weight:500;">CARD</div></div>
+  </div>
+
+  <div class="section-label">At a Glance: Typefaces</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0 32px;">
+    <div style="background:var(--card-bg); border-radius:6px; padding:24px; border:1px solid rgba(26,24,20,0.08);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Display / Editorial</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink);">Cormorant Garamond</div>
+      <div style="font-size:12px; font-weight:300; color:var(--warm-mid); margin-top:4px;">Headings · Callouts · Mindset names · Wordmark</div>
+    </div>
+    <div style="background:var(--card-bg); border-radius:6px; padding:24px; border:1px solid rgba(26,24,20,0.08);">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Body / UI</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:24px; font-weight:300; color:var(--ink);">DM Sans</div>
+      <div style="font-size:12px; font-weight:300; color:var(--warm-mid); margin-top:4px;">Body copy · Labels · Navigation · Metadata</div>
+    </div>
+  </div>
+
+  <div class="section-label">At a Glance: Key Phrases</div>
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:16px 0;">
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"The Future. Now."</div>
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"The Human Operating System"</div>
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"Built for the world as it is today"</div>
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"The next generation of behavioural science"</div>
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"Seven established theories of behavioural science"</div>
+    <div style="padding:14px 18px; background:rgba(156,122,50,0.07); border-radius:4px; border-left:2px solid var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:400; font-style:italic; color:var(--ink);">"We are the successor, not the competition"</div>
+  </div>
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="doc-footer-logo">STAR Dynamics</div>
+  <div class="doc-footer-meta">Brand Guidelines · Version 2.0 · 2025 · Confidential<br>STAR Framework® · STAR Operating System® · STAR Marketing® · UK Registered Trademarks</div>
+</div>
+
+</body>
+</html>
