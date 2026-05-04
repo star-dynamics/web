@@ -286,7 +286,7 @@ main {
   font-family: 'Cormorant Garamond', serif;
   font-size: 42px;
   font-weight: 300;
-  color: var(--type-colour);
+  color: #fff;
   margin-bottom: 6px;
 }
 .type-panel-left .type-drive {
@@ -294,21 +294,19 @@ main {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--type-colour);
-  opacity: 0.75;
+  color: rgba(255,255,255,0.4);
   margin-bottom: 20px;
 }
 .type-panel-left p {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.75;
-  color: var(--type-colour);
-  opacity: 0.85;
+  color: rgba(255,255,255,0.72);
   margin-bottom: 16px;
 }
 .type-panel-right { display: flex; flex-direction: column; gap: 14px; }
 .type-detail-row {
-  border-left: 2px solid var(--type-colour);
+  border-left: 2px solid rgba(255,255,255,0.12);
   padding-left: 16px;
 }
 .type-detail-label {
@@ -316,14 +314,13 @@ main {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--type-colour);
-  opacity: 0.65;
+  color: rgba(255,255,255,0.28);
   margin-bottom: 4px;
 }
 .type-detail-value {
   font-size: 13px;
   font-weight: 400;
-  color: var(--type-colour);
+  color: rgba(255,255,255,0.78);
   line-height: 1.5;
 }
 .type-bias-tag {
@@ -332,11 +329,10 @@ main {
   border-radius: 20px;
   font-size: 11px;
   font-weight: 400;
-  color: var(--type-colour);
-  background: rgba(0,0,0,0.05);
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.08);
   margin: 2px 3px 2px 0;
 }
-
 
 /* ARCHETYPE GRID */
 .arch-grid-full {
