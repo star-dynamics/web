@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR Validation – the evidence behind the archetypes | STAR Dynamics</title>
+<meta name="description" content="The evidence behind the STAR Framework® archetypes. External ratings as of 28 June 2026: 94.8% face validity, derived NPS +100, nine anonymised users. Test-retest for STAR is not yet measured.">
+<link rel="canonical" href="https://stardynamics.io/validation.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STAR Dynamics">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://stardynamics.io/validation.html">
+<meta property="og:title" content="STAR Validation – the evidence behind the archetypes">
+<meta property="og:description" content="External ratings as of 28 June 2026: 94.8% face validity and a derived NPS of +100, from nine anonymised users. STAR test-retest and predictive validity are not yet measured.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STAR Validation – the evidence behind the archetypes">
+<meta name="twitter:description" content="External ratings as of 28 June 2026: 94.8% face validity and a derived NPS of +100, from nine anonymised users. STAR test-retest and predictive validity are not yet measured.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .val-copy p,
+  .val-copy li,
+  .note-body,
+  .tool-blurb,
+  .source-link {
+    text-align: justify;
+    hyphens: auto;
+    hyphenate-limit-chars: 8 4 3;
+  }
+  h1, h2, h3, h4, .section-title, .page-title, .stat-number, .rank-score, .quote {
+    text-align: left;
+    hyphens: manual;
+  }
+
+  .val-subnav {
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+    background: rgba(247,243,236,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,24,20,0.08);
+  }
+  .val-subnav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .val-subnav-inner::-webkit-scrollbar { display: none; }
+  .val-subnav a {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(26,24,20,0.4);
+    padding: 14px 0 12px;
+    border-bottom: 1px solid transparent;
+  }
+  .val-subnav a:hover { color: var(--cream); }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .stat-cell {
+    padding: 28px 24px 24px;
+    border-left: 1px solid rgba(26,24,20,0.08);
+  }
+  .stat-cell:first-child { border-left: none; }
+  .stat-cell .stat-number { font-size: clamp(42px, 5vw, 64px); }
+  .stat-cell .num-rose { color: var(--s-red); }
+  .stat-cell .num-teal { color: var(--t-blue); }
+  .stat-cell .num-amber { color: #C48A2A; }
+  .stat-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(26,24,20,0.5);
+    margin-top: 8px;
+    line-height: 1.45;
+    max-width: 16em;
+  }
+  .as-of {
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(26,24,20,0.45);
+  }
+
+  .note {
+    margin-top: 28px;
+    background: #EDE8DF;
+    border-radius: 6px;
+    padding: 22px 26px;
+    border-left: 2px solid var(--gold);
+  }
+  .note-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+  }
+  .note-body {
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.72);
+  }
+  .note-body em { font-style: italic; }
+
+  .snapshot {
+    margin-top: 22px;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 6px;
+    background: #fff;
+    padding: 28px 28px 24px;
+  }
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 22px 0 8px;
+  }
+  .snapshot-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--cream);
+  }
+  .snapshot-label {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,0.4);
+  }
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    overflow-wrap: anywhere;
+  }
+
+  .rank-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .rank-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26,24,20,0.5);
+    margin-right: 4px;
+  }
+  .rank-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26,24,20,0.55);
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.14);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .rank-btn[aria-pressed="true"] {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--cream);
+  }
+  .rank-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .rank-help {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(26,24,20,0.55);
+    margin-bottom: 22px;
+    max-width: 640px;
+    text-align: left;
+  }
+  .rank-list { display: flex; flex-direction: column; gap: 12px; }
+  .rank-card {
+    border: 1px solid rgba(26,24,20,0.1);
+    background: #fff;
+    border-radius: 8px;
+    padding: 18px 20px 16px;
+  }
+  .rank-card.is-star {
+    border-color: rgba(156,122,50,0.45);
+    background: linear-gradient(90deg, rgba(156,122,50,0.08), #fff 70%);
+  }
+  .rank-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .rank-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .rank-name h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--cream);
+  }
+  .badge {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .badge-ours { color: #7A5F28; background: rgba(156,122,50,0.12); }
+  .badge-strong { color: #1c7d86; background: rgba(42,172,184,0.12); border-color: rgba(42,172,184,0.3); letter-spacing: 0.04em; text-transform: none; font-size: 11px; }
+  .badge-mixed { color: #a9722a; background: rgba(232,168,76,0.15); border-color: rgba(232,168,76,0.35); letter-spacing: 0.04em; text-transform: none; font-size: 11px; }
+  .badge-weak { color: #b23b59; background: rgba(224,90,122,0.1); border-color: rgba(224,90,122,0.25); letter-spacing: 0.04em; text-transform: none; font-size: 11px; }
+  .rank-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--cream);
+    white-space: nowrap;
+  }
+  .rank-score.is-na {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26,24,20,0.45);
+  }
+  .track {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(26,24,20,0.06);
+    overflow: hidden;
+  }
+  .track > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    width: 0;
+    transition: width 0.6s ease;
+  }
+  .track > span.star { background: var(--gold); }
+  .track > span.other { background: #8C8580; }
+  .tool-blurb {
+    margin-top: 12px;
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.62);
+  }
+  .tool-blurb strong {
+    font-weight: 500;
+    color: rgba(26,24,20,0.82);
+  }
+  .fn {
+    color: var(--t-blue);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 11px;
+    margin-left: 2px;
+  }
+  .fn:hover { text-decoration: underline; }
+  .fine {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(26,24,20,0.08);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.55);
+    max-width: 740px;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .chart-card {
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 8px;
+    padding: 22px 22px 18px;
+  }
+  .h-chart { display: flex; flex-direction: column; gap: 14px; }
+  .h-scale {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    font-size: 11px;
+    color: rgba(26,24,20,0.4);
+    font-variant-numeric: tabular-nums;
+  }
+  .h-scale-ticks {
+    display: flex;
+    justify-content: space-between;
+  }
+  .h-row {
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  .h-name {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+  .h-bar {
+    position: relative;
+    height: 28px;
+    border-radius: 4px;
+    background:
+      linear-gradient(to right, transparent 24.5%, rgba(26,24,20,0.06) 24.5%, rgba(26,24,20,0.06) 25.5%, transparent 25.5%),
+      linear-gradient(to right, transparent 49.5%, rgba(26,24,20,0.06) 49.5%, rgba(26,24,20,0.06) 50.5%, transparent 50.5%),
+      linear-gradient(to right, transparent 74.5%, rgba(26,24,20,0.06) 74.5%, rgba(26,24,20,0.06) 75.5%, transparent 75.5%),
+      rgba(26,24,20,0.04);
+  }
+  .h-bar > i {
+    display: block;
+    height: 100%;
+    border-radius: 4px;
+    background: rgba(140,133,128,0.55);
+  }
+  .h-bar .h-val {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .h-bar .h-val.inside { right: 8px; color: #fff; }
+  .h-bar .h-val.outside { left: 8px; color: var(--cream); }
+  .tool-notes { display: flex; flex-direction: column; gap: 18px; }
+  .tool-note {
+    border-left: 2px solid #8C8580;
+    padding: 2px 0 2px 16px;
+  }
+  .tool-note.is-star {
+    border-left-color: var(--gold);
+    background: rgba(156,122,50,0.05);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 12px 10px 16px;
+  }
+  .tool-note h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    display: inline;
+    margin-right: 8px;
+  }
+  .tool-claim {
+    font-size: 13px;
+    font-weight: 500;
+    color: #b23b59;
+  }
+  .tool-note.is-star .tool-claim { color: #7A5F28; }
+  .tool-note p {
+    margin-top: 6px;
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.62);
+  }
+
+  .v-chart-wrap { overflow-x: auto; }
+  .rating-svg { width: 100%; height: auto; display: block; min-width: 640px; }
+  .v-chart {
+    position: relative;
+    height: 280px;
+    margin-left: 44px;
+    min-width: 560px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 4px;
+  }
+  .v-gridline {
+    position: absolute;
+    left: 0; right: 0;
+    border-top: 1px dashed rgba(26,24,20,0.08);
+    pointer-events: none;
+  }
+  .v-gridline span {
+    position: absolute;
+    left: -44px;
+    top: -8px;
+    width: 36px;
+    text-align: right;
+    font-size: 11px;
+    color: rgba(26,24,20,0.4);
+    font-variant-numeric: tabular-nums;
+  }
+  .v-mean {
+    position: absolute;
+    left: 0; right: 0;
+    border-top: 2px dashed var(--s-red);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .v-mean span {
+    position: absolute;
+    right: 0;
+    top: -18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--s-red);
+    font-variant-numeric: tabular-nums;
+  }
+  .v-col {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .v-val {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .v-bar {
+    width: 100%;
+    max-width: 42px;
+    border-radius: 4px 4px 0 0;
+  }
+  .v-bar.perfect { background: var(--t-blue); }
+  .v-bar.high { background: var(--s-red); opacity: 0.88; }
+  .v-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-left: 44px;
+    min-width: 560px;
+    padding: 8px 4px 0;
+  }
+  .v-labels span {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.35;
+    color: rgba(26,24,20,0.45);
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(26,24,20,0.55);
+  }
+  .legend i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+
+  .rating-table-wrap { overflow-x: auto; margin-top: 22px; }
+  table.ratings {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  table.ratings th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,0.4);
+    padding: 0 12px 10px 0;
+    border-bottom: 1px solid rgba(26,24,20,0.1);
+  }
+  table.ratings td {
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid rgba(26,24,20,0.06);
+    color: rgba(26,24,20,0.75);
+    font-weight: 400;
+    vertical-align: top;
+  }
+  table.ratings caption {
+    caption-side: bottom;
+    text-align: left;
+    padding-top: 12px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(26,24,20,0.5);
+  }
+
+  .val-nps {
+    background: #1A1814;
+    color: #F7F3EC;
+    padding: 88px 0;
+  }
+  .val-nps .section-label { color: var(--gold); }
+  .val-nps .section-label::before { background: var(--gold); }
+  .val-nps .section-title { color: #F7F3EC; }
+  .nps-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .nps-lead {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(247,243,236,0.72);
+    max-width: 38em;
+  }
+  .nps-split {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .nps-split div {
+    border: 1px solid rgba(247,243,236,0.12);
+    background: rgba(247,243,236,0.04);
+    border-radius: 6px;
+    padding: 16px 14px;
+  }
+  .nps-split strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .nps-split span {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: rgba(247,243,236,0.6);
+  }
+  .split-pro strong { color: var(--t-blue); }
+  .cmp { display: flex; flex-direction: column; gap: 16px; }
+  .cmp-row span.label {
+    display: block;
+    font-size: 12px;
+    color: rgba(247,243,236,0.62);
+    margin-bottom: 6px;
+  }
+  .cmp-track {
+    height: 28px;
+    border-radius: 4px;
+    background: rgba(247,243,236,0.08);
+    position: relative;
+  }
+  .cmp-track i {
+    display: block;
+    height: 100%;
+    border-radius: 4px;
+    background: rgba(247,243,236,0.28);
+  }
+  .cmp-row.hot .cmp-track i { background: var(--t-blue); }
+  .cmp-track b {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  .cmp-note {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(247,243,236,0.55);
+  }
+
+  .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 400;
+    line-height: 1.28;
+    color: var(--cream);
+    max-width: 18em;
+  }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    line-height: 1;
+    color: rgba(156,122,50,0.45);
+    margin-bottom: 8px;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .two article {
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .two h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .two p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.62);
+  }
+
+  .sources {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 36px;
+  }
+  .sources li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .sources .num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--t-blue);
+    font-size: 16px;
+    flex: 0 0 auto;
+  }
+  .sources a { color: rgba(26,24,20,0.7); text-decoration: none; }
+  .sources a:hover { color: var(--gold); }
+
+  .val-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .val-rest {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 48px 120px;
+  }
+  .section-body,
+  .tool-note p,
+  .nps-lead,
+  .cmp-note,
+  .two p,
+  .fine {
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  @media (max-width: 900px) {
+    .val-subnav-inner, .val-wrap, .val-rest { padding-left: 24px; padding-right: 24px; }
+    .stat-row, .snapshot-grid, .evidence-grid, .nps-grid, .two, .sources { grid-template-columns: 1fr; }
+    .stat-cell { border-left: none; border-top: 1px solid rgba(26,24,20,0.08); }
+    .stat-cell:first-child { border-top: none; }
+    .nps-split { grid-template-columns: 1fr; }
+    .h-scale, .h-row { grid-template-columns: 96px 1fr; }
+    .h-name { font-size: 12px; line-height: 1.25; }
+    .val-nps { padding: 64px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track > span { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li><a href="validation.html" class="active">Validation</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-hero" id="overview">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">STAR Dynamics · Validation</div>
+    <h1 class="page-title">The evidence behind<br><em>the archetypes.</em></h1>
+    <p class="page-intro">How STAR Validation measures up against the four tools that dominate the psychometric market: MBTI, DiSC, the Enneagram and Insights Discovery. The incumbents own the market. The science tells a different story. This page is the evidence view of the STAR Framework®.</p>
+  </div>
+</header>
+
+<nav class="val-subnav" aria-label="On this page">
+  <div class="val-subnav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#study">External study</a>
+    <a href="#published">STAR Assess now</a>
+    <a href="#matrix">Head to head</a>
+    <a href="#validity">The evidence</a>
+    <a href="#distribution">User ratings</a>
+    <a href="#nps">Derived NPS</a>
+    <a href="#implication">Implication</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+  <section class="content-section val-copy" id="study">
+    <div class="section-label">External rating study</div>
+    <h2 class="section-title">Nine users.<br><em>One published set.</em></h2>
+    <div class="stat-row" aria-label="External rating study as of 28 June 2026">
+      <div class="stat-cell">
+        <div class="stat-number num-rose">94.8%</div>
+        <div class="stat-kicker">User-endorsed accuracy</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number num-teal">+100</div>
+        <div class="stat-kicker">Derived Net Promoter Score</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number num-amber">100%</div>
+        <div class="stat-kicker">Promoters, zero detractors</div>
+      </div>
+    </div>
+    <p class="as-of">Based on 9 external user ratings · as of <time datetime="2026-06-28">28 June 2026</time></p>
+
+    <div class="note">
+      <div class="note-label">Read this first.</div>
+      <p class="note-body">STAR Validation’s 94.8% is <em>face validity</em>, how strongly users endorse their own profile. The incumbents are judged here on <em>test-retest reliability</em> and <em>predictive validity</em>. They are different constructs, and this page keeps them apart. The 94.8%, the derived NPS of +100 and the promoter share all belong to the external study of nine ratings, as of 28 June 2026. A later homepage total from STAR Assess is shown underneath, and it is not substituted for this study.</p>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="published">
+    <div class="section-label">STAR Assess, as published</div>
+    <h2 class="section-title">The latest public totals.</h2>
+    <div class="snapshot">
+      <div class="snapshot-grid">
+        <div>
+          <div class="snapshot-num">94%</div>
+          <div class="snapshot-label">Accuracy rating</div>
+        </div>
+        <div>
+          <div class="snapshot-num">+95</div>
+          <div class="snapshot-label">NPS score</div>
+        </div>
+        <div>
+          <div class="snapshot-num">131</div>
+          <div class="snapshot-label">Assessments taken</div>
+        </div>
+      </div>
+      <p class="note-body">These three whole numbers were read on <time datetime="2026-11-17T20:23:56Z">17 November 2026</time> from the public endpoint <span class="mono">GET https://starassess.com/api/trpc/public.stats</span>. The JSON was <span class="mono">{"assessmentsTaken":131,"avgAccuracy":94,"nps":95}</span>. The homepage at <a href="https://starassess.com/">starassess.com</a> shows the same totals as 131 assessments taken, a 94% accuracy rating and an NPS score of +95. The response carries no as-of date of its own, no count of people who submitted a rating, no individual scores, and no split of promoters, passives and detractors.</p>
+      <p class="note-body" style="margin-top:14px;">The rating-level procedure <span class="mono">admin.accuracyAnalytics</span> answers only to a logged-in administrator. Called without a session on the same day, it returned HTTP 401, “Please login”. <span class="mono">quiz.feedbackBenchmark</span> returned the same refusal. With no individual ratings, the mean, the standard deviation, the promoter share and a derived NPS cannot be recomputed for the live sample. The homepage field <span class="mono">nps</span> is the product’s published NPS score. A derived NPS, using the bands below, needs each accuracy rating. 131 counts assessments taken. The charts on this page stay with the external study as of 28 June 2026.</p>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="matrix">
+    <div class="section-label">01 · Head to head</div>
+    <h2 class="section-title">Re-rank the field by <em>any measure</em> that matters to you.</h2>
+    <p class="section-body">Sort the five tools by user-endorsed accuracy, by how stable their results are on retest, or by whether they actually predict outcomes. Switch the lens and watch where the incumbents fall.</p>
+
+    <div class="rank-controls" role="group" aria-label="Rank by">
+      <span class="rank-label">Rank by:</span>
+      <button type="button" class="rank-btn" data-metric="userEndorsement" aria-pressed="false">User-endorsed accuracy</button>
+      <button type="button" class="rank-btn" data-metric="retestReliability" aria-pressed="true">Test-retest reliability</button>
+      <button type="button" class="rank-btn" data-metric="predictiveValidity" aria-pressed="false">Predictive validity</button>
+    </div>
+    <p class="rank-help" id="rankHelp">Does a person get the same result when they take the test again?</p>
+    <div class="rank-list" id="rankList" aria-live="polite"></div>
+    <p class="fine">Reliability and predictive-validity figures are evidence-weighted scores on a 0–100 scale, derived from the cited independent literature. STAR Validation shows “not yet measured” where formal test-retest and predictive studies are still to be run. Its strength in the external study is user-endorsed accuracy. The user-endorsed figure ranked here is that study’s mean of 94.8% (n=9), as of 28 June 2026. The later public accuracy rating of 94% is left out of the ranking. The public response does not include a rating count, and placing it on this scale would look more precise than the data allows.</p>
+  </section>
+
+  <section class="content-section val-copy" id="validity">
+    <div class="section-label">02 · The evidence</div>
+    <h2 class="section-title">The market leaders are entrenched, <em>not validated.</em></h2>
+    <div class="evidence-grid">
+      <div>
+        <h3 class="section-title" style="font-size:32px;">Test-retest reliability, scored 0–100</h3>
+        <p class="section-body">Does the test give you the same answer twice? STAR Validation is shown as “n/a”. This is not yet formally measured, and the page will not pretend otherwise.</p>
+        <div class="chart-card" role="img" aria-label="Test-retest scores: DiSC 82, Insights Discovery 45, Enneagram 38, MBTI 25, STAR Validation n/a.">
+          <div class="h-scale" aria-hidden="true">
+            <span></span>
+            <div class="h-scale-ticks"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+          </div>
+          <div class="h-chart">
+            <div class="h-row"><div class="h-name">DiSC</div><div class="h-bar"><i style="width:82%"></i><span class="h-val inside">82</span></div></div>
+            <div class="h-row"><div class="h-name">Insights Discovery</div><div class="h-bar"><i style="width:45%"></i><span class="h-val inside">45</span></div></div>
+            <div class="h-row"><div class="h-name">Enneagram</div><div class="h-bar"><i style="width:38%"></i><span class="h-val inside">38</span></div></div>
+            <div class="h-row"><div class="h-name">MBTI</div><div class="h-bar"><i style="width:25%"></i><span class="h-val inside">25</span></div></div>
+            <div class="h-row"><div class="h-name">STAR Validation</div><div class="h-bar"><span class="h-val outside">n/a</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tool-notes">
+        <article class="tool-note">
+          <h3>DiSC</h3>
+          <span class="tool-claim">Internal consistency .80–.86; weak predictive validity <a class="fn" href="#ref-7">[7, 8]</a></span>
+          <p>Respectable internal consistency, but primarily a behavioural observation tool. Little evidence it predicts success in specific roles. It captures how a person acts, not why.</p>
+        </article>
+        <article class="tool-note">
+          <h3>Insights Discovery</h3>
+          <span class="tool-claim">British Psychological Society: 1.5 / 5 <a class="fn" href="#ref-9">[9]</a></span>
+          <p>The four colour-energies model, heavily marketed across the UK and Europe. Independent BPS assessment awards it just 1.5 stars out of 5 for accuracy and validity.</p>
+        </article>
+        <article class="tool-note">
+          <h3>Enneagram</h3>
+          <span class="tool-claim">Systematic review (104 samples): mixed evidence <a class="fn" href="#ref-5">[5, 6]</a></span>
+          <p>Popular in coaching and corporate retreats. A 2021 review of 104 samples found only mixed reliability and validity, with little support for wings or inter-type movement. High appeal, low rigour.</p>
+        </article>
+        <article class="tool-note">
+          <h3>MBTI</h3>
+          <span class="tool-claim">~50% change type after five weeks <a class="fn" href="#ref-3">[3, 4]</a></span>
+          <p>Taken by millions annually, yet roughly half of people are assigned a different type when retested just five weeks later. Forces traits into binary categories; predictive power for performance is practically zero.</p>
+        </article>
+        <article class="tool-note is-star">
+          <h3>STAR Validation</h3>
+          <span class="tool-claim">94.8% user-endorsed accuracy (n=9), +100 derived NPS</span>
+          <p>Built on the STAR Cognitive Algorithm (CA2.4), synthesising seven psychological theories into four types and twelve archetypes. Early face validity is exceptional; predictive validity is the next milestone to prove.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="distribution">
+    <div class="section-label">03 · User ratings</div>
+    <h2 class="section-title">Every external rating landed <em>between 87% and 100%.</em></h2>
+    <p class="section-body">Nine genuine external users rated the accuracy of their Cognitive Profile Report. The spread is tight, with a population standard deviation of 4.3 points, and two perfect scores. Teal bars mark the 100% ratings. All respondents are anonymised. The sum of the nine ratings is 853, so the mean is 853 ÷ 9 = 94.8% to one decimal place. These workings use only the nine scores published with the 28 June 2026 study.</p>
+    <div class="chart-card">
+      <div class="v-chart-wrap">
+        <svg class="rating-svg" viewBox="0 0 720 340" role="img" aria-label="Individual accuracy ratings, highest first: 100, 100, 97, 96, 95, 95, 95, 88, 87. Mean 94.8 percent. Scale runs from 80 to 100.">
+          <g font-family="DM Sans, sans-serif" font-size="12" fill="rgba(26,24,20,0.45)">
+            <text x="36" y="28" text-anchor="end">100%</text>
+            <text x="36" y="86" text-anchor="end">95%</text>
+            <text x="36" y="144" text-anchor="end">90%</text>
+            <text x="36" y="202" text-anchor="end">85%</text>
+            <text x="36" y="260" text-anchor="end">80%</text>
+          </g>
+          <g stroke="rgba(26,24,20,0.1)" stroke-dasharray="3 4">
+            <line x1="44" y1="24" x2="708" y2="24"/>
+            <line x1="44" y1="82" x2="708" y2="82"/>
+            <line x1="44" y1="140" x2="708" y2="140"/>
+            <line x1="44" y1="198" x2="708" y2="198"/>
+            <line x1="44" y1="256" x2="708" y2="256"/>
+          </g>
+          <line x1="44" y1="84.2" x2="708" y2="84.2" stroke="#E05A7A" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="704" y="78" text-anchor="end" font-family="DM Sans, sans-serif" font-size="12" font-weight="500" fill="#E05A7A">Mean 94.8%</text>
+          <g font-family="DM Sans, sans-serif" font-size="12" font-weight="500" fill="#1A1814" text-anchor="middle">
+            <rect x="62" y="24" width="28" height="232" rx="3" fill="#2AACB8"/><text x="76" y="18">100</text>
+            <rect x="132" y="24" width="28" height="232" rx="3" fill="#2AACB8"/><text x="146" y="18">100</text>
+            <rect x="202" y="58.8" width="28" height="197.2" rx="3" fill="#E05A7A" opacity="0.9"/><text x="216" y="52">97</text>
+            <rect x="272" y="70.4" width="28" height="185.6" rx="3" fill="#E05A7A" opacity="0.9"/><text x="286" y="64">96</text>
+            <rect x="342" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="356" y="76">95</text>
+            <rect x="412" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="426" y="76">95</text>
+            <rect x="482" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="496" y="76">95</text>
+            <rect x="552" y="163.2" width="28" height="92.8" rx="3" fill="#E05A7A" opacity="0.9"/><text x="566" y="157">88</text>
+            <rect x="622" y="174.8" width="28" height="81.2" rx="3" fill="#E05A7A" opacity="0.9"/><text x="636" y="168">87</text>
+          </g>
+          <g font-family="DM Sans, sans-serif" font-size="11" fill="rgba(26,24,20,0.5)" text-anchor="middle">
+            <text x="76" y="278">Respondent</text><text x="76" y="292">02</text>
+            <text x="146" y="278">Respondent</text><text x="146" y="292">05</text>
+            <text x="216" y="278">Respondent</text><text x="216" y="292">09</text>
+            <text x="286" y="278">Respondent</text><text x="286" y="292">08</text>
+            <text x="356" y="278">Respondent</text><text x="356" y="292">03</text>
+            <text x="426" y="278">Respondent</text><text x="426" y="292">06</text>
+            <text x="496" y="278">Respondent</text><text x="496" y="292">07</text>
+            <text x="566" y="278">Respondent</text><text x="566" y="292">01</text>
+            <text x="636" y="278">Respondent</text><text x="636" y="292">04</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:#E05A7A"></i>87–97%</span>
+        <span><i style="background:#2AACB8"></i>Perfect 100%</span>
+      </div>
+      <div class="rating-table-wrap">
+        <table class="ratings">
+          <caption>Anonymised external ratings as of 28 June 2026, ordered as published. Banding used for the derived NPS: below 85% scores 8/10, 85–95% scores 9/10, above 95% scores 10/10. Scores of 9–10 are promoters, 7–8 are passives, 0–6 are detractors. The chart above draws the same scores on a scale from 80% to 100%, so the height of a bar is (rating − 80) ÷ 20.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Respondent</th>
+              <th scope="col">Archetype</th>
+              <th scope="col">Accuracy</th>
+              <th scope="col">Banded score</th>
+              <th scope="col">Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Respondent 01</td><td>The Resilient Enabler (R/A)</td><td>88%</td><td>9/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 02</td><td>The Strategic Explorer (T/A)</td><td>100%</td><td>10/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 03</td><td>The Strategic Explorer (T/A)</td><td>95%</td><td>9/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 04</td><td>The Strategic Explorer (T/A)</td><td>87%</td><td>9/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 05</td><td>The Inventive Pathfinder (A/T)</td><td>100%</td><td>10/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 06</td><td>The Careful Guardian (R/T)</td><td>95%</td><td>9/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 07</td><td>The Careful Guardian (R/T)</td><td>95%</td><td>9/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 08</td><td>The Practical Builder (A/R)</td><td>96%</td><td>10/10</td><td>Promoter</td></tr>
+            <tr><td>Respondent 09</td><td>The Careful Guardian (R/T)</td><td>97%</td><td>10/10</td><td>Promoter</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="val-nps" id="nps">
+  <div class="val-wrap">
+    <div class="section-label">04 · Derived NPS</div>
+    <div class="nps-grid">
+      <div>
+        <h2 class="section-title">A Net Promoter Score of <em style="color:#E8A84C;">+100</em>.</h2>
+        <p class="nps-lead">Applying the agreed banding, below 85% scores 8/10, 85–95% scores 9/10, above 95% scores 10/10, every single rating becomes a promoter. With zero passives and zero detractors across the sample, the derived NPS hits the statistical ceiling. That is (9 − 0) ÷ 9, expressed as a percentage: +100. This is the external study as of 28 June 2026. It is a separate figure from the +95 NPS score published on STAR Assess.</p>
+        <div class="nps-split">
+          <div class="split-pro"><strong>100%</strong><span>Promoters (9–10)</span></div>
+          <div><strong>0%</strong><span>Passives (7–8)</span></div>
+          <div><strong>0%</strong><span>Detractors (0–6)</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="snapshot-label" style="color:rgba(247,243,236,0.45);margin-bottom:14px;">In context</p>
+        <div class="cmp">
+          <div class="cmp-row hot">
+            <span class="label">STAR Validation (derived, n=9)</span>
+            <div class="cmp-track"><i style="width:100%"></i><b>+100</b></div>
+          </div>
+          <div class="cmp-row">
+            <span class="label">World-class threshold (70+) <a class="fn" href="#ref-2">[1, 2]</a></span>
+            <div class="cmp-track"><i style="width:70%"></i><b>70</b></div>
+          </div>
+          <div class="cmp-row">
+            <span class="label">Average B2B SaaS (35–40) <a class="fn" href="#ref-1">[1, 2]</a></span>
+            <div class="cmp-track"><i style="width:38%"></i><b>38</b></div>
+          </div>
+        </div>
+        <p class="cmp-note">A strong signal of product-market fit, tempered by a small sample (n=9). The figure should firm up, or move, as volume grows. The bar at 38 marks the point used for the middle of the published 35–40 B2B SaaS band. The benchmark labels are the sources’ claims, cited at [1] and [2].</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="val-rest">
+  <section class="content-section val-copy" id="implication">
+    <div class="section-label">05 · The implication</div>
+    <div class="quote-mark" aria-hidden="true">“</div>
+    <blockquote class="quote">The MBTI flips a coin on your personality every five weeks. Insights Discovery holds a 1.5-out-of-5 from the BPS. Against that backdrop, a tool returning 94.8% endorsed accuracy and a +100 NPS is not merely competitive; it is disruptive.</blockquote>
+    <p class="section-body" style="margin-top:18px;">The sentence above describes the external study as of 28 June 2026. The competitor clauses are the claims already cited on this page, at [3], [4] and [9].</p>
+    <div class="two">
+      <article>
+        <h3>The hook</h3>
+        <p>Users agree with their profiles at 94.8%. That face validity is the wedge into a market the incumbents hold by inertia, not by evidence.</p>
+      </article>
+      <article>
+        <h3>The next milestone</h3>
+        <p>Convert that endorsement into predictive validity: proving the four types and twelve archetypes forecast team cohesion, leadership and commercial outcomes.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section" id="sources">
+    <div class="section-label">06 · Sources</div>
+    <h2 class="section-title">Every claim, <em>traceable.</em></h2>
+    <ol class="sources">
+      <li id="ref-1"><span class="num">[1]</span><a href="https://customergauge.com/benchmarks/blog/nps-saas-net-promoter-score-benchmarks">CustomerGauge – SaaS NPS Benchmarks</a></li>
+      <li id="ref-2"><span class="num">[2]</span><a href="https://www.retently.com/blog/good-net-promoter-score/">Retently – What is a Good Net Promoter Score?</a></li>
+      <li id="ref-3"><span class="num">[3]</span><a href="https://soultrace.app/en/blog/mbti-accuracy-problems">Soultrace – MBTI Accuracy Problems</a></li>
+      <li id="ref-4"><span class="num">[4]</span><a href="https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator">Wikipedia – Myers–Briggs Type Indicator</a></li>
+      <li id="ref-5"><span class="num">[5]</span><a href="https://pubmed.ncbi.nlm.nih.gov/33332604/">Hook, J. N., et al. (2021) – The Enneagram: A systematic review, J. Clinical Psychology</a></li>
+      <li id="ref-6"><span class="num">[6]</span><a href="https://blog.reissmotivationprofile.com/the-barnum-effect-in-the-assessment-of-personality-types">Reiss Motivation Profile – The Barnum Effect in Psychology</a></li>
+      <li id="ref-7"><span class="num">[7]</span><a href="https://www.discprofile.com/what-is-disc/research-reliability-and-validity">DiSC Profile – Science behind DiSC</a></li>
+      <li id="ref-8"><span class="num">[8]</span><a href="https://www.reddit.com/r/managers/comments/1c7ha3w/disc_profiles_any_good_or_snake_oil/">r/managers – DiSC profiles any good or snake oil?</a></li>
+      <li id="ref-9"><span class="num">[9]</span><a href="https://www.linkedin.com/posts/william-mckee_how-accurate-is-insights-discovery-the-british-activity-7212370493780148224-7nnC">McKee, W. (2024) – What is Insights Discovery? (LinkedIn)</a></li>
+    </ol>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+          <li><a href="validation.html">Validation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <div class="footer-trademark">
+          STAR Framework®<br>
+          STAR Operating System®<br>
+          STAR Marketing®<br>
+          UK Registered Trademarks
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics</span>
+    <span>NYC Big Book Award 2025 · Marketing &amp; Public Relations</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileNav() {
+    var links = document.querySelector('.nav-links');
+    if (links) links.classList.toggle('mobile-open');
+  }
+
+  var bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
+  });
+
+  var metrics = {
+    userEndorsement: {
+      help: 'How accurate users judge their own profile to be (face validity).'
+    },
+    retestReliability: {
+      help: 'Does a person get the same result when they take the test again?'
+    },
+    predictiveValidity: {
+      help: 'Is there evidence the result predicts real outcomes like performance?'
+    }
+  };
+
+  var tools = [
+    {
+      key: 'star',
+      name: 'STAR Validation',
+      isStar: true,
+      userEndorsement: 94.8,
+      retestReliability: null,
+      predictiveValidity: null,
+      verdict: 'strong',
+      verdictLabel: 'Strong',
+      independentRating: '94.8% user-endorsed accuracy (n=9), +100 derived NPS',
+      blurb: 'Built on the STAR Cognitive Algorithm (CA2.4), synthesising seven psychological theories into four types and twelve archetypes. Early face validity is exceptional; predictive validity is the next milestone to prove.',
+      refs: []
+    },
+    {
+      key: 'disc',
+      name: 'DiSC',
+      isStar: false,
+      userEndorsement: null,
+      retestReliability: 82,
+      predictiveValidity: 30,
+      verdict: 'mixed',
+      verdictLabel: 'Mixed',
+      independentRating: 'Internal consistency .80–.86; weak predictive validity',
+      blurb: 'Respectable internal consistency, but primarily a behavioural observation tool. Little evidence it predicts success in specific roles. It captures how a person acts, not why.',
+      refs: [7, 8]
+    },
+    {
+      key: 'insights',
+      name: 'Insights Discovery',
+      isStar: false,
+      userEndorsement: null,
+      retestReliability: 45,
+      predictiveValidity: 25,
+      verdict: 'weak',
+      verdictLabel: 'Weak',
+      independentRating: 'British Psychological Society: 1.5 / 5',
+      blurb: 'The four colour-energies model, heavily marketed across the UK and Europe. Independent BPS assessment awards it just 1.5 stars out of 5 for accuracy and validity.',
+      refs: [9]
+    },
+    {
+      key: 'enneagram',
+      name: 'Enneagram',
+      isStar: false,
+      userEndorsement: null,
+      retestReliability: 38,
+      predictiveValidity: 22,
+      verdict: 'weak',
+      verdictLabel: 'Weak',
+      independentRating: 'Systematic review (104 samples): mixed evidence',
+      blurb: 'Popular in coaching and corporate retreats. A 2021 review of 104 samples found only mixed reliability and validity, with little support for wings or inter-type movement. High appeal, low rigour.',
+      refs: [5, 6]
+    },
+    {
+      key: 'mbti',
+      name: 'MBTI',
+      isStar: false,
+      userEndorsement: null,
+      retestReliability: 25,
+      predictiveValidity: 12,
+      verdict: 'weak',
+      verdictLabel: 'Weak',
+      independentRating: '~50% change type after five weeks',
+      blurb: 'Taken by millions annually, yet roughly half of people are assigned a different type when retested just five weeks later. Forces traits into binary categories; predictive power for performance is practically zero.',
+      refs: [3, 4]
+    }
+  ];
+
+  function scoreValue(tool, metric) {
+    var value = tool[metric];
+    return value == null ? -1 : value;
+  }
+
+  function renderRank(metric) {
+    var help = document.getElementById('rankHelp');
+    var list = document.getElementById('rankList');
+    help.textContent = metrics[metric].help;
+    document.querySelectorAll('.rank-btn').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-metric') === metric ? 'true' : 'false');
+    });
+    var ranked = tools.slice().sort(function (a, b) {
+      return scoreValue(b, metric) - scoreValue(a, metric);
+    });
+    list.textContent = '';
+    ranked.forEach(function (tool) {
+      var value = tool[metric];
+      var missing = value == null;
+      var card = document.createElement('article');
+      card.className = 'rank-card' + (tool.isStar ? ' is-star' : '');
+
+      var top = document.createElement('div');
+      top.className = 'rank-top';
+      var name = document.createElement('div');
+      name.className = 'rank-name';
+      var h = document.createElement('h3');
+      h.textContent = tool.name;
+      name.appendChild(h);
+      if (tool.isStar) {
+        var ours = document.createElement('span');
+        ours.className = 'badge badge-ours';
+        ours.textContent = 'Our tool';
+        name.appendChild(ours);
+      }
+      var verdict = document.createElement('span');
+      verdict.className = 'badge badge-' + tool.verdict;
+      verdict.textContent = tool.verdictLabel;
+      name.appendChild(verdict);
+
+      var score = document.createElement('div');
+      score.className = 'rank-score' + (missing ? ' is-na' : '');
+      score.textContent = missing
+        ? 'Not yet measured'
+        : (metric === 'userEndorsement' ? value.toFixed(1) + '%' : String(Math.round(value)));
+
+      top.appendChild(name);
+      top.appendChild(score);
+
+      var track = document.createElement('div');
+      track.className = 'track';
+      track.setAttribute('aria-hidden', 'true');
+      var fill = document.createElement('span');
+      fill.className = tool.isStar ? 'star' : 'other';
+      track.appendChild(fill);
+
+      var blurb = document.createElement('p');
+      blurb.className = 'tool-blurb';
+      var strong = document.createElement('strong');
+      strong.textContent = tool.independentRating;
+      blurb.appendChild(strong);
+      if (tool.refs.length) {
+        var sup = document.createElement('a');
+        sup.className = 'fn';
+        sup.href = '#ref-' + tool.refs[0];
+        sup.textContent = ' [' + tool.refs.join(', ') + ']';
+        blurb.appendChild(sup);
+      }
+      blurb.appendChild(document.createTextNode('. ' + tool.blurb));
+
+      card.appendChild(top);
+      card.appendChild(track);
+      card.appendChild(blurb);
+      list.appendChild(card);
+      requestAnimationFrame(function () {
+        fill.style.width = (missing ? 0 : value) + '%';
+      });
+    });
+  }
+
+  document.querySelectorAll('.rank-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      renderRank(btn.getAttribute('data-metric'));
+    });
+  });
+  renderRank('retestReliability');
+</script>
+</body>
+</html>

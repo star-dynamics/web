@@ -24,6 +24,7 @@
     <li><a href="archetypes.html">Archetypes</a></li>
     <li><a href="theories.html" class="active">Theories</a></li>
     <li><a href="modes.html">Modes</a></li>
+    <li><a href="validation.html">Validation</a></li>
     <li class="has-dropdown">
       <a href="applications.html">Applications</a>
       <ul class="dropdown">
@@ -217,6 +218,7 @@
           <li><a href="archetypes.html">Archetypes</a></li>
           <li><a href="theories.html">Theories</a></li>
           <li><a href="modes.html">Operating Modes</a></li>
+          <li><a href="validation.html">Validation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -251,6 +253,10 @@
 </footer>
 
 <script>
+  function toggleMobileNav() {
+    var links = document.querySelector('.nav-links');
+    if (links) links.classList.toggle('mobile-open');
+  }
   const bar = document.getElementById('progressBar');
   window.addEventListener('scroll', () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; });
   function toggleTheory(header) {

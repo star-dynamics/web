@@ -43,6 +43,7 @@
     <li><a href="archetypes.html">Archetypes</a></li>
     <li><a href="theories.html">Theories</a></li>
     <li><a href="modes.html">Modes</a></li>
+    <li><a href="validation.html">Validation</a></li>
     <li class="has-dropdown">
       <a href="applications.html" class="active">Applications</a>
       <ul class="dropdown">
@@ -206,6 +207,7 @@
           <li><a href="archetypes.html">Archetypes</a></li>
           <li><a href="theories.html">Theories</a></li>
           <li><a href="modes.html">Operating Modes</a></li>
+          <li><a href="validation.html">Validation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -239,6 +241,10 @@
   </div>
 </footer>
 <script>
+  function toggleMobileNav() {
+    var links = document.querySelector('.nav-links');
+    if (links) links.classList.toggle('mobile-open');
+  }
   const bar=document.getElementById('progressBar');
   window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
   const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
