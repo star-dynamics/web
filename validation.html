@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validation | STAR Dynamics</title>
+<meta name="description" content="Validation. Nine people rated their own STAR Assess report at 87% or higher (average 94.8%, self-rated, 28 June 2026). Test-retest and predictive validity have not been measured.">
+<link rel="canonical" href="https://stardynamics.io/validation.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STAR Dynamics">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://stardynamics.io/validation.html">
+<meta property="og:title" content="Validation | STAR Dynamics">
+<meta property="og:description" content="Nine self-ratings of a STAR Assess report, as of 28 June 2026: all 87% or higher, average 94.8%. Test-retest and predictive validity have not been measured.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Validation | STAR Dynamics">
+<meta name="twitter:description" content="Nine self-ratings of a STAR Assess report, as of 28 June 2026: all 87% or higher, average 94.8%. Test-retest and predictive validity have not been measured.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="star.css">
+<style>
+  .val-copy p,
+  .val-copy li,
+  .note-body,
+  .ev-table td,
+  .source-link {
+    text-align: justify;
+    hyphens: auto;
+  }
+  h1, h2, h3, .section-title, .page-title, .stat-number {
+    text-align: left;
+    hyphens: manual;
+  }
+
+  .val-subnav {
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+    background: rgba(247,243,236,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,24,20,0.08);
+  }
+  .val-subnav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .val-subnav-inner::-webkit-scrollbar { display: none; }
+  .val-subnav a {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(26,24,20,0.4);
+    padding: 14px 0 12px;
+    border-bottom: 1px solid transparent;
+  }
+  .val-subnav a:hover { color: var(--cream); }
+
+  .hero-stat {
+    margin-top: 8px;
+    max-width: 640px;
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 6px;
+    padding: 28px 28px 22px;
+  }
+  .hero-stat .stat-number {
+    font-size: clamp(48px, 6vw, 72px);
+    color: var(--s-red);
+  }
+  .hero-stat .stat-kicker {
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(26,24,20,0.62);
+  }
+  .as-of {
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(26,24,20,0.45);
+  }
+
+  .note {
+    margin-top: 28px;
+    background: #EDE8DF;
+    border-radius: 6px;
+    padding: 22px 26px;
+    border-left: 2px solid var(--gold);
+  }
+  .note-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+  .note-body {
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.72);
+  }
+  .note-body + .note-body { margin-top: 14px; }
+
+  .ev-wrap { overflow-x: auto; }
+  table.ev-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 8px;
+  }
+  table.ev-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,0.45);
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(26,24,20,0.1);
+    vertical-align: top;
+  }
+  table.ev-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(26,24,20,0.06);
+    vertical-align: top;
+    color: rgba(26,24,20,0.75);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  table.ev-table tr:last-child td { border-bottom: none; }
+  table.ev-table th:first-child,
+  table.ev-table td:first-child {
+    font-weight: 500;
+    color: var(--cream);
+    width: 168px;
+    text-align: left;
+  }
+  table.ev-table a { color: var(--t-blue); }
+
+  .chart-card {
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 8px;
+    padding: 22px 22px 18px;
+  }
+  .v-chart-wrap { overflow-x: auto; max-width: 100%; }
+  .rating-svg { width: 100%; height: auto; display: block; min-width: 640px; }
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(26,24,20,0.55);
+  }
+  .legend i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+  .rating-table-wrap { overflow-x: auto; margin-top: 22px; }
+  table.ratings {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  table.ratings th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,0.4);
+    padding: 0 12px 10px 0;
+    border-bottom: 1px solid rgba(26,24,20,0.1);
+  }
+  table.ratings td {
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid rgba(26,24,20,0.06);
+    color: rgba(26,24,20,0.75);
+  }
+  table.ratings caption {
+    caption-side: bottom;
+    text-align: left;
+    padding-top: 12px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(26,24,20,0.5);
+  }
+
+  .next-card {
+    background: #fff;
+    border: 1px solid rgba(26,24,20,0.1);
+    border-radius: 8px;
+    padding: 28px;
+    max-width: 640px;
+  }
+  .next-card p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(26,24,20,0.7);
+  }
+
+  .sources { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .sources li { display: flex; gap: 12px; align-items: baseline; font-size: 14px; line-height: 1.55; }
+  .sources .num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--t-blue);
+    font-size: 16px;
+    flex: 0 0 auto;
+  }
+  .sources a { color: rgba(26,24,20,0.72); }
+
+  .legal-note {
+    margin-top: 18px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(26,24,20,0.55);
+    max-width: 36em;
+  }
+  .footer-trademark { max-width: 28em; }
+
+  @media (max-width: 900px) {
+    .val-subnav-inner { padding: 0 24px; }
+    table.ev-table th:first-child,
+    table.ev-table td:first-child { width: 112px; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">STAR Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mindsets.html">Mindsets</a></li>
+    <li><a href="types.html">Types</a></li>
+    <li><a href="archetypes.html">Archetypes</a></li>
+    <li><a href="theories.html">Theories</a></li>
+    <li><a href="modes.html">Modes</a></li>
+    <li><a href="validation.html" class="active">Validation</a></li>
+    <li class="has-dropdown">
+      <a href="applications.html">Applications</a>
+      <ul class="dropdown">
+        <li><a href="app-leadership.html">Leadership</a></li>
+        <li><a href="app-communication.html">Communication</a></li>
+        <li><a href="app-marketing.html">Marketing</a></li>
+        <li><a href="app-education.html">Education</a></li>
+        <li><a href="app-coaching.html">Coaching</a></li>
+        <li><a href="app-teams.html">Team Design</a></li>
+      </ul>
+    </li>
+    <li><a href="mailto:david@stardynamics.io" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-hero" id="overview">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">STAR Dynamics · Validation</div>
+    <h1 class="page-title">What nine self-ratings<br><em>show.</em></h1>
+    <p class="page-intro">Four of the best-known team and personality profiling tools are MBTI, DiSC, the Enneagram and Insights Discovery. Here is what published research says about each, and what we have measured about ours. STAR Assess describes decision-making styles, using the STAR Framework®. STAR Operating System® is the wider system they sit in. STAR Assess is not presented here as a personality test, and it makes no clinical or brain claims.</p>
+  </div>
+</header>
+
+<nav class="val-subnav" aria-label="On this page">
+  <div class="val-subnav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#limits">Limits</a>
+    <a href="#research">Published research</a>
+    <a href="#ratings">Self-ratings</a>
+    <a href="#next">Next steps</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+  <section class="content-section val-copy" id="limits">
+    <div class="section-label">The nine ratings</div>
+    <h2 class="section-title">A small, self-rated set.</h2>
+    <div class="hero-stat">
+      <div class="stat-number">94.8%</div>
+      <p class="stat-kicker">9 of 9 rated it 87% or higher (average 94.8%, self-rated).</p>
+      <p class="as-of">Nine external users · as of <time datetime="2026-06-28">28 June 2026</time> · sample standard deviation 4.6 · 95% interval for the mean 91.3 to 98.3</p>
+    </div>
+
+    <div class="note">
+      <div class="note-label">Read this first.</div>
+      <p class="note-body">The 94.8% is self-rated. It records how strongly nine people said their own report described them. It is not a test-retest coefficient, and it is not predictive validity. Test-retest, factor structure and predictive validity have not been measured for STAR Assess.</p>
+      <p class="note-body">Nine people chose to rate their own report. Agreement with a personal description is often high even when the description could fit many people. That is the Barnum, or Forer, effect <a href="#ref-1">[1]</a>, so this result is not evidence that STAR Assess measures anything accurately.</p>
+      <p class="note-body">In the 28 June 2026 set these nine are called external users. This page does not state how they were recruited, whether anyone declined, or the wording of the question they answered. Early self-rated accuracy is high (n=9). Self-ratings are not evidence of retest reliability or of predicting outcomes. Nine ratings cannot support a conclusion about a wider population.</p>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="research">
+    <div class="section-label">01 · Published research</div>
+    <h2 class="section-title">What the published research says.</h2>
+    <p class="section-body">Each row uses a published statistic, with its source. Where this page has no comparable published figure, the cell says so. Nothing here is a score invented for comparison.</p>
+    <div class="ev-wrap">
+      <table class="ev-table">
+        <thead>
+          <tr>
+            <th scope="col">Tool</th>
+            <th scope="col">What the published evidence says</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">STAR Assess</th>
+            <td>Self-rated accuracy, as of 28 June 2026: 9 of 9 rated it 87% or higher (average 94.8%, self-rated). Test-retest reliability and predictive validity: not yet measured.</td>
+          </tr>
+          <tr>
+            <th scope="row">MBTI</th>
+            <td>Published studies of an earlier form report that many people receive a different type on retest after five weeks. Pittenger (1993) writes that as many as 50% were classified into a different type after five weeks, citing Howes and Carskadon (1979) <a href="#ref-2">[2, 3]</a>. Pittenger (2005) reports a five-week study in which 50% of participants received a different classification on one or more of the four scales (McCarley and Carskadon, 1983) <a href="#ref-4">[4, 5]</a>. These results are not stated here as a property of the current form. The publisher says the five-week figure concerns the obsolete Form G, and reports test-retest correlations of .81 to .86 over 6 to 15 weeks for its current assessment <a href="#ref-6">[6]</a>. The instrument classifies people into one of two categories on each of four dimensions. Self-rated agreement comparable with the STAR Assess figure: no comparable data. Predictive validity: no comparable data.</td>
+          </tr>
+          <tr>
+            <th scope="row">Everything DiSC</th>
+            <td>The publisher, Wiley, reports internal consistency (Cronbach’s alpha) of .79–.90 across the eight scales (n=752, median .87) and test-retest correlations of .85–.88 over two weeks (n=599, median .86). These figures are the vendor’s own report <a href="#ref-7">[7]</a>. Self-rated agreement comparable with the STAR Assess figure: no comparable data. Predictive validity: no comparable data.</td>
+          </tr>
+          <tr>
+            <th scope="row">Insights Discovery</th>
+            <td>No comparable data. A British Psychological Society test review of the Insights Discovery Personal Evaluator is sold by the Society and was not opened for this page, so its ratings, date and version are not quoted.</td>
+          </tr>
+          <tr>
+            <th scope="row">Enneagram</th>
+            <td>A 2021 systematic review of 104 independent samples found mixed evidence of reliability and validity, with partial support for the factor structure and little support for wings or movement between types (Hook et al., 2021) <a href="#ref-8">[8]</a>. A single reliability coefficient: no comparable data. Self-rated agreement comparable with the STAR Assess figure: no comparable data.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="ratings">
+    <div class="section-label">02 · Self-ratings</div>
+    <h2 class="section-title">Every self-rating landed <em>between 87% and 100%.</em></h2>
+    <p class="section-body">Nine people rated the accuracy of their own Cognitive Profile Report. The sum of the nine self-ratings is 853, so the average is 853 ÷ 9 = 94.8% to one decimal place. The sample standard deviation, dividing by eight, is 4.6. The population figure, dividing by nine, is 4.3. A 95% interval for the mean, using the t distribution with 8 degrees of freedom, is 91.3 to 98.3. Teal bars mark the two self-ratings of 100%. Respondents are numbered, and archetypes are not listed beside scores.</p>
+    <div class="chart-card">
+      <div class="v-chart-wrap">
+        <svg class="rating-svg" viewBox="0 0 720 340" role="img" aria-label="Individual self-rated accuracy, highest first: 100, 100, 97, 96, 95, 95, 95, 88, 87. Average 94.8 percent. The scale runs from 80 to 100.">
+          <g font-family="DM Sans, sans-serif" font-size="12" fill="rgba(26,24,20,0.45)">
+            <text x="36" y="28" text-anchor="end">100%</text>
+            <text x="36" y="86" text-anchor="end">95%</text>
+            <text x="36" y="144" text-anchor="end">90%</text>
+            <text x="36" y="202" text-anchor="end">85%</text>
+            <text x="36" y="260" text-anchor="end">80%</text>
+          </g>
+          <g stroke="rgba(26,24,20,0.1)" stroke-dasharray="3 4">
+            <line x1="44" y1="24" x2="708" y2="24"/>
+            <line x1="44" y1="82" x2="708" y2="82"/>
+            <line x1="44" y1="140" x2="708" y2="140"/>
+            <line x1="44" y1="198" x2="708" y2="198"/>
+            <line x1="44" y1="256" x2="708" y2="256"/>
+          </g>
+          <line x1="44" y1="84.3" x2="708" y2="84.3" stroke="#E05A7A" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="704" y="78" text-anchor="end" font-family="DM Sans, sans-serif" font-size="12" font-weight="500" fill="#E05A7A">Average 94.8%</text>
+          <g font-family="DM Sans, sans-serif" font-size="12" font-weight="500" fill="#1A1814" text-anchor="middle">
+            <rect x="62" y="24" width="28" height="232" rx="3" fill="#2AACB8"/><text x="76" y="18">100</text>
+            <rect x="132" y="24" width="28" height="232" rx="3" fill="#2AACB8"/><text x="146" y="18">100</text>
+            <rect x="202" y="58.8" width="28" height="197.2" rx="3" fill="#E05A7A" opacity="0.9"/><text x="216" y="52">97</text>
+            <rect x="272" y="70.4" width="28" height="185.6" rx="3" fill="#E05A7A" opacity="0.9"/><text x="286" y="64">96</text>
+            <rect x="342" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="356" y="76">95</text>
+            <rect x="412" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="426" y="76">95</text>
+            <rect x="482" y="82" width="28" height="174" rx="3" fill="#E05A7A" opacity="0.9"/><text x="496" y="76">95</text>
+            <rect x="552" y="163.2" width="28" height="92.8" rx="3" fill="#E05A7A" opacity="0.9"/><text x="566" y="157">88</text>
+            <rect x="622" y="174.8" width="28" height="81.2" rx="3" fill="#E05A7A" opacity="0.9"/><text x="636" y="168">87</text>
+          </g>
+          <g font-family="DM Sans, sans-serif" font-size="11" fill="rgba(26,24,20,0.5)" text-anchor="middle">
+            <text x="76" y="278">Respondent</text><text x="76" y="292">02</text>
+            <text x="146" y="278">Respondent</text><text x="146" y="292">05</text>
+            <text x="216" y="278">Respondent</text><text x="216" y="292">09</text>
+            <text x="286" y="278">Respondent</text><text x="286" y="292">08</text>
+            <text x="356" y="278">Respondent</text><text x="356" y="292">03</text>
+            <text x="426" y="278">Respondent</text><text x="426" y="292">06</text>
+            <text x="496" y="278">Respondent</text><text x="496" y="292">07</text>
+            <text x="566" y="278">Respondent</text><text x="566" y="292">01</text>
+            <text x="636" y="278">Respondent</text><text x="636" y="292">04</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:#E05A7A"></i>87–97%, self-rated</span>
+        <span><i style="background:#2AACB8"></i>100%, self-rated</span>
+      </div>
+      <div class="rating-table-wrap">
+        <table class="ratings">
+          <caption>Self-ratings as of 28 June 2026, in the order first published. The chart draws the same scores on a scale from 80% to 100%, so a bar’s height is (rating − 80) ÷ 20. Archetypes are omitted, so a score is not paired with a profile name.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Respondent</th>
+              <th scope="col">Self-rated accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Respondent 01</td><td>88%</td></tr>
+            <tr><td>Respondent 02</td><td>100%</td></tr>
+            <tr><td>Respondent 03</td><td>95%</td></tr>
+            <tr><td>Respondent 04</td><td>87%</td></tr>
+            <tr><td>Respondent 05</td><td>100%</td></tr>
+            <tr><td>Respondent 06</td><td>95%</td></tr>
+            <tr><td>Respondent 07</td><td>95%</td></tr>
+            <tr><td>Respondent 08</td><td>96%</td></tr>
+            <tr><td>Respondent 09</td><td>97%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section val-copy" id="next">
+    <div class="section-label">03 · Next steps</div>
+    <h2 class="section-title">What we will measure next.</h2>
+    <div class="next-card">
+      <p>Early results are encouraging but small (n=9). Our next steps are to measure retest reliability and whether profiles predict team and leadership outcomes.</p>
+    </div>
+  </section>
+
+  <section class="content-section" id="sources">
+    <div class="section-label">04 · Sources</div>
+    <h2 class="section-title">Every claim, <em>traceable.</em></h2>
+    <ol class="sources">
+      <li id="ref-1"><span class="num">[1]</span><span>Forer, B. R. (1949). The fallacy of personal validation: a classroom demonstration of gullibility. <em>Journal of Abnormal and Social Psychology</em>, 44(1), 118–123.</span></li>
+      <li id="ref-2"><span class="num">[2]</span><span>Howes, R. J., and Carskadon, T. G. (1979). Test-retest reliabilities of the Myers-Briggs Type Indicator as a function of mood changes. <em>Research in Psychological Type</em>, 2(1), 67–72.</span></li>
+      <li id="ref-3"><span class="num">[3]</span><span>Pittenger, D. J. (1993). Measuring the MBTI and coming up short. <em>Journal of Career Planning &amp; Employment</em>, 54, 48–52.</span></li>
+      <li id="ref-4"><span class="num">[4]</span><span>Pittenger, D. J. (2005). Cautionary comments regarding the Myers-Briggs Type Indicator. <em>Consulting Psychology Journal: Practice and Research</em>, 57(3), 210–221.</span></li>
+      <li id="ref-5"><span class="num">[5]</span><span>McCarley, N. G., and Carskadon, T. G. (1983). Test-retest reliabilities of scales and subscales of the Myers-Briggs Type Indicator and of criteria for clinical interpretive hypotheses involving them. <em>Research in Psychological Type</em>, 6, 24–36. Cited here as reported by Pittenger (2005).</span></li>
+      <li id="ref-6"><span class="num">[6]</span><span><a href="https://www.themyersbriggs.com/en-us/access-resources/articles/mbti-facts-common-criticisms">The Myers-Briggs Company (2018). MBTI facts and common criticisms.</a> The publisher’s own account. It attributes the five-week figure to Form G and reports test-retest correlations of .81 to .86 for the current assessment, citing its manual.</span></li>
+      <li id="ref-7"><span class="num">[7]</span><span><a href="https://www.discprofile.com/CMS/media/doc/5b/research-rpt.pdf">Everything DiSC Research Report (John Wiley &amp; Sons).</a> The publisher’s own report. Alpha .79–.90 (n=752) and two-week test-retest .85–.88 (n=599).</span></li>
+      <li id="ref-8"><span class="num">[8]</span><span>Hook, J. N., Hall, T. W., Davis, D. E., Van Tongeren, D. R., and Conner, M. (2021). The Enneagram: a systematic review of the literature and directions for future research. <em>Journal of Clinical Psychology</em>, 77(4), 865–883. <a href="https://pubmed.ncbi.nlm.nih.gov/33332604/">PubMed 33332604</a>.</span></li>
+      <li id="ref-9"><span class="num">[9]</span><span><a href="https://www.nycbigbookaward.com/2025-winners/9798281199322">NYC Big Book Award (2025). Winner, Marketing &amp; Public Relations: The STAR Framework: Rewriting the Rules of Consumer Engagement, by David Chadderton.</a> This is a book award. It is not an award for the assessment.</span></li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">STAR Dynamics</a>
+      <p class="footer-tagline">The Human Operating System</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">The Framework</div>
+        <ul>
+          <li><a href="mindsets.html">Mindsets</a></li>
+          <li><a href="types.html">Types</a></li>
+          <li><a href="archetypes.html">Archetypes</a></li>
+          <li><a href="theories.html">Theories</a></li>
+          <li><a href="modes.html">Operating Modes</a></li>
+          <li><a href="validation.html">Validation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Applications</div>
+        <ul>
+          <li><a href="app-leadership.html">Leadership</a></li>
+          <li><a href="app-communication.html">Communication</a></li>
+          <li><a href="app-marketing.html">Marketing</a></li>
+          <li><a href="app-education.html">Education</a></li>
+          <li><a href="app-coaching.html">Coaching</a></li>
+          <li><a href="app-teams.html">Team Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <ul>
+          <li><a href="mailto:david@stardynamics.io">david@stardynamics.io</a></li>
+        </ul>
+        <p class="legal-note">STAR Framework and STAR Operating System are registered trade marks of David Chadderton in the UK, used under licence.</p>
+        <p class="legal-note">MBTI, Myers-Briggs and Myers-Briggs Type Indicator are registered trade marks of Myers &amp; Briggs Foundation, Inc. The instrument is published by The Myers-Briggs Company. DiSC is a trade mark of Inscape Publishing, LLC, a Wiley company. Insights Discovery is a registered trade mark of The Insights Group Limited. Enneagram is used here as a generic term. No affiliation or endorsement.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2025 STAR Dynamics Consulting Ltd</span>
+    <span>The STAR Framework: Rewriting the Rules of Consumer Engagement: Winner, NYC Big Book Award 2025, Marketing &amp; Public Relations. A book award, not an award for the assessment.</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileNav() {
+    var links = document.querySelector('.nav-links');
+    if (links) links.classList.toggle('mobile-open');
+  }
+  var bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
+  });
+</script>
+</body>
+</html>
